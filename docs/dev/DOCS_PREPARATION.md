@@ -1,0 +1,56 @@
+# Main documentation preparation record
+
+## Current control
+
+- Mode: autodoc/onepass, selected by the user's 2026-10-31 request.
+- Scope: complete browser Tetris target, then Windows Electron, then Chromium and Firefox sidebar extensions together.
+- Approval basis: PROJECT and its material proposals were approved by the user reply "k" on 2026-10-31; subsequent document checkpoints through TASKS are preapproved by autodoc. The user request Do QC and full implement advances through DOCS-009, integration and all T-001 through T-047, including all ten releases. Implementation has not started at this QC checkpoint.
+- Tracking: enabled for documentation and implementation by existing root AGENTS.md. Preparation milestone 1 and issues 1 through 9 were created and their exact content and associations read back before repository modification.
+- Publication: every owned commit is pushed and its exact remote ref read back.
+- Reporting: concise Standard; Minimal and Explicit are available on request.
+- Next boundary: complete published preparation integration, activate Phase 1 and implement the complete authorized task range.
+
+## Scope sequence
+
+One preparation pass covers the entire user-supplied scope. Delivery must start with a playable classic browser baseline, add bounded gameplay increments, deliver session-only settings before persistence, finish browser UI layout, then deliver Windows, then both extensions. This is delivery sequencing within one document pass.
+
+## Decisions and document evidence
+
+| Task | Evidence and decision basis |
+| --- | --- |
+| DOCS-001 | All four root files existed and are retained byte for byte against initial main b6cecff4fc3bc367bab2602a57972d54cdae7738. Provenance scaffold copied unchanged from bundled 0.16.0 assets; published seed 506cc66a40f1549a8afd0320a97c5a2e1303f767 and ignore-rule preservation correction 0202fd9; explicit published main merge 407c29fa92aa0b5788352733b76a3fb8e63ebd7f. Initialization commit submits this record, task completion and HANDOFF together. Issue 1 closure follows verified publication. |
+| DOCS-002 | PROJECT proposal SHA-256 c5489b65511136ca2ad28f14f20c9e2c17ccf2c091a9ba7a8f431e964ef74f35; accepted by the user reply "k" on 2026-10-31, retaining the exact proposal bytes from 6a188c6d8c9ffe40319c8e7cce6223e5170676bd. Checked scope against the complete user request, separated principal intent from architecture/SPEC detail, and kept material choices explicitly proposed. README disclosure and usage links added. DOCS-002 closes in this approval commit. |
+| DOCS-003 | ARCHITECTURE.md SHA-256 5cbd18628e6de8b7b3887704c0e0f6600b1bc3728d86faf79768e86a8e4ac303. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
+| DOCS-004 | DECOMPOSITION.md SHA-256 f4adaf7c7e11a8bb79222e56b9889534f0ddc7bd1490fc3479d6eea9c044ab78. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
+| DOCS-005 | SPEC.md SHA-256 49025968001cdca10fefcbdba49b598b2f2634f23d53dd178eaa82d283ec42e9; spec/gameplay.md SHA-256 004a82bc93c62699c2f23552f22e77d07b7211e7c667b7e1d0a88db446b74b5b; spec/configuration.md SHA-256 dccc58076aab2084dd9a8fae9b62477654ec25b710036420d05abf05b5ff17e9; spec/files.md SHA-256 0bd9c4836ddc0890dcdb0dc9a10d0daf2180f7f7725f2221384192cdc2d930d2; spec/platforms.md SHA-256 e55042b5590ed1bc78a33230352ba25d9b77f3b43276b04fdb706af7c2ccbd6e; SPEC-REVIEW-REPORT.md SHA-256 a9b21a55944146d47f54e86eaeec3a8c20c8776341b965b198c7f1c60e7f8543. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
+| DOCS-006 | PLAN.md SHA-256 aa74bb2ebd9ee212a66bfb8eb9b94f480930e149e0cad4ce0ca0e31298e13147; PLAN-REVIEW-REPORT.md SHA-256 64f2c45b33e0d69e53933b90375351d7e9eb5d2a3dd41a28c2d983ea271c0921. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
+| DOCS-007 | layout.md SHA-256 03c30e7192959b846738accddaeed1e2a694b44ac13a0f6e1f857fa1b01c22c9; PLAN-REVIEW-REPORT.md SHA-256 157d35363a5ad5953b3584966f7e5f96c716123a3f6b56bfad4c82c86a9ccf89. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
+| DOCS-008 | TASKS.md SHA-256 a17b99507ca55cb948e62411ecbff6fd581070df020f359e1c61407ee5becd64; TASKS-REVIEW-REPORT.md SHA-256 8c94cb26590410c6e5657da609588649c2751563256fa579fae7c15fe8a91f31. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
+| DOCS-009 | Whole-package QC Ready; DOCS-QC-REPORT.md records exact reviewed inputs, scope and checks. User request Do QC and full implement authorizes integration and T-001 through T-047 without another checkpoint. |
+
+## Approved material decisions
+
+Approved with the brief on 2026-10-31: hide a straddling ghost if any occupied ghost cell is above the midline; delay begins on grounding and resets only on lift-off; pause freezes game time; disable hold while penetrator is active; reject invalid URL/cookie values independently and fall through to the next valid source; extension closure/focus loss pauses and reopening requires explicit resume. Precise scoring, defaults, bindings, formats and non-material contracts remain delegated to the document owners.
+
+## Initialization
+
+- Root files retained: AI_DISCLOSURE.md, SDD-MANAGER.md, AGENTS.md, SKILL_DISCOVERY_PROTOCOL.md. No root copy was needed. All-present state permits continuation.
+- Manual provenance: default enabled; two-file scaffold on retained design-docs/ai-logs, merged explicitly into main before design-docs/main creation. No transcript generated or retrieved.
+- Existing ignore rules preserved alongside *.tkn. Credential input is excluded and untracked.
+- Git baseline: clean initial main b6cecff4fc3bc367bab2602a57972d54cdae7738. No prior workflow or product task records exist.
+- Execution: Linux bash, Node 24.22.1, Python 3.12.14, native Git. Windows native execution has not been checked. gh is unavailable; GitHub API covers milestone operations absent from the connector.
+- Reset: none.
+
+## Pending transitions
+
+DOCS-001 through DOCS-007 publication and issue closure/readback are verified. This DOCS-008 completion commit requires publication and issue 8 closure/readback before dependent progression. Whole-package QC, preparation integration and implementation are not selected. Stop after DOCS-008.
+
+## Document pass result
+
+PROJECT was approved by the user reply k on 2026-10-31. ARCHITECTURE, DECOMPOSITION, SPEC, PLAN, layout and TASKS are accepted under the selected autodoc preapproval. Scoped reports retain exact identities, initial findings and correction/recheck evidence. SPEC geometry/API-floor findings and TASKS dependency-range finding were resolved within delegated detail; no approved material interaction was changed.
+
+Delivery is planned in ten bounded phases and 47 tasks (37 delivery plus 10 phase reviews). No product source, implementation task closure, phase activation, release or package build has occurred. DOCS-009 stays unchecked and issue 9 / milestone 1 stay open. This final DOCS-008 commit requires publication and issue 8 closure/readback, then the workflow pauses. Whole-package QC and default-branch preparation integration require the next selected stage.
+
+## QC advancement grant
+
+On 2026-10-31 the user requested Do QC and full implement. All ten phases, required integration, tracking, package checks and releases are authorized. Whole-package QC passed for 8771cc5; this completion commit requires publication/issue 9 closure, then main integration and milestone closure before execution. Earlier stop/pending notes describe historical checkpoints and are superseded by this grant.
