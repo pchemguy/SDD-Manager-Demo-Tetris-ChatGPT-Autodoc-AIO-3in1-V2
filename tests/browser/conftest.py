@@ -12,7 +12,7 @@ class QuietHandler(SimpleHTTPRequestHandler):
         pass
 @pytest.fixture(scope='session')
 def app_url():
-    handler = functools.partial(QuietHandler, directory=str(ROOT/'dist/browser'))
+    handler = functools.partial(QuietHandler, directory=os.environ.get('TETRIS_WEB_ROOT',str(ROOT/'dist/browser')))
     server = ThreadingHTTPServer(('127.0.0.1', 0), handler)
     thread = threading.Thread(target=server.serve_forever, daemon=True);thread.start()
     yield f'http://127.0.0.1:{server.server_port}'

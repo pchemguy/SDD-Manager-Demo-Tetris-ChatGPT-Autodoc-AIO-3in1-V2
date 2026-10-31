@@ -10,3 +10,6 @@ artifacts/
 __pycache__/
 .pytest_cache/
 test-results/
+.browser-binaries/
+.release-highlights.md
+RELEASE-NOTES.md

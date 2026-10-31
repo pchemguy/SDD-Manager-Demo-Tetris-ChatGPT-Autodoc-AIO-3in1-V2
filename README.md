@@ -17,7 +17,7 @@ npm run build
 python -m http.server 8000 --directory dist/browser
 ```
 
-Open http://localhost:8000. File-URL deployment is unsupported for persistence. Package download/installation instructions are added with verified releases.
+Open http://localhost:8000. File-URL deployment is unsupported for persistence. See [installation](INSTALL.md). Create and check the stable browser archive with python scripts/package.py after a production build; python scripts/verify_packages.py artifacts verifies actual names, resources and checksums.
 
 ## Verification
 

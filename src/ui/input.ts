@@ -4,6 +4,7 @@ export function bindInput(app:Controller):{repeat:(now:number)=>void;clear:()=>v
  const held=new Map<string,{type:string;next:number}>();
  const map:Record<string,string>={ArrowLeft:'left',ArrowRight:'right',ArrowDown:'down',ArrowUp:'cw',' ':'cw',z:'ccw',r:'start'};
  const clear=()=>held.clear();
+ app.subscribe(s=>{if(s.status!=='running')clear();});
  window.addEventListener('keydown',e=>{
   if(e.ctrlKey||e.metaKey||e.altKey||(e.target instanceof HTMLElement&&e.target.closest('input,select,textarea,button,[contenteditable="true"]')))return;
   const key=e.key.length===1?e.key.toLowerCase():e.key;let type=map[key];

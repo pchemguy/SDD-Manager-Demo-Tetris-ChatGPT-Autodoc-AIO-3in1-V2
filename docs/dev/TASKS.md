@@ -11,7 +11,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 ## Phase 1 - Classic browser
 
 - [ ] Phase 1 - Classic browser
-    - [ ] Milestone 1.1 - Classic browser game
+    - [x] Milestone 1.1 - Classic browser game
         - [x] T-001 - Establish typed board and piece geometry
             Verified: RED: geometry stub produced 8 expected cell/rotation failures (4 bounds cases passed). GREEN: typecheck/build:test and 12 pytest geometry cases pass, covering exact spawn sets, active bounds, collision and clockwise rotation. Locked tooling and pytest driver are excluded from runtime builds.
             Scope: src/core geometry/types, locked TypeScript tooling and tests/unit fixtures.
@@ -27,7 +27,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/app controller, src/ui, browser host and browser entry.
             Depends on: T-002. Contracts: G-7/U-1/P-2/Q.
             Acceptance/evidence: A real browser page plays the classic loop with the two permitted gameplay buttons; focus/modifier/key-repeat rules work and information reflects domain state.
-        - [ ] T-004 - Package and verify the classic browser baseline
+        - [x] T-004 - Package and verify the classic browser baseline
+            Verified: RED name-gate tests exposed versioned, duplicate and missing assets; GREEN 4 gate cases and full 23-test suite pass. Typecheck/build:test/production build, actual ZIP name/resource/source/checksum checks and 2 extracted-package browser tests pass. Whole-milestone code review and screenshot inspection passed; immediate held-key clearing tightened. Milestone report/HANDOFF and stable browser package/install/CI checks included; hosted release remains pending.
             Scope: browser build/package scripts, notices, installation/control docs and relevant pytest browser/package checks.
             Depends on: T-001, T-002, T-003. Contracts: A-1/P-2/P-5.
             Acceptance/evidence: Extract the actual browser archive, verify local resource resolution, no required network runtime, version 0.1.0 and stable tetris-browser.zip name; run representative Chromium/Firefox checks and document unavailable execution.
