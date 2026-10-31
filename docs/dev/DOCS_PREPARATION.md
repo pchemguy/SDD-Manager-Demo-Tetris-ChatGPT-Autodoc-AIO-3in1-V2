@@ -19,7 +19,7 @@ One preparation pass covers the entire user-supplied scope. Delivery must start 
 | Task | Evidence and decision basis |
 | --- | --- |
 | DOCS-001 | All four root files existed and are retained byte for byte against initial main b6cecff4fc3bc367bab2602a57972d54cdae7738. Provenance scaffold copied unchanged from bundled 0.16.0 assets; published seed 506cc66a40f1549a8afd0320a97c5a2e1303f767 and ignore-rule preservation correction 0202fd9; explicit published main merge 407c29fa92aa0b5788352733b76a3fb8e63ebd7f. Initialization commit submits this record, task completion and HANDOFF together. Issue 1 closure follows verified publication. |
-| DOCS-002 | PROJECT proposal not yet accepted. |
+| DOCS-002 | PROJECT proposal SHA-256 c5489b65511136ca2ad28f14f20c9e2c17ccf2c091a9ba7a8f431e964ef74f35; human acceptance pending. Checked scope against the complete user request, separated principal intent from architecture/SPEC detail, and kept material choices explicitly proposed. README disclosure and usage links added. DOCS-002 remains unchecked. |
 | DOCS-003 through DOCS-008 | Not started; document checkpoints preapproved after PROJECT acceptance. |
 | DOCS-009 | Not selected; remains pending at the autodoc stop. |
 
@@ -38,4 +38,4 @@ Proposals, not human-confirmed requirements: hide a straddling ghost if any occu
 
 ## Pending transitions
 
-Initialization commit publication and issue 1 closure must be verified before PROJECT work. PROJECT approval, dependent documents, package QC and preparation integration remain pending. Do not infer later success from this checkpoint.
+Initialization f992d92 published and issue 1 closed/read back. PROJECT proposal publication follows; verify remote state before presentation. PROJECT approval, dependent documents, package QC and preparation integration remain pending. Do not infer later success from this checkpoint.
