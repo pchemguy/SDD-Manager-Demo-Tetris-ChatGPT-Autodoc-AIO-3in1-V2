@@ -32,3 +32,7 @@ The repository browser policy excludes unavailable native modes by default. Thos
 ## Unresolved and deferred TODO aggregation
 
 No unresolved implementation contract violation or task remains. Milestone/phase TODO lists are empty. The stable LIMIT items above identify environment-limited verification follow-up and concrete ways to obtain that evidence; they do not imply native acceptance. Final integration, clean-source rebuild, tag/publication and hosted-byte/latest readback are post-task effects at this report's commit checkpoint.
+
+## Hosted CI compatibility follow-up
+
+The final hosted-status inspection found that ubuntu-latest had migrated to Ubuntu 26.04. Pinned Playwright 1.55.0 rejects chromium-headless-shell on ubuntu26.04-x64 before application build/tests run (Actions run 41203302393, job 124543256966). The workflow now pins supported Ubuntu 24.04, preserving dependency versions. Local package/full-suite evidence remains valid. The already published v0.10.0 source tag is retained; a compatibility patch release follows a fresh hosted run and exact-source rebuild.

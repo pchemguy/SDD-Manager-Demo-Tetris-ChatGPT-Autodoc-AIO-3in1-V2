@@ -21,3 +21,7 @@ None.
 ## TODO
 
 None.
+
+## Hosted CI compatibility follow-up
+
+Hosted run 41203302393 failed during browser provisioning, before application build/tests: ubuntu-latest migrated to 26.04, unsupported by pinned Playwright 1.55.0. Pinning ubuntu-24.04 corrects the environment without changing application behavior. The immutable v0.10.0 source tag and locally verified artifacts are retained; a fresh hosted run and exact-source compatibility patch release follow.
