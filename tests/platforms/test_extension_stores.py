@@ -24,3 +24,14 @@ def test_actual_game_snapshot_valid():assert not run('validation')['error']
 def test_transient_state_invariants(patch):assert run('validation',mutate=patch)['error']
 def test_restore_coordinates_both_stores_and_pauses():
  q=run('restore');assert q['view']['settings']['ghost']=='hide';assert q['view']['session']['game']['status']=='paused';assert q['local']['settings']['formatVersion']==1;assert q['session']['session']['session']['game']['time']==0
+
+def test_storage_object_property_order_is_not_semantic():
+ q=run('owner',reverse=True);assert q['claim']['session']['game']['score']==47
+
+def test_restore_write_failure_rolls_back_both_stores():
+ q=run('restoreFailure',permanent=False);assert q['error'] and q['localSame'];assert q['before']['session']==q['view']['session'] and q['before']['settings']==q['view']['settings']
+def test_unconfirmed_restore_rollback_blocks_further_ownership():
+ q=run('restoreFailure',permanent=True);assert q['error'] and q['blocked'] and q['view']['owner'] is None
+
+def test_controller_recovery_freezes_away_time_and_gates_nonowner_commands():
+ q=run('recovery');assert q['recovered']['status']=='paused' and q['recovered']['time']==0;assert q['resumed']['time']==100 and q['blocked']==q['resumed']

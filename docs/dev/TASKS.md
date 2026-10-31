@@ -286,7 +286,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/ui sidebar styles/sections and browser panel geometry checks.
             Depends on: T-043. Contracts: U-2.
             Acceptance/evidence: Widths 280/360/480 retain board/information, optional capabilities, keyboard access and file controls without horizontal overflow; resize preserves current state.
-        - [ ] T-045 - Integrate extension lifecycle configuration and files
+        - [x] T-045 - Integrate extension lifecycle configuration and files
+            Verified: GREEN: typecheck/build:test and production builds pass; 52 focused storage/controller/panel/browser-file/persistence/lock regressions pass, plus eight real-Firefox built-panel scenarios. Ownership handover, paused recovery without away gravity, browser-session clearing, explicit query settings, both CSP-local codecs, invalid-file non-mutation and storage-failure pause pass. RED regressions for object-property ordering and unconfirmed Restore rollback are fixed; rollback blocks ownership until reload. Test-only transport bootstrap race was isolated and repaired. Native Chromium is excluded after verified runtime/socket EPERM; Firefox internal debugger navigation is unavailable, with native attempts recorded separately from panel evidence.
             Scope: src/platform/extensions, controller/session integration and host scenarios.
             Depends on: T-044. Contracts: P-1/C-3/F-2.
             Acceptance/evidence: Close/focus loss and ownership transfer pause; reopen confirmed session snapshot paused with explicit resume, browser restart clears results, local settings survive, valid query seeds and both file flows preserve validation semantics.

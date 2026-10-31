@@ -46,3 +46,5 @@ body.sidebar { min-width: 0; }
 
 .sidebar .info .stat-row > div + div { margin-top: 0; }
 .sidebar #toggle-leaderboard, .sidebar #toggle-settings, .sidebar #toggle-help { width: auto; font-size: .7rem; padding: 5px; margin: 0; }
+
+.sidebar #notice { padding: 0; margin-bottom: 0; font-size: .8rem; }
