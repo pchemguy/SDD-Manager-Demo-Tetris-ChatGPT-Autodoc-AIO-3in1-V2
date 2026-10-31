@@ -6,7 +6,7 @@ All T-001 through T-047 and all ten phases are implemented, reviewed, published 
 
 ## Compatibility patch in progress
 
-Hosted-status QC found ubuntu-latest migrated to Ubuntu 26.04, which pinned Playwright 1.55.0 rejects before tests. Main 5e8c561 pins ubuntu-24.04 and is published/read back. Its hosted provisioning/build/full regression steps pass; remaining hosted steps are awaited. Version 0.10.1 retains all application behavior and packages, and corrects only CI compatibility/version metadata. The immutable v0.10.0 tag is retained.
+Hosted-status QC found ubuntu-latest migrated to Ubuntu 26.04, which pinned Playwright 1.55.0 rejects before tests. Main 5e8c561 pins ubuntu-24.04 and is published/read back. Its complete hosted workflow passed/read back: 347 passed with 3 explicit native skips, Firefox browser/panels 48 passed, and all four archive gates. See CI-COMPATIBILITY-PATCH.md for the source/run evidence. Version 0.10.1 retains all application behavior and packages, and corrects only CI compatibility/version metadata. The immutable v0.10.0 tag is retained.
 
 Finish the already authorized QC patch: publish/read back this version commit, verify hosted CI, prepare a complete release marker on main, rebuild all four exact clean-source archives, run packaged browser/extension and native compatible-host Electron checks, tag v0.10.1 and publish/read back hosted bytes/latest. Do not create another feature phase or ask for repeated approval. Source/provider state settles effects after this checkpoint.
 
