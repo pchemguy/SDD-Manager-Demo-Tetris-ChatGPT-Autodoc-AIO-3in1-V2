@@ -27,7 +27,7 @@ jobs:
       - run: python -m pytest
         env:
           PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.browser-binaries
-      - run: python -m pytest tests/browser
+      - run: python -m pytest tests/browser tests/platforms/test_extension_panels.py
         env:
           PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.browser-binaries
           TETRIS_BROWSER: firefox

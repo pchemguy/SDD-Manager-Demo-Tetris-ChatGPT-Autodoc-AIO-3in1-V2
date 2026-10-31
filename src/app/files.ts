@@ -4,7 +4,7 @@ import {validateSnapshot,type Snapshot} from './snapshot.js';
 import type {Settings} from './settings.js';
 export type FileFormat='json'|'sqlite';
 export interface FileCodec{decode(bytes:Uint8Array):Promise<Snapshot>;encode(snapshot:Snapshot,format:FileFormat):Promise<Uint8Array>}
-export interface SettingsCommit{commit(settings:Settings):void|Promise<void>}
+export interface SettingsCommit{commit(settings:Settings,snapshot?:Snapshot):void|Promise<void>}
 export class FileExchange{
  private active=false;
  onBusy:(busy:boolean)=>void=()=>{};
@@ -15,5 +15,5 @@ export class FileExchange{
   try{this.onBusy(true);return await operation();}finally{this.active=false;this.app.settingsLocked=false;this.onBusy(false);}
  }
  async save(format:FileFormat):Promise<Uint8Array>{return this.run(async()=>{const captured=this.app.snapshot();return this.codec.encode(captured,format);});}
- async restore(source:Uint8Array|(()=>Promise<Uint8Array>)):Promise<void>{return this.run(async()=>{const bytes=typeof source==='function'?await source():source,candidate=validateSnapshot(await this.codec.decode(bytes));await this.persistence.commit(candidate.settings);this.app.replaceSnapshot(candidate);});}
+ async restore(source:Uint8Array|(()=>Promise<Uint8Array>)):Promise<void>{return this.run(async()=>{const bytes=typeof source==='function'?await source():source,candidate=validateSnapshot(await this.codec.decode(bytes));await this.persistence.commit(candidate.settings,candidate);this.app.replaceSnapshot(candidate);});}
 }

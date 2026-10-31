@@ -269,31 +269,37 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 10 - Browser sidebars
 
-- [ ] Phase 10 - Browser sidebars
-    - [ ] Milestone 10.1 - Chromium and Firefox sidebars
-        - [ ] T-042 - Implement extension stores and single-owner sessions
+- [x] Phase 10 - Browser sidebars
+    - [x] Milestone 10.1 - Chromium and Firefox sidebars
+        - [x] T-042 - Implement extension stores and single-owner sessions
+            Verified: RED: missing coordinator/session modules failed test compilation. GREEN: build:test and 24 storage/ownership/session cases pass. Separate local settings and transient game/results, strict recovery validation, sequence rejection, acknowledged transfer, paused disconnect/reopen, browser-restart clearing, query fallback, write-failure non-advancement and coordinated Restore are verified. Background performs no gameplay transitions.
             Scope: src/platform/extensions storage/messaging/coordinator and tests/platforms.
             Depends on: T-041. Contracts: C-3/P-1.
             Acceptance/evidence: Persistent six-key settings and transient paused game/results use separate stores; serialized generations, ownership transfer, disconnect and failed writes never run background gameplay or persist scores.
-        - [ ] T-043 - Implement both sidebar manifests and launch adapters
+        - [x] T-043 - Implement both sidebar manifests and launch adapters
+            Verified: RED: missing host adapters failed test compilation. GREEN: build:test and cumulative production browser/desktop/Chromium/Firefox builds pass; 28 manifest/API/store scenarios pass. Both MV3 manifests pin supported minimums, local CSP/assets and minimal permissions. Direct gesture launch and explicit Chrome callback versus Firefox Promise adapters pass even when both global namespaces exist. Native sidebar checks remain assigned to T-046.
             Scope: platforms/extensions chromium/firefox manifests/background launch and extension entry.
             Depends on: T-042. Contracts: P-4.
             Acceptance/evidence: Chromium MV3 side_panel and Firefox sidebar_action launch the shared panel with required minimum APIs/permissions/CSP and local assets; no content scripts or site permissions are introduced.
-        - [ ] T-044 - Adapt the shared view to a narrow resizable sidebar
+        - [x] T-044 - Adapt the shared view to a narrow resizable sidebar
+            Verified: RED: narrow panel geometry failed before sidebar overrides. GREEN: typecheck/build, five Chromium sidebar/panel cases and three Firefox sidebar cases pass. All 48 sidebar width/text-scale/visibility combinations keep vertical information/board/optional-panel order without horizontal or text overflow; keyboard play, exactly two gameplay buttons, Save/Restore hiding, resize and paused state preservation pass. Narrow screenshot inspection led to shorter readable toggle labels and aligned statistics; browser/desktop labels retain their existing wording.
             Scope: src/ui sidebar styles/sections and browser panel geometry checks.
             Depends on: T-043. Contracts: U-2.
             Acceptance/evidence: Widths 280/360/480 retain board/information, optional capabilities, keyboard access and file controls without horizontal overflow; resize preserves current state.
-        - [ ] T-045 - Integrate extension lifecycle configuration and files
+        - [x] T-045 - Integrate extension lifecycle configuration and files
+            Verified: GREEN: typecheck/build:test and production builds pass; 52 focused storage/controller/panel/browser-file/persistence/lock regressions pass, plus eight real-Firefox built-panel scenarios. Ownership handover, paused recovery without away gravity, browser-session clearing, explicit query settings, both CSP-local codecs, invalid-file non-mutation and storage-failure pause pass. RED regressions for object-property ordering and unconfirmed Restore rollback are fixed; rollback blocks ownership until reload. Test-only transport bootstrap race was isolated and repaired. Native Chromium is excluded after verified runtime/socket EPERM; Firefox internal debugger navigation is unavailable, with native attempts recorded separately from panel evidence.
             Scope: src/platform/extensions, controller/session integration and host scenarios.
             Depends on: T-044. Contracts: P-1/C-3/F-2.
             Acceptance/evidence: Close/focus loss and ownership transfer pause; reopen confirmed session snapshot paused with explicit resume, browser restart clears results, local settings survive, valid query seeds and both file flows preserve validation semantics.
-        - [ ] T-046 - Package and verify both sidebar extensions
+        - [x] T-046 - Package and verify both sidebar extensions
+            Verified: Version 0.10.0 all four actual archives and stable checksums pass runtime/source/manifest/CSP/API-floor/icon/PE gates. RED invalid-package, per-setting corruption and delayed ownership-claim regressions are fixed. Final full run: 348 passed, 2 unavailable native-Chromium probes skipped, using extracted browser/extension artifacts and actual extracted Windows app resources in Linux Electron; Firefox browser 38 and final panel 10 pass. A parallel cold-navigation timeout was isolated and the bounded fixture allowance verified. Whole-milestone review, packaged 280px visual check, complete install/file/CI guidance and explicit native Windows/sidebar/root-test limits are recorded in 10.1/HANDOFF. No blocker remains.
             Scope: extension packaging/lint/CSP checks, actual-host attempts, cumulative browser/Windows rebuilds and install docs.
             Depends on: T-042, T-043, T-044, T-045. Contracts: A-10/P-5.
             Acceptance/evidence: Verify 0.10.0 all four archives and local assets; attempt real sidebar launch/closure in isolated Chromium/Firefox and distinguish unavailable native/sidebar checks from panel-page fallback; signing/store status is explicit.
             Milestone exit: depends on all other milestone tasks T-042 through T-045; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/10/10.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 10.2 - Phase review
-        - [ ] T-047 - Review test and report phase 10
+    - [x] Milestone 10.2 - Phase review
+        - [x] T-047 - Review test and report phase 10
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 348 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-046, completion/verified closure of milestone 10.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/10/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
             Final scope: also write docs/dev/reports/IMPLEMENTATION-REPORT.md aggregating full-task-list outcome, all unresolved/deferred milestone/phase TODOs, proposed solutions and native/sidebar verification limits.

@@ -8,3 +8,4 @@ await mkdir('dist/desktop',{recursive:true});
 for(const name of ['main.cjs','host.cjs','protocol.cjs'])await copyFile('platforms/electron/'+name,'dist/desktop/'+name);
 const meta=JSON.parse(await readFile('package.json','utf8'));
 await writeFile('dist/desktop/package.json',JSON.stringify({name:'tetris',productName:'Tetris',version:meta.version,main:'main.cjs',type:'commonjs',private:true},null,2)+'\n');
+await import('./build-extensions.mjs');

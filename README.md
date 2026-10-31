@@ -1,6 +1,6 @@
 # Tetris
 
-A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. All six settings support URL/cookie persistence. Session-only top-ten completed-game history is implemented. Manual JSON/SQLite file exchange is implemented. The centered five-panel layout is implemented. An unsigned Windows x64 portable Electron build is implemented; Chromium and Firefox sidebars follow in the final phase; see [PLAN](docs/dev/PLAN.md).
+A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. All six settings support URL/cookie persistence. Session-only top-ten completed-game history is implemented. Manual JSON/SQLite file exchange is implemented. The centered five-panel layout is implemented. Unsigned Windows x64 Electron, Chromium side-panel and Firefox sidebar packages are implemented; see [PLAN](docs/dev/PLAN.md).
 
 ## Play and controls
 
@@ -43,11 +43,11 @@ A four-line clear awards one penetrator activation, up to three. Press X to acti
 
 ## Gameplay settings
 
-The settings panel exposes ghost visibility (hide/dynamic/show), hard drop, next preview, hard-drop lock (general/immediate), general lock (failed attempt/full interval) and hold. Defaults show the ghost and preview, enable hold/drop and use full-interval locking. Changes apply immediately; switching lock policy retains grounding history. The intermediate v0.4.0 release kept settings only in page memory. The current release resolves each setting independently from a valid explicit URL parameter, then a saved cookie, then its default. Invalid inputs fall back with a diagnostic. Explicit URL values, including defaults, update their cookies; omitted parameters retain saved values. User changes update that setting in both cookies and the current URL, preserving unrelated parameters and fragments. Cookies last one year where permitted; blocked persistence is reported while the selected setting remains usable in the current page.
+The settings panel exposes ghost visibility (hide/dynamic/show), hard drop, next preview, hard-drop lock (general/immediate), general lock (failed attempt/full interval) and hold. Defaults show the ghost and preview, enable hold/drop and use full-interval locking. Changes apply immediately; switching lock policy retains grounding history. The intermediate v0.4.0 release kept settings only in page memory. Browser and desktop versions resolve each setting independently from a valid explicit URL parameter, then a saved cookie, then its default. Invalid inputs fall back with a diagnostic. Explicit URL values, including defaults, update their cookies; omitted parameters retain saved values. User changes update that setting in both cookies and the current URL, preserving unrelated parameters and fragments. Cookies last one year where permitted; blocked persistence is reported while the selected setting remains usable in the current page.
 
 ## Session leaderboard
 
-Completed games enter the top ten ranked by score descending, UTC completion time ascending and stable lowercase UUID ascending. Each result is recorded once; restarting an unfinished game adds nothing. History stays in this page session, survives panel toggles and restarts, and clears on reload. Configuration cookies never contain scores.
+Completed games enter the top ten ranked by score descending, UTC completion time ascending and stable lowercase UUID ascending. Each result is recorded once; restarting an unfinished game adds nothing. Browser/desktop history stays in this page session, survives panel toggles and restarts, and clears on reload. Configuration cookies never contain scores.
 
 ## Manual files
 
@@ -60,3 +60,9 @@ The workspace orders leaderboard, game information, board, settings and controls
 ## Windows desktop
 
 The Windows ZIP bundles Electron and the full shared renderer, codecs and runtime assets. Extract everything and run Tetris.exe; no Node.js or server installation is required. It is an unsigned portable development distribution. See [Windows installation](platforms/electron/INSTALL.md) and [host/verification details](platforms/electron/README.md). Native Linux Electron checks exercise the packaged app resources; native Windows execution is separately reported and is not inferred from them.
+
+## Chromium and Firefox sidebars
+
+Both extension ZIPs bundle the same game and codecs with a vertical resizable sidebar UI. See [extension installation and verification limits](platforms/extensions/INSTALL.md). Settings use extension-local storage; game state and results use browser-session storage and reopen paused. One panel owns gameplay at a time. Explicit query values seed settings; subsequent changes use local storage without cookie/URL synchronization. Manual files use the same validated JSON/SQLite formats.
+
+`npm run build` produces dist/browser, dist/desktop, dist/extensions/chromium and dist/extensions/firefox. `python scripts/package.py` assembles all four stable ZIPs and SHA256SUMS.txt. Use `python scripts/verify_packages.py artifacts` for inventory, source/runtime bytes, manifest/CSP/API-floor, architecture and checksum gates. Built-panel tests use a clearly isolated API transport; native sidebar UI is not inferred from those tests. The current host cannot run full Chromium because its singleton socket is denied, or navigate Firefox's internal add-on-debugger page using the selected runner. Native Windows and native sidebar checks remain unverified; shared browser/panel behavior and packaged resources are verified separately.

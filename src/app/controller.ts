@@ -1,10 +1,18 @@
 /** Sole command/clock owner; elapsed deadlines and scheduled input precede new commands. */
+import {validateSession,type Session} from './session.js';
 import {create,reduce,type Command,type GameState,type GameEvent} from '../core/game.js';
 import {validateSnapshot,type Snapshot} from './snapshot.js';
 import {rank,type Result,type ResultHost} from './results.js';
 import {defaults,validateSettings,type Settings} from './settings.js';
 export class Controller{
  settingsLocked=false;
+ /** Platform authorization is synchronous; browser/desktop retain unrestricted ownership. */
+ authorize:(command:Command)=>boolean=()=>true;
+ restoreSession(input:Session,settings?:Settings):void{
+  const candidate=validateSession(input);if(settings)this.config={...validateSettings(settings,true)} as Settings;
+  this.current=candidate.game;if(this.current.status==='running')this.current.status='paused';this.history=candidate.results;this.completionRecorded=this.current.status==='game-over';this.lastClock=this.clock();this.notify([]);
+ }
+
  snapshot():Snapshot{return validateSnapshot({formatVersion:1,results:this.results,settings:this.settings});}
  replaceSnapshot(input:unknown):void{
   const candidate=validateSnapshot(input),now=this.clock();this.beforeCommand(now);const events=this.advance(now);
@@ -45,9 +53,10 @@ export class Controller{
  dispatch(command:Command):void{const now=this.clock();this.beforeCommand(now);this.dispatchAt(command,now);}
  /** Scheduled repeats use their monotonic due time, avoiding animation-frame ordering drift. */
  dispatchAt(command:Command,at:number):void{
+  if(!this.authorize(command))return;
   const events=this.advance(at),action=command.type==='start'?{...command,seed:this.seed()}:command;
   if(command.type==='start')this.completionRecorded=false;
   const result=reduce(this.current,action,this.rules);this.accept(result);this.notify([...events,...result.events]);
  }
- tick():void{const now=this.clock();this.beforeCommand(now);const events=this.advance(now);if(this.current.status==='running'||events.length)this.notify(events);}
+ tick():void{if(!this.authorize({type:'tick'}))return;const now=this.clock();this.beforeCommand(now);const events=this.advance(now);if(this.current.status==='running'||events.length)this.notify(events);}
 }

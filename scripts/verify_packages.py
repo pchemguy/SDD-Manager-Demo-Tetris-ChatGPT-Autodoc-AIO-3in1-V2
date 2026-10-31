@@ -50,6 +50,30 @@ def verify_windows(archive,version):
     for ref in re.findall(r'(?:src|href)="([^"]+)"',html):
         if ref.startswith(('http:','https:','//')) or 'resources/app/renderer/'+ref.removeprefix('./') not in archive.namelist():raise ValueError('Missing/remote desktop entry resource')
     print('Verified Windows x64 PE/runtime hashes and owned app inventory:',len(locked['files']),'runtime files')
+def verify_extension(archive,family,version):
+    source=ROOT/'dist/extensions'/family;owned={p.relative_to(source).as_posix():p for p in source.rglob('*') if p.is_file()}
+    required=set(owned)|{'INSTALL.md','THIRD-PARTY-NOTICES.md','LICENSE','FILES.md','build-info.json'}
+    if set(archive.namelist())!=required:raise ValueError('Extension resource inventory mismatch')
+    m=json.loads(archive.read('manifest.json'))
+    if m.get('manifest_version')!=3 or m.get('version')!=version:raise ValueError('Extension manifest/version mismatch')
+    expected={'storage','sidePanel'} if family=='chromium' else {'storage'}
+    if set(m.get('permissions',[]))!=expected or any(k in m for k in ['host_permissions','content_scripts','externally_connectable']):raise ValueError('Extension permissions mismatch')
+    if m.get('content_security_policy',{}).get('extension_pages')!="script-src 'self' 'wasm-unsafe-eval'; object-src 'self'":raise ValueError('Extension CSP mismatch')
+    if family=='chromium':
+        if m.get('minimum_chrome_version')!='116' or m.get('side_panel')!={'default_path':'panel.html'} or m.get('background')!={'service_worker':'background.js'}:raise ValueError('Chromium sidebar API floor/entry mismatch')
+    else:
+        if m.get('browser_specific_settings',{}).get('gecko',{}).get('strict_min_version')!='115.0' or m.get('sidebar_action',{}).get('default_panel')!='panel.html' or m.get('background')!={'scripts':['background.js']}:raise ValueError('Firefox sidebar API floor/entry mismatch')
+    for name,path in owned.items():
+        if archive.read(name)!=path.read_bytes():raise ValueError('Extension resource bytes mismatch: '+name)
+    if archive.read('runtime/sql-wasm.wasm')!=(ROOT/'node_modules/sql.js/dist/sql-wasm.wasm').read_bytes() or archive.read('schemas/tetris-save.schema.json')!=(ROOT/'schemas/tetris-save.schema.json').read_bytes():raise ValueError('Extension codec/schema bytes mismatch')
+    html=archive.read('panel.html').decode()
+    for ref in re.findall(r'(?:src|href)="([^"]+)"',html):
+        if ref.startswith(('http:','https:','//','/')) or ref.removeprefix('./') not in required:raise ValueError('Remote/missing extension entry resource')
+    if b'harness-bridge' in archive.read('panel.js') or b'requestAnimationFrame' in archive.read('background.js'):raise ValueError('Test bridge or background gameplay in extension')
+    for size in [16,32,48,128]:
+        name=m.get('icons',{}).get(str(size));data=archive.read(name) if name in required else b''
+        if not data.startswith(b'\x89PNG\r\n\x1a\n') or len(data)<24 or struct.unpack('>II',data[16:24])!=(size,size):raise ValueError('Extension icon mismatch')
+    print('Verified',family,'manifest, local codec/UI/background, source inventory and icons')
 def verify(directory,release_source=None):
     directory = Path(directory);expected = expected_names()
     verify_names([p.name for p in release_files(directory)], expected)
@@ -73,6 +97,7 @@ def verify(directory,release_source=None):
             identity=json.loads(z.read('build-info.json'))
             if identity.get('version')!=version or not re.fullmatch('[a-f0-9]{40}',identity.get('sourceCommit','')):raise ValueError('Wrong archive build identity')
             if release_source and (identity['sourceCommit']!=release_source or identity.get('dirty') is not False):raise ValueError('Release archive is not the exact clean source')
+            if name in ['tetris-chromium-extension.zip','tetris-firefox-extension.zip']:verify_extension(z,'chromium' if 'chromium' in name else 'firefox',version)
             if name == 'tetris-windows-x64.zip':verify_windows(z,version)
             if name == 'tetris-browser.zip':
                 for required in ['index.html', 'INSTALL.md', 'THIRD-PARTY-NOTICES.md', 'LICENSE', 'build-info.json']:

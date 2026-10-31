@@ -10,7 +10,7 @@ Start with the left Start button. Left/Right move, Down soft drops, Up or Space 
 
 ## Distribution status
 
-The browser bundle is a static deployment artifact. Windows and sidebar packages are not included in the browser releases. Later platforms are unsigned development distributions unless a release explicitly says otherwise; no store distribution or signing is implied.
+The browser bundle is a static deployment artifact. Releases through v0.8.0 contain the browser app; v0.9.0 adds Windows and v0.10.0 adds both sidebar extensions. Desktop and extension packages are unsigned development distributions; no store distribution or signing is implied.
 
 ## Special landing rules
 
@@ -27,3 +27,7 @@ Use the three information-panel toggles to show/hide leaderboard, settings and c
 ## Windows package in this release
 
 Download the separate tetris-windows-x64.zip, extract all files together and run Tetris.exe. It includes Electron and the app runtime, so no separate Node.js or development server is needed. This is an unsigned portable development package, not a signed installer or store distribution. Its own INSTALL.md explains the app-owned local HTTPS origin, profile settings and supported launch query. Native Windows execution is a separately reported verification limit.
+
+## Sidebar extensions
+
+Use tetris-chromium-extension.zip with Chromium 116+ Developer mode / Load unpacked, or tetris-firefox-extension.zip with Firefox 115+ about:debugging / Load Temporary Add-on. Extract first and select the manifest root. Firefox temporary add-ons disappear after browser restart. The included extension-specific INSTALL.md explains local settings, paused browser-session recovery, ownership, files and native-verification limits. Neither package is signed or store-distributed.

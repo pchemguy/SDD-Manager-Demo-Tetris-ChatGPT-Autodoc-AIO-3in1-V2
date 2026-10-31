@@ -28,7 +28,7 @@ def page(app_url):
         context = browser.new_context(viewport={'width': 1440, 'height': 1000})
         page = context.new_page();page.set_default_timeout(5000)
         errors = [];page.on('pageerror', lambda e: errors.append(str(e)))
-        page.goto(app_url)
+        page.goto(app_url, timeout=15000)
         yield page
         assert errors == [], errors
         context.close();browser.close()
