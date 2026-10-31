@@ -41,31 +41,37 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 2 - Modern rules
 
-- [ ] Phase 2 - Modern rules
-    - [ ] Milestone 2.1 - Modern browser game
-        - [ ] T-006 - Implement seven-bag source and hold lifecycle
+- [x] Phase 2 - Modern rules
+    - [x] Milestone 2.1 - Modern browser game
+        - [x] T-006 - Implement seven-bag source and hold lifecycle
+            Verified: RED: six independent bag/hold lifecycle cases failed against stub/no-hold behavior. GREEN: typecheck/build:test and 23 unit cases pass, including four seeded 28-draw bag sequences, once-per-piece hold, queue-preserving swap and blocked held spawn. Phase 2 activation and verified v0.1.0 hosted-byte predecessor evidence retained in HANDOFF.
             Scope: src/core source/reducer and tests/unit.
             Depends on: T-005. Contracts: G-3.
             Acceptance/evidence: Each bag is a seven-piece permutation with seeded fixtures; hold consumes/swaps with correct spawn, once-per-piece eligibility and blocked-spawn game-over.
-        - [ ] T-007 - Implement SRS rotation and kick candidates
+        - [x] T-007 - Implement SRS rotation and kick candidates
+            Verified: RED: four independent I/T wall/floor fixtures failed with in-place-only rotation; blocked rotation already passed. GREEN: typecheck/build:test and 28 unit cases pass. Verified ordered screen-coordinate SRS offsets, distinct I behavior and rejection when every candidate is occupied; geometry/reducer/hold regressions remain green.
             Scope: src/core geometry/rotation data and tests/unit.
             Depends on: T-006. Contracts: G-3.
             Acceptance/evidence: Fixed both-direction I/JLSTZ wall/floor/rejection fixtures establish pivots and ordered kicks; O remains stationary and all active bounds hold.
-        - [ ] T-008 - Implement shared landing ghost and hard drop
+        - [x] T-008 - Implement shared landing ghost and hard drop
+            Verified: RED: four landing/drop integration scenarios failed against unchanged landing/no-drop behavior. GREEN: typecheck/build:test and 32 unit cases pass. Verified first-blocker landing, ghost/drop destination agreement, exact distance points, zero repeat-drop points and separate counterclockwise I/T wall-kick-to-floor scenarios. General drop does not lock merely because landing search ends.
             Scope: src/core landing/drop reducer and focused controller tests.
             Depends on: T-007. Contracts: G-4.
             Acceptance/evidence: Ghost/drop share a collision-free landing; drop points use actual distance and repeat drop adds zero; hard drop using general policy does not lock merely because search ends.
-        - [ ] T-009 - Implement gravity-interval grounded locking
+        - [x] T-009 - Implement gravity-interval grounded locking
+            Verified: RED: 5 grounded-lock/policy scenarios failed under failed-attempt behavior; after reducer correction, 2 injected host-clock cases exposed late-key and hidden-wall-time ordering. GREEN: typecheck/build:test/production build and full 46-test suite pass. Verified exact deadlines, no grounded reset, true lift-off, pause, delayed frames, immediate/general drop and expired policy history. Controller advances elapsed deadlines before commands and drains scheduled repeats chronologically; classic failed-policy fixtures remain explicit.
             Scope: src/core time/reducer and deterministic boundary tests.
             Depends on: T-008. Contracts: G-5.
             Acceptance/evidence: Test exact deadline, already-grounded drop, failed soft drop, lateral/rotation non-reset, lift-off/reset, pause freezing and delayed-frame scheduling without wall-clock sleeps.
-        - [ ] T-010 - Expose and package modern gameplay
+        - [x] T-010 - Expose and package modern gameplay
+            Verified: RED: two modern browser scenarios failed on absent preview/keyboard controls. GREEN: typecheck/build:test/build, full 48 tests, 4 Firefox browser cases, 4 extracted-package Chromium cases and actual archive name/resource/checksum checks pass. Hold/next/ghost/hard-drop UI and timed keyboard repeat are integrated at 0.2.0; screenshot and full milestone source review inspected. Milestone report/HANDOFF retain pending phase review and hosted release effects.
             Scope: src/ui previews/hold/ghost, app composition, package outputs and user docs.
             Depends on: T-006, T-007, T-008, T-009. Contracts: A-2/G-3/G-4/G-5/P-5.
             Acceptance/evidence: Integrate modern capabilities with fixed defaults and visible bindings; verify actual 0.2.0 browser package, timing interactions and classic regressions.
             Milestone exit: depends on all other milestone tasks T-006 through T-009; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/2/2.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 2.2 - Phase review
-        - [ ] T-011 - Review test and report phase 2
+    - [x] Milestone 2.2 - Phase review
+        - [x] T-011 - Review test and report phase 2
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 48 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-010, completion/verified closure of milestone 2.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/2/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 

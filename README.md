@@ -1,10 +1,10 @@
 # Tetris
 
-A keyboard-controlled classic Tetris browser game. The baseline includes movement, rotation, gravity, line clearing, score/level progression, restart and pause. Modern rules, settings/files, Windows and sidebar delivery are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
+A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Special landing rules, settings/files, Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
 
 ## Play and controls
 
-Click Start, then use Left/Right to move, Down to soft drop, Up or Space to rotate clockwise, Z to rotate back, P to pause/resume and R to restart. The information panel has only Start/Restart and Pause/Start gameplay buttons. Losing focus pauses play; returning focus requires explicit resume.
+Click Start, then use Left/Right to move, Down to soft drop, Up or Space to rotate clockwise, Z to rotate back, Enter to hard drop, C to hold, P to pause/resume and R to restart. A grounded piece waits one gravity interval, including after hard drop; grounded movement does not restart the timer. The information panel has only Start/Restart and Pause/Start gameplay buttons. Losing focus pauses play; returning focus requires explicit resume.
 
 ## Build and run
 
