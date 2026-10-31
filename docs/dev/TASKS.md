@@ -12,7 +12,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 - [ ] Phase 1 - Classic browser
     - [ ] Milestone 1.1 - Classic browser game
-        - [ ] T-001 - Establish typed board and piece geometry
+        - [x] T-001 - Establish typed board and piece geometry
+            Verified: RED: geometry stub produced 8 expected cell/rotation failures (4 bounds cases passed). GREEN: typecheck/build:test and 12 pytest geometry cases pass, covering exact spawn sets, active bounds, collision and clockwise rotation. Locked tooling and pytest driver are excluded from runtime builds.
             Scope: src/core geometry/types, locked TypeScript tooling and tests/unit fixtures.
             Depends on: none. Contracts: G-1/G-2.
             Acceptance/evidence: Seven four-cell shapes, bounds, collision and basic rotations match exact spawn coordinates; create a deterministic Node driver exercised by pytest without shipping it.
