@@ -188,7 +188,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/app snapshot validator, schemas/tetris-save.schema.json and tests/codecs.
             Depends on: T-027. Contracts: F-1/F-3.
             Acceptance/evidence: Validate exact root/result/settings fields, enums, safe scores, UUIDs, real canonical UTC dates, duplicate IDs and ten-result limit; schema and semantic validator agree on a shared corpus.
-        - [ ] T-029 - Implement strict JSON interchange and restore staging
+        - [x] T-029 - Implement strict JSON interchange and restore staging
+            Verified: RED: driver compile rejected missing JSON/file transaction/rollback APIs. GREEN: compiler and 119 snapshot/JSON/settings/lock/result cases pass. Strict UTF-8/single BOM, duplicate decoded keys, syntax and 2 MiB validation precede effects. Invalid candidates write nothing; validated restore pauses and atomically replaces app settings/results after six-key host commit; partial write rollback, explicit blocked rollback failure, concurrent-operation/setting guards, finally cleanup and immutable async export capture pass.
             Scope: src/codecs JSON parser and src/app import/export transaction.
             Depends on: T-028. Contracts: F-2/F-3/F-5.
             Acceptance/evidence: Reject duplicate JSON member names before schema validation; export one immutable candidate; invalid decode/validation writes nothing and injected host failures keep original application state with explicit rollback reporting.

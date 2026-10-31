@@ -1,8 +1,15 @@
 /** Sole command/clock owner; elapsed deadlines and scheduled input precede new commands. */
 import {create,reduce,type Command,type GameState,type GameEvent} from '../core/game.js';
+import {validateSnapshot,type Snapshot} from './snapshot.js';
 import {rank,type Result,type ResultHost} from './results.js';
 import {defaults,validateSettings,type Settings} from './settings.js';
 export class Controller{
+ settingsLocked=false;
+ snapshot():Snapshot{return validateSnapshot({formatVersion:1,results:this.results,settings:this.settings});}
+ replaceSnapshot(input:unknown):void{
+  const candidate=validateSnapshot(input),now=this.clock();this.beforeCommand(now);const events=this.advance(now);
+  this.accept(reduce(this.current,{type:'pause'},this.rules));this.config=candidate.settings;this.history=candidate.results;this.notify(events);
+ }
  private history:Result[]=[];
  private completionRecorded=false;
  get results():Result[]{return this.history.map(r=>({...r}));}
@@ -17,6 +24,7 @@ export class Controller{
  get settings():Settings{return {...this.config};}
  private get rules(){return{lock:this.config.lock,hardDropLock:this.config.hardDropLock,hardDrop:this.config.hardDrop==='on',hold:this.config.hold==='on'};}
  updateSettings(patch:unknown):void{
+  if(this.settingsLocked)throw Error('A file operation is in progress');
   const parsed=validateSettings(patch),now=this.clock();this.beforeCommand(now);const events=this.advance(now);
   this.config={...this.config,...parsed};const result=reduce(this.current,{type:'configure'},this.rules);this.accept(result);this.notify([...events,...result.events]);this.onSettingsChange(parsed);
  }
