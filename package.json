@@ -7,7 +7,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build:test": "tsc && vite build --config tests/support/vite.renderer.config.ts",
-    "build": "node scripts/prepare-assets.mjs && vite build --outDir dist/browser --base ./"
+    "build": "node scripts/build.mjs"
   },
   "devDependencies": {
     "@types/node": "24.0.0",

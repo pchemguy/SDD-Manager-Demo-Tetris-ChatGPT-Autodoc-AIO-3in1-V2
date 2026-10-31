@@ -52,6 +52,6 @@ Maintain project-specific navigation and validated setup/check commands here as 
 
 ## Application navigation and established checks
 
-Shared rule code lives in src/core, command ownership in src/app, rendering/input in src/ui and browser composition in src/entries/browser.ts. TASKS and HANDOFF retain actual execution status.
+Shared rule code lives in src/core, command ownership in src/app, rendering/input in src/ui and shared web composition in src/entries/web.ts, selected by browser.ts and desktop.ts. TASKS and HANDOFF retain actual execution status.
 
-Validated checks: npm run typecheck, npm run build:test, npm run build and python -m pytest. Tests use the pinned requirements-test.txt and a dedicated PLAYWRIGHT_BROWSERS_PATH. Browser tests default to Chromium headless shell; TETRIS_BROWSER=firefox selects the managed Firefox build with the diagnosed process-local content-sandbox recovery for trusted local test pages. Preserve the browser policy above and report native/sidebar coverage separately.
+Validated checks: npm run typecheck, npm run build:test, npm run build and python -m pytest. Tests use the pinned requirements-test.txt and a dedicated PLAYWRIGHT_BROWSERS_PATH. Desktop main-process protocol/window/session policy is isolated in platforms/electron and renderer host selection in src/platform/desktop. npm run build now builds browser and desktop renderer outputs; native Windows execution is separate from policy and HTTP shared-renderer checks. Browser tests default to Chromium headless shell; TETRIS_BROWSER=firefox selects the managed Firefox build with the diagnosed process-local content-sandbox recovery for trusted local test pages. Preserve the browser policy above and report native/sidebar coverage separately.

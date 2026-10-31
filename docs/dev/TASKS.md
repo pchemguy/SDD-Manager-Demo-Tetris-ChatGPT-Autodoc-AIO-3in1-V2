@@ -245,7 +245,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 - [ ] Phase 9 - Windows desktop
     - [ ] Milestone 9.1 - Portable Windows app
-        - [ ] T-038 - Implement the isolated Electron host and app origin
+        - [x] T-038 - Implement the isolated Electron host and app origin
+            Verified: RED: policy fixture failed on absent Electron host modules. GREEN: 19 real mapper/host-factory tests pass using injected Electron capabilities and real temporary resources; browser and desktop HTTP shared renderers each pass ten gameplay/file/cookie/query checks. Builds compile both composition roots. Secure standard app origin is registered before ready on the persistent partition; raw traversal/foreign hosts/methods are rejected, MIME/CSP enforced, renderer sandbox/context isolation/no Node/preload/IPC and navigation/pop-up/download restrictions verified. Native Windows is not claimed; runtime assembly follows T-039.
             Scope: platforms/electron, src/platform/desktop and desktop entry.
             Depends on: T-037. Contracts: P-3/C-3.
             Acceptance/evidence: Load shared bundled UI under stable secure app origin with persistent settings cookies; reject traversal/remote navigation, preserve query history and enforce sandbox/context isolation/no renderer Node.
