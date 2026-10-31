@@ -14,3 +14,16 @@ def test_reject_names(names):
         module.verify_names(names, ['tetris-browser.zip', 'SHA256SUMS.txt'])
 def test_accept_stable_names():
     module.verify_names(['tetris-browser.zip', 'SHA256SUMS.txt'], ['tetris-browser.zip', 'SHA256SUMS.txt'])
+
+def test_rejects_accidentally_bundled_view_harness(tmp_path):
+    import json
+    import hashlib
+    import zipfile
+    version=json.loads((module.ROOT/'package.json').read_text())['version']
+    files={'index.html':'<!doctype html><title>Fixture</title>','INSTALL.md':'Install','THIRD-PARTY-NOTICES.md':'Notices','LICENSE':'MIT','build-info.json':json.dumps({'version':version,'sourceCommit':'0'*40,'dirty':False}),'tests/support/render.html':'test-only fixture'}
+    path=tmp_path/'tetris-browser.zip'
+    with zipfile.ZipFile(path,'w') as z:
+        for name,content in files.items():z.writestr(name,content)
+    (tmp_path/'SHA256SUMS.txt').write_text(hashlib.sha256(path.read_bytes()).hexdigest()+'  tetris-browser.zip\n')
+    with pytest.raises(ValueError,match='Development'):
+        module.verify(tmp_path)

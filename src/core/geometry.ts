@@ -1,7 +1,7 @@
 /** Tetromino coordinates and settled-board collision boundary (screen y increases down). */
 export type Kind='I'|'O'|'T'|'S'|'Z'|'J'|'L';
 export type Point=[number,number];
-export type Board=(Kind|null)[][];
+export type Board=(Kind|'P'|null)[][];
 export type Piece={kind:Kind;rotation:number;x:number;y:number};
 export const kinds:Kind[]=['I','O','T','S','Z','J','L'];
 const shapes:Record<Kind,Point[]>={I:[[0,1],[1,1],[2,1],[3,1]],O:[[1,0],[2,0],[1,1],[2,1]],T:[[1,0],[0,1],[1,1],[2,1]],S:[[1,0],[2,0],[0,1],[1,1]],Z:[[0,0],[1,0],[1,1],[2,1]],J:[[0,0],[0,1],[1,1],[2,1]],L:[[2,0],[0,1],[1,1],[2,1]]};

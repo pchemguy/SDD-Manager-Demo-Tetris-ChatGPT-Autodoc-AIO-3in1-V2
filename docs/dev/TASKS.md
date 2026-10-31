@@ -77,23 +77,27 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 3 - Special landing rules
 
-- [ ] Phase 3 - Special landing rules
-    - [ ] Milestone 3.1 - Penetrator and conditional ghost
-        - [ ] T-012 - Implement penetrator transit bonus and valid locks
+- [x] Phase 3 - Special landing rules
+    - [x] Milestone 3.1 - Penetrator and conditional ghost
+        - [x] T-012 - Implement penetrator transit bonus and valid locks
+            Verified: RED: seven bonus/transit/deepest-landing scenarios failed; cap-at-three already passed. GREEN: typecheck/build:test and 48 unit cases pass. Verified capped four-line awards, spend-once activation, blocker transit, deepest cavity, white settled locks, hold rejection, invalid transformations and genuine-lift versus grounded timing. Impossible final destinations reject activation without spending. A minimal view cell-type bridge preserves compilation; active white rendering and dynamic visibility remain T-013.
             Scope: src/core landing/reducer and tests/unit.
             Depends on: T-011. Contracts: G-6.
             Acceptance/evidence: Earn/cap/spend bonuses, reject invalid activation and transformations, cross occupancy without erasure, choose deepest valid cavity and lock non-overlapping; hold is disabled while active.
-        - [ ] T-013 - Integrate dynamic ghost and bonus feedback
+        - [x] T-013 - Integrate dynamic ghost and bonus feedback
+            Verified: RED: three occupied-cell midline cases and two real renderer cases failed; lower-half cases already passed. GREEN: compiler, test-harness and production builds, full 64 tests and 6 Firefox browser cases pass. Verified straddling/origin boundaries, hidden/shown ghost pixels, deepest white ghost/active/settled rendering and exact bonus-symbol counts. Added a separate non-shipped view harness with detached fixtures; real gameplay remains covered by production-page tests. X activation is keyboard-only.
             Scope: src/core ghost predicate, src/ui bonus/white-piece rendering and browser scenarios.
             Depends on: T-012. Contracts: G-4/G-6.
             Acceptance/evidence: Check occupied cells at rows 9/10 and straddling, match penetrator ghost/drop, show exact bonus-symbol count and reserve white exclusively for penetrator pieces.
-        - [ ] T-014 - Package and verify special landing behavior
+        - [x] T-014 - Package and verify special landing behavior
+            Verified: RED: an injected development renderer file was wrongly accepted in a complete ZIP; GREEN: package exclusion gate and full 70 tests pass. Typecheck/test-harness/production builds, 7 Firefox checks, 5 actual extracted-package production-page cases and archive name/resource/checksum checks pass. Added occupied-rotation, inactive activation and no-bonus hotkey regressions. Whole-milestone source review/report/HANDOFF and 0.3.0 package/install metadata included; renderer fixtures are explicitly separate from packaged gameplay evidence.
             Scope: build/package outputs, interaction regression fixtures and gameplay docs.
             Depends on: T-012, T-013. Contracts: A-3/P-5.
             Acceptance/evidence: Verify 0.3.0 extracted browser build across activation during grounded delay, lift-off, transit rotations, bonus award after four clears and session restart reset.
             Milestone exit: depends on all other milestone tasks T-012 through T-013; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/3/3.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 3.2 - Phase review
-        - [ ] T-015 - Review test and report phase 3
+    - [x] Milestone 3.2 - Phase review
+        - [x] T-015 - Review test and report phase 3
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 70 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-014, completion/verified closure of milestone 3.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/3/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 

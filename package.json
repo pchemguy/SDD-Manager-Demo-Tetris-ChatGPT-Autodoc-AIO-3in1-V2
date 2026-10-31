@@ -1,1 +1,17 @@
-{"name":"tetris-cross-platform","version":"0.2.0","private":true,"type":"module","license":"MIT","scripts":{"typecheck":"tsc --noEmit","build:test":"tsc","build":"vite build --outDir dist/browser --base ./"},"devDependencies":{"@types/node":"24.0.0","typescript":"5.9.3","vite":"7.1.12"}}
+{
+  "name": "tetris-cross-platform",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:test": "tsc && vite build --config tests/support/vite.renderer.config.ts",
+    "build": "vite build --outDir dist/browser --base ./"
+  },
+  "devDependencies": {
+    "@types/node": "24.0.0",
+    "typescript": "5.9.3",
+    "vite": "7.1.12"
+  }
+}

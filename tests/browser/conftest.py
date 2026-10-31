@@ -32,3 +32,11 @@ def page(app_url):
         yield page
         assert errors == [], errors
         context.close();browser.close()
+
+@pytest.fixture(scope='session')
+def render_url():
+    handler = functools.partial(QuietHandler, directory=str(ROOT/'build/render-harness'))
+    server = ThreadingHTTPServer(('127.0.0.1', 0), handler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True);thread.start()
+    yield f'http://127.0.0.1:{server.server_port}/tests/support/render.html'
+    server.shutdown();server.server_close();thread.join(timeout=5)
