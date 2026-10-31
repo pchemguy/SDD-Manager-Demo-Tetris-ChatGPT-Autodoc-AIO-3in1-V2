@@ -79,7 +79,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 - [ ] Phase 3 - Special landing rules
     - [ ] Milestone 3.1 - Penetrator and conditional ghost
-        - [ ] T-012 - Implement penetrator transit bonus and valid locks
+        - [x] T-012 - Implement penetrator transit bonus and valid locks
+            Verified: RED: seven bonus/transit/deepest-landing scenarios failed; cap-at-three already passed. GREEN: typecheck/build:test and 48 unit cases pass. Verified capped four-line awards, spend-once activation, blocker transit, deepest cavity, white settled locks, hold rejection, invalid transformations and genuine-lift versus grounded timing. Impossible final destinations reject activation without spending. A minimal view cell-type bridge preserves compilation; active white rendering and dynamic visibility remain T-013.
             Scope: src/core landing/reducer and tests/unit.
             Depends on: T-011. Contracts: G-6.
             Acceptance/evidence: Earn/cap/spend bonuses, reject invalid activation and transformations, cross occupancy without erasure, choose deepest valid cavity and lock non-overlapping; hold is disabled while active.

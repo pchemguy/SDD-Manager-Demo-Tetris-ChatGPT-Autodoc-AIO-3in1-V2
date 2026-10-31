@@ -15,3 +15,7 @@ Linux execution with Node 24, Python 3.12, pytest and dedicated Playwright Chrom
 ## Integration checkpoint
 
 Phase 2 source 333aabb2d76507b1e0ac1ac0b3103bab44cd703f is merged into its recorded parent main 477a99760832c8f84f509a8a3906492bf40fd60a; all phase issues/milestones are closed/read back. Merged checks and publication precede the release marker/tag. Full remaining scope remains authorized.
+
+## Phase 3 entry
+
+Release v0.2.0 is published at 87f6a765bd3c8f79b9126be01410dce21cb9d1f1. Hosted browser/checksum bytes were verified through supported asset API downloads after immediate public URLs returned 404; latest pointer is verified. Branch phase/3-special-landing-rules starts from that main release and targets main. Phase 3 label, both milestones and T-012 through T-015 issue associations are exact-endpoint verified before edits.

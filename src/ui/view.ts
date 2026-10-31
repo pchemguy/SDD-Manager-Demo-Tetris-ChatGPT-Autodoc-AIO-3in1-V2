@@ -19,7 +19,7 @@ export function draw(canvas:HTMLCanvasElement,s:GameState):void{
  if(canvas.width!==w*ratio||canvas.height!==h*ratio){canvas.width=w*ratio;canvas.height=h*ratio;}
  const c=canvas.getContext('2d')!;c.setTransform(30*ratio,0,0,30*ratio,0,0);c.fillStyle='#111a28';c.fillRect(0,0,10,20);
  c.strokeStyle='#1d2939';c.lineWidth=.018;for(let x=0;x<=10;x++){c.beginPath();c.moveTo(x,0);c.lineTo(x,20);c.stroke();}for(let y=0;y<=20;y++){c.beginPath();c.moveTo(0,y);c.lineTo(10,y);c.stroke();}
- const block=(x:number,y:number,kind:Kind)=>{if(y<0)return;c.fillStyle=colors[kind];c.fillRect(x+.06,y+.06,.88,.88);c.strokeStyle='#00000035';c.lineWidth=.04;c.strokeRect(x+.11,y+.11,.78,.78);};
+ const block=(x:number,y:number,kind:Kind|'P')=>{if(y<0)return;c.fillStyle=kind==='P'?'#ffffff':colors[kind];c.fillRect(x+.06,y+.06,.88,.88);c.strokeStyle='#00000035';c.lineWidth=.04;c.strokeRect(x+.11,y+.11,.78,.78);};
  s.board.forEach((row,y)=>row.forEach((kind,x)=>{if(kind)block(x,y,kind);}));if(s.piece){const ghost=landing(s.board,s.piece);if(ghost.y!==s.piece.y){c.globalAlpha=.23;for(const[x,y]of cells(ghost))block(x,y,ghost.kind);c.globalAlpha=1;}}if(s.piece)for(const[x,y]of cells(s.piece))block(x,y,s.piece.kind);
  if(s.status!=='running'){c.fillStyle='#0a111ec9';c.fillRect(0,7.6,10,4.6);c.fillStyle='#e0e8ef';c.textAlign='center';c.font='600 .72px system-ui';c.fillText(s.status==='idle'?'READY?':s.status==='paused'?'PAUSED':'GAME OVER',5,9.6);c.font='.34px system-ui';c.fillStyle='#9cacbd';c.fillText(s.status==='idle'?'Start your next run.':s.status==='paused'?'Press P to resume.':'A new run awaits.',5,10.5);}
 }
