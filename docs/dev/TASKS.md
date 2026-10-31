@@ -103,7 +103,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 4 - Session settings
 
-- [ ] Phase 4 - Session settings
+- [x] Phase 4 - Session settings
     - [x] Milestone 4.1 - Six session settings
         - [x] T-016 - Define canonical settings and active-game transitions
             Verified: RED: compiled driver rejected missing settings API. GREEN: build:test and 14 canonical-domain/atomic-rejection/controller-transition pytest cases pass. Policies preserve original grounding history; disabled hold/drop do not consume eligibility; restart retains settings. No host persistence is present.
@@ -121,8 +121,9 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Depends on: T-016, T-017. Contracts: A-4/C-4/P-5.
             Acceptance/evidence: Verify 0.4.0 settings work during play and reload defaults; observe no configuration cookie/query/persistent-store reads or writes in this increment.
             Milestone exit: depends on all other milestone tasks T-016 through T-017; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/4/4.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 4.2 - Phase review
-        - [ ] T-019 - Review test and report phase 4
+    - [x] Milestone 4.2 - Phase review
+        - [x] T-019 - Review test and report phase 4
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 87 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-018, completion/verified closure of milestone 4.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/4/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 
