@@ -23,7 +23,7 @@ Preparation tasks and completion checkboxes only. Control, decisions and evidenc
     - Depends on DOCS-004.
     - Specify observable behavior, interfaces, data/error contracts, required qualities and acceptance conditions from the accepted design, including necessary children.
     - Pass required SPEC QC and approval/preapproval. Commit the accepted state, QC report, DOCS_PREPARATION evidence and this checked task together; publish/read back before issue closure or dependent work.
-- [ ] DOCS-006 — Prepare and accept PLAN.
+- [x] DOCS-006 — Prepare and accept PLAN.
     - Depends on DOCS-005 and required SPEC QC.
     - Define bounded useful delivery phases, milestones, dependencies and exits against SPEC, starting with the simplest reasonable MVP.
     - Pass PLAN strategy QC and approval/preapproval. Commit the accepted state, review report, DOCS_PREPARATION evidence and this checked task together; publish/read back before issue closure or layout work.

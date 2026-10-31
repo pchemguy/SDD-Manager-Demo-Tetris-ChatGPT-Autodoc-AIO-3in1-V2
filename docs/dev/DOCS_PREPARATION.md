@@ -23,7 +23,7 @@ One preparation pass covers the entire user-supplied scope. Delivery must start 
 | DOCS-003 | ARCHITECTURE.md SHA-256 5cbd18628e6de8b7b3887704c0e0f6600b1bc3728d86faf79768e86a8e4ac303. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
 | DOCS-004 | DECOMPOSITION.md SHA-256 f4adaf7c7e11a8bb79222e56b9889534f0ddc7bd1490fc3479d6eea9c044ab78. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
 | DOCS-005 | SPEC.md SHA-256 49025968001cdca10fefcbdba49b598b2f2634f23d53dd178eaa82d283ec42e9; spec/gameplay.md SHA-256 004a82bc93c62699c2f23552f22e77d07b7211e7c667b7e1d0a88db446b74b5b; spec/configuration.md SHA-256 dccc58076aab2084dd9a8fae9b62477654ec25b710036420d05abf05b5ff17e9; spec/files.md SHA-256 0bd9c4836ddc0890dcdb0dc9a10d0daf2180f7f7725f2221384192cdc2d930d2; spec/platforms.md SHA-256 e55042b5590ed1bc78a33230352ba25d9b77f3b43276b04fdb706af7c2ccbd6e; SPEC-REVIEW-REPORT.md SHA-256 a9b21a55944146d47f54e86eaeec3a8c20c8776341b965b198c7f1c60e7f8543. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
-| DOCS-006 | Not started; autodoc preapproved. |
+| DOCS-006 | PLAN.md SHA-256 aa74bb2ebd9ee212a66bfb8eb9b94f480930e149e0cad4ce0ca0e31298e13147; PLAN-REVIEW-REPORT.md SHA-256 64f2c45b33e0d69e53933b90375351d7e9eb5d2a3dd41a28c2d983ea271c0921. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
 | DOCS-007 | Not started; autodoc preapproved. |
 | DOCS-008 | Not started; autodoc preapproved. |
 | DOCS-009 | Not selected; remains pending at the autodoc stop. |
@@ -43,4 +43,4 @@ Approved with the brief on 2026-10-31: hide a straddling ghost if any occupied g
 
 ## Pending transitions
 
-DOCS-001 through DOCS-004 publication and issue closure/readback are verified. This DOCS-005 completion commit requires publication and issue 5 closure/readback before dependent progression. Whole-package QC, preparation integration and implementation are not selected. Stop after DOCS-008.
+DOCS-001 through DOCS-005 publication and issue closure/readback are verified. This DOCS-006 completion commit requires publication and issue 6 closure/readback before dependent progression. Whole-package QC, preparation integration and implementation are not selected. Stop after DOCS-008.
