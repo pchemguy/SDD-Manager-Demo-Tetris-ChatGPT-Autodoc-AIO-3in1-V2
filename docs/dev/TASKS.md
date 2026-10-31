@@ -281,7 +281,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: platforms/extensions chromium/firefox manifests/background launch and extension entry.
             Depends on: T-042. Contracts: P-4.
             Acceptance/evidence: Chromium MV3 side_panel and Firefox sidebar_action launch the shared panel with required minimum APIs/permissions/CSP and local assets; no content scripts or site permissions are introduced.
-        - [ ] T-044 - Adapt the shared view to a narrow resizable sidebar
+        - [x] T-044 - Adapt the shared view to a narrow resizable sidebar
+            Verified: RED: narrow panel geometry failed before sidebar overrides. GREEN: typecheck/build, five Chromium sidebar/panel cases and three Firefox sidebar cases pass. All 48 sidebar width/text-scale/visibility combinations keep vertical information/board/optional-panel order without horizontal or text overflow; keyboard play, exactly two gameplay buttons, Save/Restore hiding, resize and paused state preservation pass. Narrow screenshot inspection led to shorter readable toggle labels and aligned statistics; browser/desktop labels retain their existing wording.
             Scope: src/ui sidebar styles/sections and browser panel geometry checks.
             Depends on: T-043. Contracts: U-2.
             Acceptance/evidence: Widths 280/360/480 retain board/information, optional capabilities, keyboard access and file controls without horizontal overflow; resize preserves current state.

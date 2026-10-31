@@ -8,3 +8,41 @@ header,footer{max-width:1600px;margin:auto;display:flex;align-items:center;justi
 @media(max-width:1320px){.layout-hint{display:block}}@media(max-width:800px){.mini{width:43px;grid-template-columns:repeat(4,10px);grid-template-rows:repeat(4,10px)}}
 
 @media(max-width:800px){.info h1{display:none}.info .stat-row{display:block}.info .stat-row>div{display:flex;align-items:baseline;justify-content:space-between;gap:4px}.info .stat-row>div+div{margin-top:8px}.info .stat-row span{font-size:.78rem}.info .piece-previews{grid-template-columns:1fr}.info .piece-previews>div>div{display:flex;align-items:center;gap:6px;min-height:50px}.info .bonus-row{display:block;font-size:.7rem}.info .bonus-row strong{display:block}}
+/* Sidebar uses a vertical reading order; logical canvas geometry remains shared. */
+body.sidebar { min-width: 0; }
+.sidebar #app { max-width: 100%; padding: 10px; }
+.sidebar header { padding: 4px 0 12px; gap: 6px; flex-wrap: wrap; }
+.sidebar .wordmark { font-size: 1rem; }
+.sidebar .edition { font-size: .65rem; }
+.sidebar .layout-hint { display: none; }
+.sidebar .workspace-scroll { overflow: visible; width: 100%; }
+.sidebar .workspace { display: flex; flex-direction: column; width: 100%; min-width: 0; margin: 0; padding: 0; gap: 12px; align-items: stretch; }
+.sidebar .left-side, .sidebar .right-side { display: contents; }
+.sidebar .info { order: 0; width: 100%; }
+.sidebar .board-wrap { order: 1; width: min(100%,300px); align-self: center; }
+.sidebar .leaderboard { order: 2; width: 100%; }
+.sidebar .settings { order: 3; width: 100%; }
+.sidebar .help { order: 4; width: 100%; }
+.sidebar .panel { min-width: 0; padding: 14px; }
+.sidebar .info h1, .sidebar .info > .eyebrow { display: none; }
+.sidebar .stat { padding: 0 0 8px; flex-direction: row; align-items: baseline; }
+.sidebar .stat strong { font-size: 1.8rem; }
+.sidebar .stat-row { display: flex; justify-content: space-between; gap: 8px; }
+.sidebar .stat-row > div { display: flex; align-items: baseline; gap: 10px; }
+.sidebar .piece-previews { display: flex; justify-content: space-between; margin: 8px 0; }
+.sidebar .piece-previews > div { width: 48%; }
+.sidebar .panel-toggles { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.sidebar .panel-toggles button { flex: 1 1 60px; min-height: 32px; padding: 5px; overflow-wrap: anywhere; font-size: .7rem; }
+.sidebar .game-buttons { margin-top: 8px; }
+.sidebar button, .sidebar select { min-height: 32px; }
+.sidebar canvas#board { display: block; width: 100%; height: auto; aspect-ratio: 1 / 2; }
+.sidebar .board-caption { font-size: .6rem; }
+.sidebar footer { flex-wrap: wrap; gap: 8px; padding: 12px 0; }
+.sidebar table { table-layout: fixed; width: 100%; }
+.sidebar th:first-child { width: 22px; }
+.sidebar th:nth-child(2) { width: 34%; }
+.sidebar td, .sidebar th { overflow-wrap: anywhere; }
+.sidebar #host-notice { overflow-wrap: anywhere; font-size: .8rem; }
+
+.sidebar .info .stat-row > div + div { margin-top: 0; }
+.sidebar #toggle-leaderboard, .sidebar #toggle-settings, .sidebar #toggle-help { width: auto; font-size: .7rem; padding: 5px; margin: 0; }

@@ -13,7 +13,8 @@ export function mount(root:HTMLElement,app:Controller):void{
  const options:Record<string,string>={hide:'Always hide',dynamic:'Hide above midline',show:'Always show',on:'On',off:'Off',general:'Follow general policy',immediate:'Lock immediately',failed:'Failed downward attempt',interval:'Full gravity interval'};
  root.querySelector('#setting-controls')!.innerHTML=keys.map(key=>`<label for="setting-${key}">${labels[key]}<select id="setting-${key}">${domains[key].map(v=>`<option value="${v}">${options[v]}</option>`).join('')}</select></label>`).join('');
  for(const key of keys)root.querySelector<HTMLSelectElement>('#setting-'+key)!.addEventListener('change',e=>app.updateSettings({[key]:(e.target as HTMLSelectElement).value}));
- const panelNames={leaderboard:'leaderboard',settings:'settings',help:'controls/help'};
+ const panelNames=document.body.classList.contains('sidebar')?{leaderboard:'scores',settings:'settings',help:'help'}:{leaderboard:'leaderboard',settings:'settings',help:'controls/help'};
+ if(document.body.classList.contains('sidebar'))for(const [target,name]of Object.entries(panelNames))root.querySelector('#toggle-'+target)!.textContent='Hide '+name;
  for(const [target,name] of Object.entries(panelNames))root.querySelector('#toggle-'+target)!.addEventListener('click',()=>{
   const panel=root.querySelector<HTMLElement>('#'+target)!,button=root.querySelector('#toggle-'+target)!;panel.hidden=!panel.hidden;button.setAttribute('aria-expanded',String(!panel.hidden));button.textContent=(panel.hidden?'Show ':'Hide ')+name;centerBoard();
  });
