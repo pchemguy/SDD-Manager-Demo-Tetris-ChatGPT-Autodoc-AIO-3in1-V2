@@ -22,7 +22,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/core reducer/time/source and focused pytest scenarios.
             Depends on: T-001. Contracts: G-1/G-2.
             Acceptance/evidence: Verify movement, gravity, failed-downward lock, row compaction, scoring/levels, top-out, exactly-once game-over and pause/resume under injected RNG/time.
-        - [ ] T-003 - Integrate browser rendering and keyboard play
+        - [x] T-003 - Integrate browser rendering and keyboard play
+            Verified: RED: two browser acceptance cases failed on missing gameplay controls in the initial shell. GREEN: typecheck/build:test/production build, 19 Chromium unit/browser cases and 2 Firefox browser cases passed. Verified real keyboard play, exact two gameplay buttons, native focused-button activation, pause/restart, colored Canvas pixels and no page errors; screenshot inspected. Firefox uses diagnosed process-local content sandbox recovery for trusted local pages.
             Scope: src/app controller, src/ui, browser host and browser entry.
             Depends on: T-002. Contracts: G-7/U-1/P-2/Q.
             Acceptance/evidence: A real browser page plays the classic loop with the two permitted gameplay buttons; focus/modifier/key-repeat rules work and information reflects domain state.
