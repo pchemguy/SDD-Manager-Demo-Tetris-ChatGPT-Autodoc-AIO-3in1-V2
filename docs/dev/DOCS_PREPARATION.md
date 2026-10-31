@@ -4,11 +4,11 @@
 
 - Mode: autodoc/onepass, selected by the user's 2026-10-31 request.
 - Scope: complete browser Tetris target, then Windows Electron, then Chromium and Firefox sidebar extensions together.
-- Approval basis: PROJECT and its material proposals were approved by the user reply "k" on 2026-10-31; subsequent document checkpoints through TASKS are preapproved by autodoc. Stop after DOCS-008 before package QC. Implementation has not started.
+- Approval basis: PROJECT and its material proposals were approved by the user reply "k" on 2026-10-31; subsequent document checkpoints through TASKS are preapproved by autodoc. The user request Do QC and full implement advances through DOCS-009, integration and all T-001 through T-047, including all ten releases. Implementation has not started at this QC checkpoint.
 - Tracking: enabled for documentation and implementation by existing root AGENTS.md. Preparation milestone 1 and issues 1 through 9 were created and their exact content and associations read back before repository modification.
 - Publication: every owned commit is pushed and its exact remote ref read back.
 - Reporting: concise Standard; Minimal and Explicit are available on request.
-- Next boundary: autodoc document pass complete through TASKS; stop before DOCS-009 whole-package QC.
+- Next boundary: complete published preparation integration, activate Phase 1 and implement the complete authorized task range.
 
 ## Scope sequence
 
@@ -26,7 +26,7 @@ One preparation pass covers the entire user-supplied scope. Delivery must start 
 | DOCS-006 | PLAN.md SHA-256 aa74bb2ebd9ee212a66bfb8eb9b94f480930e149e0cad4ce0ca0e31298e13147; PLAN-REVIEW-REPORT.md SHA-256 64f2c45b33e0d69e53933b90375351d7e9eb5d2a3dd41a28c2d983ea271c0921. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
 | DOCS-007 | layout.md SHA-256 03c30e7192959b846738accddaeed1e2a694b44ac13a0f6e1f857fa1b01c22c9; PLAN-REVIEW-REPORT.md SHA-256 157d35363a5ad5953b3584966f7e5f96c716123a3f6b56bfad4c82c86a9ccf89. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
 | DOCS-008 | TASKS.md SHA-256 a17b99507ca55cb948e62411ecbff6fd581070df020f359e1c61407ee5becd64; TASKS-REVIEW-REPORT.md SHA-256 8c94cb26590410c6e5657da609588649c2751563256fa579fae7c15fe8a91f31. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
-| DOCS-009 | Not selected; remains pending at the autodoc stop. |
+| DOCS-009 | Whole-package QC Ready; DOCS-QC-REPORT.md records exact reviewed inputs, scope and checks. User request Do QC and full implement authorizes integration and T-001 through T-047 without another checkpoint. |
 
 ## Approved material decisions
 
@@ -50,3 +50,7 @@ DOCS-001 through DOCS-007 publication and issue closure/readback are verified. T
 PROJECT was approved by the user reply k on 2026-10-31. ARCHITECTURE, DECOMPOSITION, SPEC, PLAN, layout and TASKS are accepted under the selected autodoc preapproval. Scoped reports retain exact identities, initial findings and correction/recheck evidence. SPEC geometry/API-floor findings and TASKS dependency-range finding were resolved within delegated detail; no approved material interaction was changed.
 
 Delivery is planned in ten bounded phases and 47 tasks (37 delivery plus 10 phase reviews). No product source, implementation task closure, phase activation, release or package build has occurred. DOCS-009 stays unchecked and issue 9 / milestone 1 stay open. This final DOCS-008 commit requires publication and issue 8 closure/readback, then the workflow pauses. Whole-package QC and default-branch preparation integration require the next selected stage.
+
+## QC advancement grant
+
+On 2026-10-31 the user requested Do QC and full implement. All ten phases, required integration, tracking, package checks and releases are authorized. Whole-package QC passed for 8771cc5; this completion commit requires publication/issue 9 closure, then main integration and milestone closure before execution. Earlier stop/pending notes describe historical checkpoints and are superseded by this grant.

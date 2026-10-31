@@ -1,6 +1,6 @@
 # Development handoff
 
-Autodoc document pass is complete through DOCS-008. Implementation has not started.
+Whole-package QC is Ready; complete preparation integration and then full implementation.
 
 ## Workflow and governing evidence
 
@@ -25,3 +25,7 @@ After those effects settle, report the pre-QC boundary and wait. If package QC i
 ## Execution and transfer limits
 
 Current execution host is Linux bash with Node 24 and Python 3.12. No application dependencies or browsers were provisioned in document preparation; native Windows and real sidebar execution are unverified. Planned pytest/browser/package checks are defined by SPEC/PLAN/TASKS. The repository includes pinned SDD Manager tooling; credentials are separate excluded inputs and must never enter tracked evidence.
+
+## Latest authority and checkpoint
+
+User request on 2026-10-31: Do QC and full implement. This supersedes the pre-QC stop above and authorizes DOCS-009 completion, published preparation integration, all T-001 through T-047 and releases 0.1.0 through 0.10.0. [DOCS-QC-REPORT](DOCS-QC-REPORT.md) is Ready. Publish this completion, close/read back issue 9, explicitly merge/verify/publish to main, then close/read back milestone 1. Those effects are pending at this snapshot. Phase 1 tracking must be activated before product task edits/tests.
