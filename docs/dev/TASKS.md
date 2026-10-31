@@ -17,7 +17,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/core geometry/types, locked TypeScript tooling and tests/unit fixtures.
             Depends on: none. Contracts: G-1/G-2.
             Acceptance/evidence: Seven four-cell shapes, bounds, collision and basic rotations match exact spawn coordinates; create a deterministic Node driver exercised by pytest without shipping it.
-        - [ ] T-002 - Implement the classic game state machine
+        - [x] T-002 - Implement the classic game state machine
+            Verified: RED: classic no-op reducer failed all five state/timing/score/completion scenarios. GREEN: typecheck/build:test and 17 pytest unit cases pass. Verified immutable input state, exact gravity/pause time, failed-down lock and pre-clear level scoring, wall rejection, once-only top-out and unfinished restart without completion.
             Scope: src/core reducer/time/source and focused pytest scenarios.
             Depends on: T-001. Contracts: G-1/G-2.
             Acceptance/evidence: Verify movement, gravity, failed-downward lock, row compaction, scoring/levels, top-out, exactly-once game-over and pause/resume under injected RNG/time.
