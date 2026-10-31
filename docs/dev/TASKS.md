@@ -58,7 +58,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/core landing/drop reducer and focused controller tests.
             Depends on: T-007. Contracts: G-4.
             Acceptance/evidence: Ghost/drop share a collision-free landing; drop points use actual distance and repeat drop adds zero; hard drop using general policy does not lock merely because search ends.
-        - [ ] T-009 - Implement gravity-interval grounded locking
+        - [x] T-009 - Implement gravity-interval grounded locking
+            Verified: RED: 5 grounded-lock/policy scenarios failed under failed-attempt behavior; after reducer correction, 2 injected host-clock cases exposed late-key and hidden-wall-time ordering. GREEN: typecheck/build:test/production build and full 46-test suite pass. Verified exact deadlines, no grounded reset, true lift-off, pause, delayed frames, immediate/general drop and expired policy history. Controller advances elapsed deadlines before commands and drains scheduled repeats chronologically; classic failed-policy fixtures remain explicit.
             Scope: src/core time/reducer and deterministic boundary tests.
             Depends on: T-008. Contracts: G-5.
             Acceptance/evidence: Test exact deadline, already-grounded drop, failed soft drop, lateral/rotation non-reset, lift-off/reset, pause freezing and delayed-frame scheduling without wall-clock sleeps.
