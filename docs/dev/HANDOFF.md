@@ -1,5 +1,13 @@
 # Development handoff
 
-The user authorizes QC and full implementation T-001 through T-047 with tracking, phase integration, packages and releases. Phase 9 delivery milestone is implemented and verified: T-038 RED absent host; GREEN host-factory/raw mapper policies and both renderer builds. T-039 RED absent PE verifier; GREEN actual 158 MB Windows archive, all 72 official runtime file hashes and executable/DLL x64 PE headers, exact owned resource inventory and cumulative stable names/checksums. T-040 real Electron probe exposed custom-scheme cookie rejection and headless native hide not pausing; both were repaired and retested. Current full pytest with opt-in native probe: 290 passed. Firefox browser/renderer: 35 passed. Extracted browser ZIP: 33 passed. Windows ZIP extracted renderer: 11 focused game/file/cookie/query/version cases passed; its owned bytes match the native-probed extraction. Real Linux Electron 45.2.1 probe passes secure origin/no renderer Node, explicit-default/user cookies, reload and full-process reopen persistence, session-score clearing, actual game input, native hide pause/no automatic resume, SQLite download/restore and denied popup. Compiler, test/cumulative builds and package/source checks pass.
+## Authority and current checkpoint
 
-Review and limits: reports/phases/9/9.1.md. Publish/close the milestone's final delivery task, close its milestone, perform the separate phase review, then explicitly integrate to main, rebuild exact-source packages and verify tagged hosted release bytes/latest before activating the next phase. Continue the full authorized scope without another approval. Native Windows/sidebar limits remain distinct from shared renderer and archive checks.
+The user request Do QC and full implement authorizes all T-001 through T-047, tracking, phase integration, packages and releases. Preparation is integrated and its milestone closed. Working branch phase/9-windows-desktop was created from main 3c36c3fef148ecd63b53b17b7b1f2ee95f92e57f and integrates into main. Phase 9 delivery milestone is closed/read back; its phase review passes 290 pytest cases, compiler/build-driver and archive checks with code review/audit evidence in [phase report](reports/phases/9/PHASE-REPORT.md).
+
+## Pending effects and next action
+
+Publish/read back T-041, close its issue and review milestone, then explicitly merge/verify/publish to main. Rebuild from the exact default-branch release commit, tag, publish and verify hosted bytes/latest before activating the next phase. Full remaining implementation authority continues; no extra approval is required. This checkpoint cannot prove its future effects. TASKS and reports own actual task/evidence state.
+
+## Environment limits
+
+Linux execution with Node 24, Python 3.12, pytest and dedicated Playwright Chromium headless/Firefox builds. Firefox content sandbox recovery is process-local for trusted local pages. Native Windows and actual-sidebar checks remain separately reported; no unavailable mode is claimed verified.

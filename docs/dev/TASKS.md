@@ -243,7 +243,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 9 - Windows desktop
 
-- [ ] Phase 9 - Windows desktop
+- [x] Phase 9 - Windows desktop
     - [x] Milestone 9.1 - Portable Windows app
         - [x] T-038 - Implement the isolated Electron host and app origin
             Verified: RED: policy fixture failed on absent Electron host modules. GREEN: 19 real mapper/host-factory tests pass using injected Electron capabilities and real temporary resources; browser and desktop HTTP shared renderers each pass ten gameplay/file/cookie/query checks. Builds compile both composition roots. Secure standard app origin is registered before ready on the persistent partition; raw traversal/foreign hosts/methods are rejected, MIME/CSP enforced, renderer sandbox/context isolation/no Node/preload/IPC and navigation/pop-up/download restrictions verified. Native Windows is not claimed; runtime assembly follows T-039.
@@ -261,8 +261,9 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Depends on: T-038, T-039. Contracts: A-9/P-5.
             Acceptance/evidence: Verify 0.9.0 browser plus Windows archives, secure protocol/error/file/cookie behavior with feasible host checks, explicit native-Windows limits and stable names/checksums.
             Milestone exit: depends on all other milestone tasks T-038 through T-039; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/9/9.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 9.2 - Phase review
-        - [ ] T-041 - Review test and report phase 9
+    - [x] Milestone 9.2 - Phase review
+        - [x] T-041 - Review test and report phase 9
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 290 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-040, completion/verified closure of milestone 9.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/9/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 
