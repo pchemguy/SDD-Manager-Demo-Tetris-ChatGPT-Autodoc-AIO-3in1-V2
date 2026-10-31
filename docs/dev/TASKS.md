@@ -104,7 +104,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 ## Phase 4 - Session settings
 
 - [ ] Phase 4 - Session settings
-    - [ ] Milestone 4.1 - Six session settings
+    - [x] Milestone 4.1 - Six session settings
         - [x] T-016 - Define canonical settings and active-game transitions
             Verified: RED: compiled driver rejected missing settings API. GREEN: build:test and 14 canonical-domain/atomic-rejection/controller-transition pytest cases pass. Policies preserve original grounding history; disabled hold/drop do not consume eligibility; restart retains settings. No host persistence is present.
             Scope: src/app settings validator/controller and src/core policy command boundary.
@@ -115,7 +115,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/ui settings panel and app command integration.
             Depends on: T-016. Contracts: C-1/U-1.
             Acceptance/evidence: All labels/controls reflect and immediately apply settings; hiding/repainting does not reset values; forms retain native keyboard behavior.
-        - [ ] T-018 - Package and verify session-only configuration
+        - [x] T-018 - Package and verify session-only configuration
+            Verified: Version 0.4.0 production package passes filename/resource/checksum checks. Full pytest 87 passed, Firefox 10 passed, extracted production package 8 passed. Cookie/storage/history observers confirm no configuration persistence I/O and reload defaults despite supplied URL/cookie values. Whole-milestone review, limits and no blockers recorded in 4.1 report/HANDOFF.
             Scope: browser package, tests/browser persistence observers and configuration docs.
             Depends on: T-016, T-017. Contracts: A-4/C-4/P-5.
             Acceptance/evidence: Verify 0.4.0 settings work during play and reload defaults; observe no configuration cookie/query/persistent-store reads or writes in this increment.

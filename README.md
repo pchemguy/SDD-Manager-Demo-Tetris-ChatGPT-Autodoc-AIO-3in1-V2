@@ -1,6 +1,6 @@
 # Tetris
 
-A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. Settings/files, Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
+A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. Six session-only settings are implemented. File persistence, Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
 
 ## Play and controls
 
@@ -40,3 +40,7 @@ Browser tests default to Chromium headless shell; select Firefox with the TETRIS
 ## Penetrator and ghost
 
 A four-line clear awards one penetrator activation, up to three. Press X to activate the current piece; it crosses settled cells without erasing them, and its ghost/hard drop choose the deepest valid landing. Hold is disabled while active. White denotes penetrator cells, including after lock. Dynamic ghost mode hides a projection whenever any occupied ghost cell is above row 10, including straddling projections.
+
+## Session settings
+
+The settings panel exposes ghost visibility (hide/dynamic/show), hard drop, next preview, hard-drop lock (general/immediate), general lock (failed attempt/full interval) and hold. Defaults show the ghost and preview, enable hold/drop and use full-interval locking. Changes apply immediately; switching lock policy retains grounding history. Settings survive hide/show and restart within the page and reset on reload. This release does not read or write configuration cookies, URL parameters or persistent storage.
