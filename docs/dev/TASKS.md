@@ -162,7 +162,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/app leaderboard/controller and tests/unit.
             Depends on: T-023. Contracts: F-1.
             Acceptance/evidence: Generate immutable lowercase UUIDs and real UTC completion timestamps once; rank score/time/id and truncate live results to ten, including zero/tied scores.
-        - [ ] T-025 - Integrate the session leaderboard view
+        - [x] T-025 - Integrate the session leaderboard view
+            Verified: RED: completed production gameplay had no leaderboard row. GREEN: build:test/build and 15 browser/renderer checks pass. Real keyboard game-over inserts one stable-ID/UTC row, repeated commands and unfinished restart do not duplicate it, hide/show retains it, and reload clears history while retaining persistent settings. Table text uses safe DOM nodes; only two gameplay buttons remain.
             Scope: src/ui leaderboard and controller completion events.
             Depends on: T-024. Contracts: F-1/U-1.
             Acceptance/evidence: Update displayed top ten on completed games only, reject duplicate completion insertion, preserve IDs and exclude unfinished restarts; reload clears browser session history.
