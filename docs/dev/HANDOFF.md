@@ -21,3 +21,7 @@ T-001 through T-004 are verified/published and milestone 1.1 is closed/read back
 ## Phase 1 integration
 
 Verified phase/1-classic-browser ba78dede0aac343f906f7419ac7aa53d68a8a7dc is merged into its creation parent main. All Phase 1 issues and both milestones are closed/read back. Publish this merged state, then prepare the default-branch release marker and final-source browser package for 0.1.0. Hosted release/download verification remains pending. Full implementation continues to Phase 2 after release completion.
+
+## Phase 2 entry
+
+Phase 1 release v0.1.0 is published at default release commit 477a99760832c8f84f509a8a3906492bf40fd60a; both hosted browser ZIP and checksum bytes were downloaded and matched local SHA-256, with latest pointer verified. Working branch phase/2-modern-rules starts from that main checkpoint and targets main. Phase 2 label, milestones and all T-006 through T-011 issues/associations were verified before edits. Full implementation authority continues.

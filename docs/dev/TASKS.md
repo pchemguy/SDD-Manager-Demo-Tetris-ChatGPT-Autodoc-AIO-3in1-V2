@@ -43,7 +43,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 - [ ] Phase 2 - Modern rules
     - [ ] Milestone 2.1 - Modern browser game
-        - [ ] T-006 - Implement seven-bag source and hold lifecycle
+        - [x] T-006 - Implement seven-bag source and hold lifecycle
+            Verified: RED: six independent bag/hold lifecycle cases failed against stub/no-hold behavior. GREEN: typecheck/build:test and 23 unit cases pass, including four seeded 28-draw bag sequences, once-per-piece hold, queue-preserving swap and blocked held spawn. Phase 2 activation and verified v0.1.0 hosted-byte predecessor evidence retained in HANDOFF.
             Scope: src/core source/reducer and tests/unit.
             Depends on: T-005. Contracts: G-3.
             Acceptance/evidence: Each bag is a seven-piece permutation with seeded fixtures; hold consumes/swaps with correct spawn, once-per-piece eligibility and blocked-spawn game-over.
