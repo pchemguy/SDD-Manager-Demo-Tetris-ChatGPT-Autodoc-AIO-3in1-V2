@@ -2,7 +2,7 @@
 from playwright.sync_api import expect
 
 def test_settings_disable_preview_hold_drop_and_keep_native_keys(page):
-    assert page.locator('#settings select').count()==6
+    assert page.locator('#setting-controls select').count()==6
     page.locator('#setting-next').select_option('off')
     expect(page.locator('#next-piece').locator('..')).to_be_hidden()
     page.locator('#setting-hold').select_option('off')

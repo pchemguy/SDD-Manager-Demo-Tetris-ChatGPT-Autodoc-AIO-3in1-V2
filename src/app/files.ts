@@ -15,5 +15,5 @@ export class FileExchange{
   try{this.onBusy(true);return await operation();}finally{this.active=false;this.app.settingsLocked=false;this.onBusy(false);}
  }
  async save(format:FileFormat):Promise<Uint8Array>{return this.run(async()=>{const captured=this.app.snapshot();return this.codec.encode(captured,format);});}
- async restore(bytes:Uint8Array):Promise<void>{return this.run(async()=>{const candidate=validateSnapshot(await this.codec.decode(bytes));await this.persistence.commit(candidate.settings);this.app.replaceSnapshot(candidate);});}
+ async restore(source:Uint8Array|(()=>Promise<Uint8Array>)):Promise<void>{return this.run(async()=>{const bytes=typeof source==='function'?await source():source,candidate=validateSnapshot(await this.codec.decode(bytes));await this.persistence.commit(candidate.settings);this.app.replaceSnapshot(candidate);});}
 }

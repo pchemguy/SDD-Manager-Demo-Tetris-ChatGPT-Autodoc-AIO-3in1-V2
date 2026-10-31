@@ -198,7 +198,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/codecs SQLite loader, local runtime bundling and tests/codecs.
             Depends on: T-029. Contracts: F-4.
             Acceptance/evidence: Export actual SQLite 3 bytes with exact tables, six unique settings, metadata and bound inserts; validate schema/storage classes/integrity and close isolated databases on errors; inspect exports independently with Python sqlite3.
-        - [ ] T-031 - Integrate manual Save Restore and format choice
+        - [x] T-031 - Integrate manual Save Restore and format choice
+            Verified: RED: both real-browser file tests failed against absent controls; delayed file-read regression also reproduced unlocked settings before decode. GREEN: type/test/production builds, 19 browser/renderer checks and 18 JSON/transaction regressions pass. One Save/Restore pair and format select sit at settings bottom; actual downloads/JSON-SQLite restore, content detection, all-six cookie/query writes, game-preserving pause, invalid/cancel/oversize non-mutation and hide behavior pass. Byte reading now starts inside the serialized operation gate; controls and settings lock through read/decode/commit, with finally cleanup and object-URL release.
             Scope: src/ui settings file controls, controller serialization and browser file port.
             Depends on: T-030. Contracts: F-2/F-5.
             Acceptance/evidence: One Save/Restore pair is at the bottom of settings; format choice/download/picker, cancellation, size/encoding detection, success pause and all-six persistence updates work without extra gameplay buttons.
