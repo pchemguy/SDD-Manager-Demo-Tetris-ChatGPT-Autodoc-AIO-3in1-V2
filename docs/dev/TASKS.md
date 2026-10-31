@@ -10,27 +10,32 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 1 - Classic browser
 
-- [ ] Phase 1 - Classic browser
-    - [ ] Milestone 1.1 - Classic browser game
-        - [ ] T-001 - Establish typed board and piece geometry
+- [x] Phase 1 - Classic browser
+    - [x] Milestone 1.1 - Classic browser game
+        - [x] T-001 - Establish typed board and piece geometry
+            Verified: RED: geometry stub produced 8 expected cell/rotation failures (4 bounds cases passed). GREEN: typecheck/build:test and 12 pytest geometry cases pass, covering exact spawn sets, active bounds, collision and clockwise rotation. Locked tooling and pytest driver are excluded from runtime builds.
             Scope: src/core geometry/types, locked TypeScript tooling and tests/unit fixtures.
             Depends on: none. Contracts: G-1/G-2.
             Acceptance/evidence: Seven four-cell shapes, bounds, collision and basic rotations match exact spawn coordinates; create a deterministic Node driver exercised by pytest without shipping it.
-        - [ ] T-002 - Implement the classic game state machine
+        - [x] T-002 - Implement the classic game state machine
+            Verified: RED: classic no-op reducer failed all five state/timing/score/completion scenarios. GREEN: typecheck/build:test and 17 pytest unit cases pass. Verified immutable input state, exact gravity/pause time, failed-down lock and pre-clear level scoring, wall rejection, once-only top-out and unfinished restart without completion.
             Scope: src/core reducer/time/source and focused pytest scenarios.
             Depends on: T-001. Contracts: G-1/G-2.
             Acceptance/evidence: Verify movement, gravity, failed-downward lock, row compaction, scoring/levels, top-out, exactly-once game-over and pause/resume under injected RNG/time.
-        - [ ] T-003 - Integrate browser rendering and keyboard play
+        - [x] T-003 - Integrate browser rendering and keyboard play
+            Verified: RED: two browser acceptance cases failed on missing gameplay controls in the initial shell. GREEN: typecheck/build:test/production build, 19 Chromium unit/browser cases and 2 Firefox browser cases passed. Verified real keyboard play, exact two gameplay buttons, native focused-button activation, pause/restart, colored Canvas pixels and no page errors; screenshot inspected. Firefox uses diagnosed process-local content sandbox recovery for trusted local pages.
             Scope: src/app controller, src/ui, browser host and browser entry.
             Depends on: T-002. Contracts: G-7/U-1/P-2/Q.
             Acceptance/evidence: A real browser page plays the classic loop with the two permitted gameplay buttons; focus/modifier/key-repeat rules work and information reflects domain state.
-        - [ ] T-004 - Package and verify the classic browser baseline
+        - [x] T-004 - Package and verify the classic browser baseline
+            Verified: RED name-gate tests exposed versioned, duplicate and missing assets; GREEN 4 gate cases and full 23-test suite pass. Typecheck/build:test/production build, actual ZIP name/resource/source/checksum checks and 2 extracted-package browser tests pass. Whole-milestone code review and screenshot inspection passed; immediate held-key clearing tightened. Milestone report/HANDOFF and stable browser package/install/CI checks included; hosted release remains pending.
             Scope: browser build/package scripts, notices, installation/control docs and relevant pytest browser/package checks.
             Depends on: T-001, T-002, T-003. Contracts: A-1/P-2/P-5.
             Acceptance/evidence: Extract the actual browser archive, verify local resource resolution, no required network runtime, version 0.1.0 and stable tetris-browser.zip name; run representative Chromium/Firefox checks and document unavailable execution.
             Milestone exit: depends on all other milestone tasks T-001 through T-003; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/1/1.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 1.2 - Phase review
-        - [ ] T-005 - Review test and report phase 1
+    - [x] Milestone 1.2 - Phase review
+        - [x] T-005 - Review test and report phase 1
+            Verified: Whole-phase source review and task-closing commit audit passed; typecheck/build:test, 23 pytest cases and actual archive naming/resource/checksum checks pass. Prior 2 Firefox and 2 extracted-build browser cases and screenshot support runtime acceptance. No blockers/TODOs. Phase report and HANDOFF retain pending main integration and release/download checks; no hosted release success is claimed yet.
             Depends on: T-004, completion/verified closure of milestone 1.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/1/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 
