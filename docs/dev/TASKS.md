@@ -271,7 +271,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 - [ ] Phase 10 - Browser sidebars
     - [ ] Milestone 10.1 - Chromium and Firefox sidebars
-        - [ ] T-042 - Implement extension stores and single-owner sessions
+        - [x] T-042 - Implement extension stores and single-owner sessions
+            Verified: RED: missing coordinator/session modules failed test compilation. GREEN: build:test and 24 storage/ownership/session cases pass. Separate local settings and transient game/results, strict recovery validation, sequence rejection, acknowledged transfer, paused disconnect/reopen, browser-restart clearing, query fallback, write-failure non-advancement and coordinated Restore are verified. Background performs no gameplay transitions.
             Scope: src/platform/extensions storage/messaging/coordinator and tests/platforms.
             Depends on: T-041. Contracts: C-3/P-1.
             Acceptance/evidence: Persistent six-key settings and transient paused game/results use separate stores; serialized generations, ownership transfer, disconnect and failed writes never run background gameplay or persist scores.
