@@ -77,7 +77,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 3 - Special landing rules
 
-- [ ] Phase 3 - Special landing rules
+- [x] Phase 3 - Special landing rules
     - [x] Milestone 3.1 - Penetrator and conditional ghost
         - [x] T-012 - Implement penetrator transit bonus and valid locks
             Verified: RED: seven bonus/transit/deepest-landing scenarios failed; cap-at-three already passed. GREEN: typecheck/build:test and 48 unit cases pass. Verified capped four-line awards, spend-once activation, blocker transit, deepest cavity, white settled locks, hold rejection, invalid transformations and genuine-lift versus grounded timing. Impossible final destinations reject activation without spending. A minimal view cell-type bridge preserves compilation; active white rendering and dynamic visibility remain T-013.
@@ -95,8 +95,9 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Depends on: T-012, T-013. Contracts: A-3/P-5.
             Acceptance/evidence: Verify 0.3.0 extracted browser build across activation during grounded delay, lift-off, transit rotations, bonus award after four clears and session restart reset.
             Milestone exit: depends on all other milestone tasks T-012 through T-013; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/3/3.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 3.2 - Phase review
-        - [ ] T-015 - Review test and report phase 3
+    - [x] Milestone 3.2 - Phase review
+        - [x] T-015 - Review test and report phase 3
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 70 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-014, completion/verified closure of milestone 3.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/3/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 
