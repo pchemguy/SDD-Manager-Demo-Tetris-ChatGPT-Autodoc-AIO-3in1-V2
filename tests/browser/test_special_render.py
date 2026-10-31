@@ -13,6 +13,10 @@ def test_dynamic_ghost_hidden_above_midline_and_shown_below(page,render_url):
     assert pixel(page,4,9)==[99,142,232,255]
     s=fixture();render(page,render_url,s)
     assert pixel(page,4,19)!=[17,26,40,255]
+    s=fixture();s['penetrator']=True
+    for y in range(9,20):s['board'][y]=['J']*10
+    render(page,render_url,s)
+    assert pixel(page,4,8)==[17,26,40,255]
 
 def test_white_penetrator_and_bonus_symbols(page,render_url):
     s=fixture();s['penetrator']=True;s['bonuses']=3;s['board'][10][4]='J';s['board'][19][9]='P'

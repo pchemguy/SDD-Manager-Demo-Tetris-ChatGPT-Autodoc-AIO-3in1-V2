@@ -21,3 +21,11 @@ def test_hard_drop_is_keyboard_only_and_repeat_is_timed(page):
     score=int(page.locator('#score').inner_text());assert 4<=score<=9
     page.wait_for_timeout(100)
     assert int(page.locator('#score').inner_text())==score
+
+def test_no_bonus_activation_does_not_change_current_piece(page):
+    page.locator('#start').click();kind=page.locator('#active-kind').inner_text()
+    assert page.locator('#bonuses').text_content()==''
+    page.keyboard.press('x')
+    assert page.locator('#active-kind').inner_text()==kind
+    assert page.locator('#bonuses').text_content()==''
+    expect(page.locator('#penetrator-status')).not_to_contain_text('Active')

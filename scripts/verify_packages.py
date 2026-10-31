@@ -34,12 +34,13 @@ def verify(directory):
             for info in z.infolist():
                 p = PurePosixPath(info.filename)
                 if p.is_absolute() or '..' in p.parts or '\\' in info.filename or ((info.external_attr >> 16) & 0o170000) == 0o120000: raise ValueError('Unsafe archive member')
-                if info.filename.endswith('.tkn') or 'node_modules' in p.parts or '.agents' in p.parts: raise ValueError('Development/secret content in runtime archive')
+                if info.filename.endswith('.tkn') or any(part in {'node_modules','.agents','.test-build','tests','test-results'} for part in p.parts): raise ValueError('Development/secret content in runtime archive')
             if name == 'tetris-browser.zip':
                 for required in ['index.html', 'INSTALL.md', 'THIRD-PARTY-NOTICES.md', 'LICENSE', 'build-info.json']:
                     if required not in members: raise ValueError('Missing '+required)
                 data = json.loads(z.read('build-info.json'))
                 if data['version'] != version or not re.fullmatch('[a-f0-9]{40}', data['sourceCommit']): raise ValueError('Wrong build identity')
+                if any(b'renderFixture' in z.read(n) for n in members if n.endswith('.js')): raise ValueError('Development renderer harness in runtime code')
                 html = z.read('index.html').decode()
                 for ref in re.findall(r'(?:src|href)="([^"]+)"', html):
                     if ref.startswith(('http:', 'https:', '//')): raise ValueError('Remote required runtime asset')

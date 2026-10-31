@@ -78,7 +78,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 ## Phase 3 - Special landing rules
 
 - [ ] Phase 3 - Special landing rules
-    - [ ] Milestone 3.1 - Penetrator and conditional ghost
+    - [x] Milestone 3.1 - Penetrator and conditional ghost
         - [x] T-012 - Implement penetrator transit bonus and valid locks
             Verified: RED: seven bonus/transit/deepest-landing scenarios failed; cap-at-three already passed. GREEN: typecheck/build:test and 48 unit cases pass. Verified capped four-line awards, spend-once activation, blocker transit, deepest cavity, white settled locks, hold rejection, invalid transformations and genuine-lift versus grounded timing. Impossible final destinations reject activation without spending. A minimal view cell-type bridge preserves compilation; active white rendering and dynamic visibility remain T-013.
             Scope: src/core landing/reducer and tests/unit.
@@ -89,7 +89,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/core ghost predicate, src/ui bonus/white-piece rendering and browser scenarios.
             Depends on: T-012. Contracts: G-4/G-6.
             Acceptance/evidence: Check occupied cells at rows 9/10 and straddling, match penetrator ghost/drop, show exact bonus-symbol count and reserve white exclusively for penetrator pieces.
-        - [ ] T-014 - Package and verify special landing behavior
+        - [x] T-014 - Package and verify special landing behavior
+            Verified: RED: an injected development renderer file was wrongly accepted in a complete ZIP; GREEN: package exclusion gate and full 70 tests pass. Typecheck/test-harness/production builds, 7 Firefox checks, 5 actual extracted-package production-page cases and archive name/resource/checksum checks pass. Added occupied-rotation, inactive activation and no-bonus hotkey regressions. Whole-milestone source review/report/HANDOFF and 0.3.0 package/install metadata included; renderer fixtures are explicitly separate from packaged gameplay evidence.
             Scope: build/package outputs, interaction regression fixtures and gameplay docs.
             Depends on: T-012, T-013. Contracts: A-3/P-5.
             Acceptance/evidence: Verify 0.3.0 extracted browser build across activation during grounded delay, lift-off, transit rotations, bonus award after four clears and session restart reset.

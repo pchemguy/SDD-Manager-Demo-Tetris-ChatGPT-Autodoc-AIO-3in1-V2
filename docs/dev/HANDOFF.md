@@ -19,3 +19,7 @@ Phase 2 source 333aabb2d76507b1e0ac1ac0b3103bab44cd703f is merged into its recor
 ## Phase 3 entry
 
 Release v0.2.0 is published at 87f6a765bd3c8f79b9126be01410dce21cb9d1f1. Hosted browser/checksum bytes were verified through supported asset API downloads after immediate public URLs returned 404; latest pointer is verified. Branch phase/3-special-landing-rules starts from that main release and targets main. Phase 3 label, both milestones and T-012 through T-015 issue associations are exact-endpoint verified before edits.
+
+## Special-rules milestone checkpoint
+
+T-012 through T-014 implement special landing rules; [milestone 3.1 report](reports/phases/3/3.1.md) records full 70 tests, 7 Firefox checks, 5 actual extracted-package production cases and separate renderer-fixture evidence. Publish/close T-014 and milestone 3.1 before T-015 phase review. Integration/release 0.3.0 remains pending at this snapshot. Continue the full authorized range after verified release; Phase 4 must deliver session-only settings before any persistence.

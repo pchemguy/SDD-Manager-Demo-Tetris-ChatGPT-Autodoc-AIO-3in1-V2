@@ -49,3 +49,17 @@ def test_invalid_transit_transform_rejected_and_grounding_not_reset(driver):
     assert r['penetrator'] and r['piece']['x']==6
     f=fixture(18);f.update(time=400,groundedAt=0,groundedInterval=1000,lockAt=1000)
     r=driver('game',fixture=f,actions=[{'type':'activate'}])['state'];assert r['lockAt']==1000
+
+def test_rotation_transits_occupancy_and_locks_only_valid_cells(driver):
+    f=fixture(0);f['board']=blank();f['board'][2][4]='J'
+    r=driver('game',fixture=f,actions=[{'type':'activate'},{'type':'cw'}])['state']
+    assert r['piece']=={'kind':'T','rotation':1,'x':3,'y':0} and r['board'][2][4]=='J'
+    r=driver('game',fixture=f,actions=[{'type':'activate'},{'type':'cw'},{'type':'hardDrop'},{'type':'advance','ms':1000}])['state']
+    assert sum(v=='P' for row in r['board'] for v in row)==4
+    assert r['board'][2][4]=='J' and not r['penetrator'] and not r['heldUsed']
+
+@pytest.mark.parametrize('status,bonuses',[('running',0),('paused',1),('game-over',1)])
+def test_ineligible_activation_is_a_noop(driver,status,bonuses):
+    f=fixture(0);f.update(status=status,bonuses=bonuses)
+    r=driver('game',fixture=f,actions=[{'type':'activate'}])['state']
+    assert not r['penetrator'] and r['bonuses']==bonuses
