@@ -1,6 +1,6 @@
 # Tetris
 
-A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. All six settings support URL/cookie persistence. Session-only top-ten completed-game history is implemented. Manual JSON/SQLite file exchange is implemented. Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
+A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. All six settings support URL/cookie persistence. Session-only top-ten completed-game history is implemented. Manual JSON/SQLite file exchange is implemented. The centered five-panel layout is implemented. Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
 
 ## Play and controls
 
@@ -52,3 +52,7 @@ Completed games enter the top ten ranked by score descending, UTC completion tim
 ## Manual files
 
 Choose JSON or SQLite at the bottom of Settings, then Save or Restore one file. Complete validation precedes changes; successful restore replaces all results/settings and pauses play while retaining the active game. See the [file guide](FILES.md) and [JSON Schema](schemas/tetris-save.schema.json). All codec assets are bundled locally.
+
+## Panels and narrow windows
+
+The workspace orders leaderboard, game information, board, settings and controls/help. Three independent toggles above the two gameplay buttons hide the optional panels. Board position stays centered; hiding Settings also hides Save/Restore. Narrow browser windows keep compact game information beside the board and provide horizontal scrolling inside the workspace to reach side panels. Header, notices and footer remain outside that scroller. Resizing or returning focus to the board recenters it without changing play or configuration. Text wraps at increased text scale.

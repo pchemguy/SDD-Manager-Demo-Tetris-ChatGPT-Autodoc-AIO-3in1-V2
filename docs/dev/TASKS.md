@@ -217,23 +217,27 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 8 - Browser workspace
 
-- [ ] Phase 8 - Browser workspace
-    - [ ] Milestone 8.1 - Centered five-panel workspace
-        - [ ] T-034 - Arrange the symmetric browser workspace
+- [x] Phase 8 - Browser workspace
+    - [x] Milestone 8.1 - Centered five-panel workspace
+        - [x] T-034 - Arrange the symmetric browser workspace
+            Verified: RED: all five viewport cases failed board centering. GREEN: compiler/test/production builds and five geometry scenarios pass at 640/960/1280/1600/1920, each with default and doubled text. Equal 468px side reservations center the fixed board; compact info remains beside it, optional panels stay ordered and reachable via workspace-only horizontal scrolling. Header/notices remain outside the scroller. Actual text-range checks find no panel overflow; focus/resize/toggles recenter without game reset.
             Scope: src/ui layout/styles and responsive geometry checks.
             Depends on: T-033. Contracts: U-1.
             Acceptance/evidence: Place leaderboard/info/board/settings/help in order, preserve fixed board center and reachable information at specified browser widths/text scale without overlap.
-        - [ ] T-035 - Integrate independent optional-panel toggles
+        - [x] T-035 - Integrate independent optional-panel toggles
+            Verified: RED: native panel test found only two visibility toggles. GREEN: builds and nine panel/settings/layout cases pass. Exactly three aria-linked target toggles precede Start/Restart and Pause/Start; all eight combinations keep board centered and preserve paused game, settings, results, cookies and URL. Hiding settings hides Save/Restore. Native select keys do not move/restart play. HUD/select/preview updates now avoid unchanged DOM assignments, preserving native focus and reducing repaint work.
             Scope: src/ui information panel/panel state and browser input tests.
             Depends on: T-034. Contracts: U-1.
             Acceptance/evidence: Exactly three visibility toggles sit above the two gameplay buttons; each changes only its target and hiding settings hides both file controls; settings/board state remain intact.
-        - [ ] T-036 - Package and verify all panel combinations
+        - [x] T-036 - Package and verify all panel combinations
+            Verified: Version 0.8.0 full pytest 261 passed, Firefox 34 passed, extracted browser package 32 passed; compiler/build/archive checks pass. All 80 width/text-scale/panel combinations preserve center/state with full max-score rows and no text overlap. Wide and enlarged-narrow screenshots were inspected; compact info and help wording repaired. Whole-milestone review, native limits and no blockers recorded in 8.1 report/HANDOFF.
             Scope: browser package, layout screenshots/geometry checks and controls guide.
             Depends on: T-034, T-035. Contracts: A-8/P-5.
             Acceptance/evidence: Verify 0.8.0 actual build at all five widths and eight optional-panel combinations, native focus behavior and complete gameplay/persistence/file regressions.
             Milestone exit: depends on all other milestone tasks T-034 through T-035; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/8/8.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 8.2 - Phase review
-        - [ ] T-037 - Review test and report phase 8
+    - [x] Milestone 8.2 - Phase review
+        - [x] T-037 - Review test and report phase 8
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 261 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-036, completion/verified closure of milestone 8.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/8/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 

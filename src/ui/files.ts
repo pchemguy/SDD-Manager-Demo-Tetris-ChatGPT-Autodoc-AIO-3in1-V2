@@ -13,7 +13,7 @@ export function bindFileControls(root:HTMLElement,exchange:FileExchange,download
  root.querySelector('#restore')!.addEventListener('click',()=>{if(!exchange.busy)input.click();});
  input.addEventListener('change',async()=>{
   const file=input.files?.[0];if(!file)return;
-  try{if(exchange.busy)throw Error('A file operation is already in progress');if(file.size>MAX_BYTES)throw Error('Save files must be at most 2 MiB');notice('Validating restore...');await exchange.restore(async()=>new Uint8Array(await file.arrayBuffer()));notice('Restored results and all six settings. Resume explicitly to play.');}
+  try{if(exchange.busy)throw Error('A file operation is already in progress');if(file.size>MAX_BYTES)throw Error('Save files must be at most 2 MiB');notice('Validating restore...');await exchange.restore(async()=>new Uint8Array(await file.arrayBuffer()));notice('Restored results and all six settings. Use Start when ready.');}
   catch(error){notice('Restore failed: '+String(error));}finally{input.value='';}
  });
 }
