@@ -131,7 +131,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 - [ ] Phase 5 - Persistent settings
     - [ ] Milestone 5.1 - Browser setting continuity
-        - [ ] T-020 - Implement independent URL cookie and default resolution
+        - [x] T-020 - Implement independent URL cookie and default resolution
+            Verified: RED: driver compilation rejected missing resolver. GREEN: build:test and 17 mixed-source/all-key precedence cases pass, including malformed percent encoding, repeated/empty/case-invalid values, ambiguous cookies, encoded keys/values, explicit URL defaults and omitted-cookie retention. Resolver returns only valid explicit writes and per-key diagnostics without host mutation.
             Scope: src/platform/browser query/cookie ports and src/app resolution logic.
             Depends on: T-019. Contracts: C-2.
             Acceptance/evidence: Exercise mixed-source settings, invalid/duplicate/encoded values, explicit default-valued URL cookies and omitted parameters retaining valid cookie values.
