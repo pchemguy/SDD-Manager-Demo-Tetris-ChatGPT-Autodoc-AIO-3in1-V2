@@ -1,7 +1,7 @@
 """Assemble cumulative deployable platforms and the stable checksum inventory."""
 from pathlib import Path
 import hashlib,json,subprocess,zipfile
-from verify_packages import verify
+from verify_packages import verify,release_files
 ROOT=Path(__file__).resolve().parents[1]
 def metadata():return {'version':json.loads((ROOT/'package.json').read_text())['version'],'sourceCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'dirty':bool(subprocess.check_output(['git','status','--porcelain','--untracked-files=no'],cwd=ROOT))}
 def package_browser(output,identity):
@@ -18,6 +18,6 @@ def main():
     if minor>=9:
         from windows_package import package_windows
         package_windows(output,identity)
-    checks=''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in sorted(output.glob('*.zip')));(output/'SHA256SUMS.txt').write_text(checks)
+    checks=''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in sorted(p for p in release_files(output) if p.name.endswith('.zip')));(output/'SHA256SUMS.txt').write_text(checks)
     verify(output)
 if __name__=='__main__':main()

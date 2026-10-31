@@ -4,11 +4,10 @@ const path=require('node:path'),{pathToFileURL}=require('node:url');
 const {mapRequest,collectAssets,allowNavigation,startupURL}=require('./protocol.cjs');
 const CSP="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'; frame-src 'none'; base-uri 'self'";
 async function boot(electron,{rendererRoot,argv=process.argv}){
- const {app,protocol,session,BrowserWindow,net}=electron;
- protocol.registerSchemesAsPrivileged([{scheme:'app',privileges:{standard:true,secure:true,supportFetchAPI:true,corsEnabled:true}}]);
+ const {app,session,BrowserWindow,net}=electron;
  app.setName('Tetris');app.setAppUserModelId('io.github.pchemguy.tetris');await app.whenReady();
  const partition='persist:tetris',ses=session.fromPartition(partition),allowed=collectAssets(rendererRoot);
- ses.protocol.handle('app',async request=>{
+ ses.protocol.handle('https',async request=>{
   const mapped=mapRequest(request.url,request.method,rendererRoot,allowed);
   if(mapped.status!==200)return new Response('Resource unavailable',{status:mapped.status});
   try{const response=await net.fetch(pathToFileURL(mapped.file).href);if(!response.ok)return new Response('Resource unavailable',{status:404});return new Response(request.method==='HEAD'?null:response.body,{status:200,headers:{'Content-Type':mapped.type,'Content-Security-Policy':CSP,'Cache-Control':'no-cache'}});}
@@ -20,6 +19,8 @@ async function boot(electron,{rendererRoot,argv=process.argv}){
   item.setSaveDialogOptions({title:'Save Tetris results and settings',defaultPath:path.join(app.getPath('downloads'),name),filters:[{name:name.endsWith('.json')?'JSON':'SQLite',extensions:[name.endsWith('.json')?'json':'sqlite']}]});
  });
  const window=new BrowserWindow({title:'Tetris',width:1440,height:1000,minWidth:640,minHeight:720,autoHideMenuBar:true,webPreferences:{partition,sandbox:true,contextIsolation:true,nodeIntegration:false,webSecurity:true,webviewTag:false}});
+ const pauseRenderer=()=>{if(!window.webContents.isDestroyed())window.webContents.executeJavaScript("window.dispatchEvent(new Event('blur'))").catch(()=>{});};
+ for(const event of ['blur','hide','minimize'])window.on(event,pauseRenderer);
  window.setMenuBarVisibility(false);window.webContents.setWindowOpenHandler(()=>({action:'deny'}));
  const denyRemote=(event,url)=>{if(!allowNavigation(url))event.preventDefault();};
  window.webContents.on('will-navigate',denyRemote);window.webContents.on('will-redirect',denyRemote);window.webContents.on('will-attach-webview',event=>event.preventDefault());

@@ -1,15 +1,15 @@
 'use strict';
 /** Fixed-root mapping validates the raw path before URL dot-segment normalization. */
 const path=require('node:path'),fs=require('node:fs');
-const DEFAULT_URL='app://tetris/index.html';
+const DEFAULT_URL='https://tetris.invalid/index.html';
 function collectAssets(root,prefix=''){
  const result=new Set();for(const entry of fs.readdirSync(path.join(root,prefix),{withFileTypes:true})){const name=prefix+entry.name;if(entry.isDirectory())for(const child of collectAssets(root,name+'/'))result.add(child);else if(entry.isFile())result.add(name);}return result;
 }
 function parsedLocal(value){
- if(typeof value!=='string'||!/^app:\/\/tetris(?=\/|[?#]|$)/i.test(value))return null;
+ if(typeof value!=='string'||!/^https:\/\/tetris\.invalid(?=\/|[?#]|$)/i.test(value))return null;
  try{
-  const url=new URL(value);if(url.protocol!=='app:'||url.hostname.toLowerCase()!=='tetris'||url.port||url.username||url.password)return null;
-  const raw=/^app:\/\/[^/?#]+([^?#]*)/i.exec(value)?.[1]??'',decoded=decodeURIComponent(raw||'/');
+  const url=new URL(value);if(url.protocol!=='https:'||url.hostname.toLowerCase()!=='tetris.invalid'||url.port||url.username||url.password)return null;
+  const raw=/^https:\/\/[^/?#]+([^?#]*)/i.exec(value)?.[1]??'',decoded=decodeURIComponent(raw||'/');
   if(/[\\\0%]/.test(decoded)||decoded.split('/').some(segment=>segment==='.'||segment==='..'))return null;
   return{url,decoded};
  }catch{return null;}

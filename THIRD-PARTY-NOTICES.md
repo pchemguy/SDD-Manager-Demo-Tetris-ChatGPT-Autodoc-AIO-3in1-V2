@@ -52,3 +52,7 @@ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
 COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## Windows Electron runtime
+
+The Windows portable package pins Electron 45.2.1. It retains the upstream runtime LICENSE and LICENSES.chromium.html with their complete notices; the game license is included separately as LICENSE.tetris. The browser-only archive does not bundle Electron. Upstream source and distribution identity: https://github.com/electron/electron/releases/tag/v45.2.1.

@@ -7,6 +7,9 @@ import struct
 import sys
 import zipfile
 ROOT = Path(__file__).resolve().parents[1]
+def release_files(directory):
+    # Managed file transfers may create sidecars; publish only the visible release inventory.
+    return [p for p in Path(directory).iterdir() if p.is_file() and not p.name.startswith('.')]
 def verify_names(names, expected):
     if len(names) != len(set(names)) or set(names) != set(expected):
         raise ValueError('Release asset names must exactly match the stable platform contract')
@@ -49,7 +52,7 @@ def verify_windows(archive,version):
     print('Verified Windows x64 PE/runtime hashes and owned app inventory:',len(locked['files']),'runtime files')
 def verify(directory,release_source=None):
     directory = Path(directory);expected = expected_names()
-    verify_names([p.name for p in directory.iterdir() if p.is_file()], expected)
+    verify_names([p.name for p in release_files(directory)], expected)
     checks = {}
     for line in (directory/'SHA256SUMS.txt').read_text().splitlines():
         digest, name = line.split('  ', 1)

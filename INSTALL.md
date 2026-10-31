@@ -23,3 +23,7 @@ Use canonical query keys ghost, hardDrop, next, hardDropLock, lock and hold. For
 ## Panel layout
 
 Use the three information-panel toggles to show/hide leaderboard, settings and controls/help. The board and information panel remain available. At narrow window widths, scroll horizontally within the workspace to reach optional panels; the board recenters on resize, panel toggles and board focus. Settings and files retain their state when hidden.
+
+## Windows package in this release
+
+Download the separate tetris-windows-x64.zip, extract all files together and run Tetris.exe. It includes Electron and the app runtime, so no separate Node.js or development server is needed. This is an unsigned portable development package, not a signed installer or store distribution. Its own INSTALL.md explains the app-owned local HTTPS origin, profile settings and supported launch query. Native Windows execution is a separately reported verification limit.

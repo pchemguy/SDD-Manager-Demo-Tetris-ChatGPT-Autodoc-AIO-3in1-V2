@@ -55,3 +55,10 @@ def test_accepts_windows_x64_pe_header():
 @pytest.mark.parametrize('data',[b'',b'not exe',pe_header(0x14c),pe_header(magic=0x10b),b'MZ'+b'\0'*60],ids=['empty','not-pe','x86','pe32','truncated'])
 def test_rejects_invalid_or_wrong_architecture_pe(data):
     with pytest.raises(ValueError):module.verify_pe(data)
+
+def test_release_inventory_excludes_transfer_sidecars_but_rejects_visible_extras(tmp_path):
+    for name in ['tetris-browser.zip','SHA256SUMS.txt','.transfer-partial']:(tmp_path/name).write_bytes(b'fixture')
+    names=[p.name for p in module.release_files(tmp_path)]
+    module.verify_names(names,['tetris-browser.zip','SHA256SUMS.txt'])
+    (tmp_path/'tetris-browser-0.9.0.zip').write_bytes(b'fixture')
+    with pytest.raises(ValueError):module.verify_names([p.name for p in module.release_files(tmp_path)],['tetris-browser.zip','SHA256SUMS.txt'])

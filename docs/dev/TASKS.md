@@ -244,7 +244,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 ## Phase 9 - Windows desktop
 
 - [ ] Phase 9 - Windows desktop
-    - [ ] Milestone 9.1 - Portable Windows app
+    - [x] Milestone 9.1 - Portable Windows app
         - [x] T-038 - Implement the isolated Electron host and app origin
             Verified: RED: policy fixture failed on absent Electron host modules. GREEN: 19 real mapper/host-factory tests pass using injected Electron capabilities and real temporary resources; browser and desktop HTTP shared renderers each pass ten gameplay/file/cookie/query checks. Builds compile both composition roots. Secure standard app origin is registered before ready on the persistent partition; raw traversal/foreign hosts/methods are rejected, MIME/CSP enforced, renderer sandbox/context isolation/no Node/preload/IPC and navigation/pop-up/download restrictions verified. Native Windows is not claimed; runtime assembly follows T-039.
             Scope: platforms/electron, src/platform/desktop and desktop entry.
@@ -255,7 +255,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: build/package scripts and locked Electron distribution assets.
             Depends on: T-038. Contracts: P-3/P-5.
             Acceptance/evidence: Produce unsigned Windows x64 ZIP with executable/runtime/resources, local SQLite/schema/UI and notices; verify PE architecture, archive root and every required resource without a Node/server end-user dependency.
-        - [ ] T-040 - Verify desktop integration and cumulative packages
+        - [x] T-040 - Verify desktop integration and cumulative packages
+            Verified: Version 0.9.0 full pytest 290 passed including real compatible-host Electron, Firefox 35 passed, extracted browser 33 passed and extracted Windows renderer 11 passed. Actual Windows runtime/resource/PE/hash gates pass. Native probe found and verified fixes for custom-scheme cookie rejection (local intercepted HTTPS origin) and native hide pause; real cookie/reopen/session-clearing/SQLite/isolation/popup checks pass. Whole-milestone review, architecture/installation guidance and explicit native-Windows/root-test/dialog limits recorded in 9.1 report/HANDOFF; no blockers.
             Scope: tests/platforms, packaged renderer/file checks, browser regression outputs and installation docs.
             Depends on: T-038, T-039. Contracts: A-9/P-5.
             Acceptance/evidence: Verify 0.9.0 browser plus Windows archives, secure protocol/error/file/cookie behavior with feasible host checks, explicit native-Windows limits and stable names/checksums.
