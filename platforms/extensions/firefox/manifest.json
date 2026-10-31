@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Tetris \u2014 Shared Session",
+  "version": "0.10.0",
+  "description": "Keyboard Tetris in a sidebar. Local settings and browser-session play.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_title": "Open Tetris"
+  },
+  "icons": {
+    "16": "icons/tetris-16.png",
+    "32": "icons/tetris-32.png",
+    "48": "icons/tetris-48.png",
+    "128": "icons/tetris-128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tetris-sdd-demo@pchemguy.github.io",
+      "strict_min_version": "115.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "sidebar_action": {
+    "default_panel": "panel.html",
+    "default_title": "Tetris"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+}

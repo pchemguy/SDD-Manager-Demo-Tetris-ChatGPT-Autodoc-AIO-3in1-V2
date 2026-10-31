@@ -276,7 +276,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/platform/extensions storage/messaging/coordinator and tests/platforms.
             Depends on: T-041. Contracts: C-3/P-1.
             Acceptance/evidence: Persistent six-key settings and transient paused game/results use separate stores; serialized generations, ownership transfer, disconnect and failed writes never run background gameplay or persist scores.
-        - [ ] T-043 - Implement both sidebar manifests and launch adapters
+        - [x] T-043 - Implement both sidebar manifests and launch adapters
+            Verified: RED: missing host adapters failed test compilation. GREEN: build:test and cumulative production browser/desktop/Chromium/Firefox builds pass; 28 manifest/API/store scenarios pass. Both MV3 manifests pin supported minimums, local CSP/assets and minimal permissions. Direct gesture launch and explicit Chrome callback versus Firefox Promise adapters pass even when both global namespaces exist. Native sidebar checks remain assigned to T-046.
             Scope: platforms/extensions chromium/firefox manifests/background launch and extension entry.
             Depends on: T-042. Contracts: P-4.
             Acceptance/evidence: Chromium MV3 side_panel and Firefox sidebar_action launch the shared panel with required minimum APIs/permissions/CSP and local assets; no content scripts or site permissions are introduced.
