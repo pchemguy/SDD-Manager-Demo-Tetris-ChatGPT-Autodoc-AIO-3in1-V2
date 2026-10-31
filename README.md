@@ -1,10 +1,10 @@
 # Tetris
 
-A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Special landing rules, settings/files, Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
+A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. Settings/files, Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
 
 ## Play and controls
 
-Click Start, then use Left/Right to move, Down to soft drop, Up or Space to rotate clockwise, Z to rotate back, Enter to hard drop, C to hold, P to pause/resume and R to restart. A grounded piece waits one gravity interval, including after hard drop; grounded movement does not restart the timer. The information panel has only Start/Restart and Pause/Start gameplay buttons. Losing focus pauses play; returning focus requires explicit resume.
+Click Start, then use Left/Right to move, Down to soft drop, Up or Space to rotate clockwise, Z to rotate back, Enter to hard drop, C to hold, X to spend a penetrator bonus, P to pause/resume and R to restart. A grounded piece waits one gravity interval, including after hard drop; grounded movement does not restart the timer. The information panel has only Start/Restart and Pause/Start gameplay buttons. Losing focus pauses play; returning focus requires explicit resume.
 
 ## Build and run
 
@@ -36,3 +36,7 @@ Browser tests default to Chromium headless shell; select Firefox with the TETRIS
 ## Project records
 
 [Project brief](docs/dev/PROJECT.md), [development handoff](docs/dev/HANDOFF.md) and [tasks](docs/dev/TASKS.md) describe scope and actual workflow progress. This repository uses [SDD Manager](SDD-MANAGER.md); see the [AI-assisted development disclosure](AI_DISCLOSURE.md).
+
+## Penetrator and ghost
+
+A four-line clear awards one penetrator activation, up to three. Press X to activate the current piece; it crosses settled cells without erasing them, and its ghost/hard drop choose the deepest valid landing. Hold is disabled while active. White denotes penetrator cells, including after lock. Dynamic ghost mode hides a projection whenever any occupied ghost cell is above row 10, including straddling projections.

@@ -84,7 +84,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/core landing/reducer and tests/unit.
             Depends on: T-011. Contracts: G-6.
             Acceptance/evidence: Earn/cap/spend bonuses, reject invalid activation and transformations, cross occupancy without erasure, choose deepest valid cavity and lock non-overlapping; hold is disabled while active.
-        - [ ] T-013 - Integrate dynamic ghost and bonus feedback
+        - [x] T-013 - Integrate dynamic ghost and bonus feedback
+            Verified: RED: three occupied-cell midline cases and two real renderer cases failed; lower-half cases already passed. GREEN: compiler, test-harness and production builds, full 64 tests and 6 Firefox browser cases pass. Verified straddling/origin boundaries, hidden/shown ghost pixels, deepest white ghost/active/settled rendering and exact bonus-symbol counts. Added a separate non-shipped view harness with detached fixtures; real gameplay remains covered by production-page tests. X activation is keyboard-only.
             Scope: src/core ghost predicate, src/ui bonus/white-piece rendering and browser scenarios.
             Depends on: T-012. Contracts: G-4/G-6.
             Acceptance/evidence: Check occupied cells at rows 9/10 and straddling, match penetrator ghost/drop, show exact bonus-symbol count and reserve white exclusively for penetrator pieces.
