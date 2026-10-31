@@ -2,11 +2,11 @@
 
 ## Authority and current checkpoint
 
-The user request Do QC and full implement authorizes all T-001 through T-047, tracking, phase integration, packages and releases. Preparation is integrated and its milestone closed. Working branch phase/3-special-landing-rules was created from main 87f6a765bd3c8f79b9126be01410dce21cb9d1f1 and integrates into main. Phase 3 delivery milestone is closed/read back; its phase review passes 70 pytest cases, compiler/build-driver and archive checks with code review/audit evidence in [phase report](reports/phases/3/PHASE-REPORT.md).
+The user request Do QC and full implement authorizes all T-001 through T-047, tracking, phase integration, packages and releases. Preparation is integrated and its milestone closed. Working branch phase/4-session-settings was created from main fdf3a843009ef9f17dde5c212ef4497ee811cabd and integrates into main. Phase 4 delivery milestone is closed/read back; its phase review passes 87 pytest cases, compiler/build-driver and archive checks with code review/audit evidence in [phase report](reports/phases/4/PHASE-REPORT.md).
 
 ## Pending effects and next action
 
-Publish/read back T-015, close its issue and review milestone, then explicitly merge/verify/publish to main. Rebuild from the exact default-branch release commit, tag, publish and verify hosted bytes/latest before activating the next phase. Full remaining implementation authority continues; no extra approval is required. This checkpoint cannot prove its future effects. TASKS and reports own actual task/evidence state.
+Publish/read back T-019, close its issue and review milestone, then explicitly merge/verify/publish to main. Rebuild from the exact default-branch release commit, tag, publish and verify hosted bytes/latest before activating the next phase. Full remaining implementation authority continues; no extra approval is required. This checkpoint cannot prove its future effects. TASKS and reports own actual task/evidence state.
 
 ## Environment limits
 
@@ -14,4 +14,4 @@ Linux execution with Node 24, Python 3.12, pytest and dedicated Playwright Chrom
 
 ## Integration checkpoint
 
-Phase 3 source a88f18abd32c3c2698654c4c625b735f01737ffa is merged into its recorded parent main 87f6a765bd3c8f79b9126be01410dce21cb9d1f1; all phase issues/milestones are closed/read back. Merged checks and publication precede the release marker/tag. Full remaining scope remains authorized.
+Phase 4 source 60ae64613e9919467fef37c6f0ed6fad0c2e21b4 is merged into its recorded parent main fdf3a843009ef9f17dde5c212ef4497ee811cabd; all phase issues/milestones are closed/read back. Merged checks and publication precede the release marker/tag. Full remaining scope remains authorized.

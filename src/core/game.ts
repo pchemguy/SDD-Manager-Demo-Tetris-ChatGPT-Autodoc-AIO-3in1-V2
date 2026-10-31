@@ -4,7 +4,7 @@ import {landing,deepest} from './landing.js';
 import {rotate} from './rotation.js';
 import {next} from './source.js';
 export interface GameState{board:Board;piece:Piece|null;status:'idle'|'running'|'paused'|'game-over';score:number;lines:number;level:number;time:number;gravityAt:number;seed:number;queue:Kind[];holdKind:Kind|null;heldUsed:boolean;groundedAt:number|null;groundedInterval:number|null;lockAt:number|null;bonuses:number;penetrator:boolean}
-export type Rules={lock:'failed'|'interval';hardDropLock:'general'|'immediate'};
+export type Rules={lock:'failed'|'interval';hardDropLock:'general'|'immediate';hardDrop?:boolean;hold?:boolean};
 export type Command={type:string;ms?:number;seed?:number};
 export type GameEvent={type:'lock'|'clear'|'complete';score?:number;lines?:number};
 export function create(seed=1):GameState{return{board:emptyBoard(),piece:null,status:'idle',score:0,lines:0,level:1,time:0,gravityAt:1000,seed,queue:[],holdKind:null,heldUsed:false,groundedAt:null,groundedInterval:null,lockAt:null,bonuses:0,penetrator:false};}
@@ -55,9 +55,9 @@ export function reduce(state:GameState,action:Command,rules:Rules={lock:'interva
   }
   if(s.status==='running')s.time=target;
  }else if(action.type==='activate'&&!s.penetrator&&s.bonuses>0&&deepest(s.board,s.piece)){s.penetrator=true;s.bonuses--;
- }else if(action.type==='hardDrop'){
+ }else if(action.type==='hardDrop'&&rules.hardDrop!==false){
   const target=landing(s.board,s.piece,s.penetrator);add(s,(target.y-s.piece.y)*2);s.piece=target;refresh(s,rules);if(rules.hardDropLock==='immediate')lock(s,events,rules);
- }else if(action.type==='hold'&&!s.heldUsed&&!s.penetrator){
+ }else if(action.type==='hold'&&rules.hold!==false&&!s.heldUsed&&!s.penetrator){
   const outgoing=s.piece.kind,stored=s.holdKind;s.holdKind=outgoing;s.heldUsed=true;clearGround(s);
   if(stored){s.piece={kind:stored,rotation:0,x:3,y:-1};if(!valid(s.board,s.piece))complete(s,events);}else spawn(s,events);
  }else if(action.type==='down')down(s,events,true,rules);
