@@ -1,6 +1,6 @@
 # Tetris
 
-A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. All six settings support URL/cookie persistence. Session-only top-ten completed-game history is implemented. Manual JSON/SQLite file exchange is implemented. The centered five-panel layout is implemented. Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
+A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. All six settings support URL/cookie persistence. Session-only top-ten completed-game history is implemented. Manual JSON/SQLite file exchange is implemented. The centered five-panel layout is implemented. An unsigned Windows x64 portable Electron build is implemented; Chromium and Firefox sidebars follow in the final phase; see [PLAN](docs/dev/PLAN.md).
 
 ## Play and controls
 
@@ -56,3 +56,7 @@ Choose JSON or SQLite at the bottom of Settings, then Save or Restore one file. 
 ## Panels and narrow windows
 
 The workspace orders leaderboard, game information, board, settings and controls/help. Three independent toggles above the two gameplay buttons hide the optional panels. Board position stays centered; hiding Settings also hides Save/Restore. Narrow browser windows keep compact game information beside the board and provide horizontal scrolling inside the workspace to reach side panels. Header, notices and footer remain outside that scroller. Resizing or returning focus to the board recenters it without changing play or configuration. Text wraps at increased text scale.
+
+## Windows desktop
+
+The Windows ZIP bundles Electron and the full shared renderer, codecs and runtime assets. Extract everything and run Tetris.exe; no Node.js or server installation is required. It is an unsigned portable development distribution. See [Windows installation](platforms/electron/INSTALL.md) and [host/verification details](platforms/electron/README.md). Native Linux Electron checks exercise the packaged app resources; native Windows execution is separately reported and is not inferred from them.

@@ -243,23 +243,27 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 9 - Windows desktop
 
-- [ ] Phase 9 - Windows desktop
-    - [ ] Milestone 9.1 - Portable Windows app
-        - [ ] T-038 - Implement the isolated Electron host and app origin
+- [x] Phase 9 - Windows desktop
+    - [x] Milestone 9.1 - Portable Windows app
+        - [x] T-038 - Implement the isolated Electron host and app origin
+            Verified: RED: policy fixture failed on absent Electron host modules. GREEN: 19 real mapper/host-factory tests pass using injected Electron capabilities and real temporary resources; browser and desktop HTTP shared renderers each pass ten gameplay/file/cookie/query checks. Builds compile both composition roots. Secure standard app origin is registered before ready on the persistent partition; raw traversal/foreign hosts/methods are rejected, MIME/CSP enforced, renderer sandbox/context isolation/no Node/preload/IPC and navigation/pop-up/download restrictions verified. Native Windows is not claimed; runtime assembly follows T-039.
             Scope: platforms/electron, src/platform/desktop and desktop entry.
             Depends on: T-037. Contracts: P-3/C-3.
             Acceptance/evidence: Load shared bundled UI under stable secure app origin with persistent settings cookies; reject traversal/remote navigation, preserve query history and enforce sandbox/context isolation/no renderer Node.
-        - [ ] T-039 - Assemble the Windows portable runtime package
+        - [x] T-039 - Assemble the Windows portable runtime package
+            Verified: RED: six PE checks failed against missing architecture verifier. GREEN: all 33 platform policy/package cases pass; production browser/desktop builds pass. Actual 158490301-byte Windows portable ZIP verifies 72 upstream runtime file hashes, all executable/DLL x64 PE32+ headers, exact owned app/resource inventory and local SQLite/schema bytes, versions, safe paths and cumulative browser/Windows names/checksums. Electron 45.2.1 archive matches both upstream SHASUMS256 and pinned digest; locked per-file inventory excludes the default demo app. No end-user Node/server is required. Unsigned development installation guide is included; native execution follows separate T-040 checks.
             Scope: build/package scripts and locked Electron distribution assets.
             Depends on: T-038. Contracts: P-3/P-5.
             Acceptance/evidence: Produce unsigned Windows x64 ZIP with executable/runtime/resources, local SQLite/schema/UI and notices; verify PE architecture, archive root and every required resource without a Node/server end-user dependency.
-        - [ ] T-040 - Verify desktop integration and cumulative packages
+        - [x] T-040 - Verify desktop integration and cumulative packages
+            Verified: Version 0.9.0 full pytest 290 passed including real compatible-host Electron, Firefox 35 passed, extracted browser 33 passed and extracted Windows renderer 11 passed. Actual Windows runtime/resource/PE/hash gates pass. Native probe found and verified fixes for custom-scheme cookie rejection (local intercepted HTTPS origin) and native hide pause; real cookie/reopen/session-clearing/SQLite/isolation/popup checks pass. Whole-milestone review, architecture/installation guidance and explicit native-Windows/root-test/dialog limits recorded in 9.1 report/HANDOFF; no blockers.
             Scope: tests/platforms, packaged renderer/file checks, browser regression outputs and installation docs.
             Depends on: T-038, T-039. Contracts: A-9/P-5.
             Acceptance/evidence: Verify 0.9.0 browser plus Windows archives, secure protocol/error/file/cookie behavior with feasible host checks, explicit native-Windows limits and stable names/checksums.
             Milestone exit: depends on all other milestone tasks T-038 through T-039; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/9/9.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 9.2 - Phase review
-        - [ ] T-041 - Review test and report phase 9
+    - [x] Milestone 9.2 - Phase review
+        - [x] T-041 - Review test and report phase 9
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 290 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-040, completion/verified closure of milestone 9.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/9/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 
