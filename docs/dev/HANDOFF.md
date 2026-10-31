@@ -1,15 +1,27 @@
 # Development handoff
 
-Repository initialized for main preparation; no product implementation exists.
+Autodoc document pass is complete through DOCS-008. Implementation has not started.
 
-## Workflow and authority
+## Workflow and governing evidence
 
-SDD Manager autodoc/onepass. [DOCS_TASKS](DOCS_TASKS.md) owns checkboxes; [DOCS_PREPARATION](DOCS_PREPARATION.md) owns decisions and evidence. The user's complete scope includes browser gameplay and persistence, Windows Electron, then Chromium and Firefox sidebar extensions. PROJECT acceptance remains required; autodoc preapproves ARCHITECTURE through TASKS and stops before package QC.
+Main preparation, autodoc/onepass, SDD Manager 0.16.0. [DOCS_TASKS](DOCS_TASKS.md) owns preparation checkboxes; [DOCS_PREPARATION](DOCS_PREPARATION.md) owns approval, decisions and exact artifact evidence. [PROJECT](PROJECT.md) was approved by the user's k reply on 2026-10-31; later document checkpoints through [TASKS](TASKS.md) are preapproved by autodoc.
+
+[SPEC review](SPEC-REVIEW-REPORT.md), [combined PLAN/layout review](PLAN-REVIEW-REPORT.md) and [TASKS review](TASKS-REVIEW-REPORT.md) retain scoped conformance results and resolved findings. Their passing results do not substitute for DOCS-009 whole-package QC. The plan has ten phases and 47 unchecked implementation tasks, with browser baseline before enhancements, session settings before persistence, Windows after browser layout and both extensions last.
+
+## Scope and stopping boundary
+
+The user's complete target remains in PROJECT/SPEC. This continuation records brief approval and completes ARCHITECTURE through TASKS. Stop before package QC, preparation integration and implementation. No implementation phase or task tracking has been activated; no release/platform is delivered. Standard reporting remains concise.
 
 ## Git context
 
-Working branch: design-docs/main. Creation parent and integration target: main. Branch-off: 407c29fa92aa0b5788352733b76a3fb8e63ebd7f. Original repository tip: b6cecff4fc3bc367bab2602a57972d54cdae7738. Provenance scaffold is integrated; retain design-docs/ai-logs. No suspended implementation exists.
+Working branch: design-docs/main. Creation parent/integration target: main. Branch-off: 407c29fa92aa0b5788352733b76a3fb8e63ebd7f. Original repository tip: b6cecff4fc3bc367bab2602a57972d54cdae7738. Provenance scaffold is integrated; retain design-docs/ai-logs. All four original root guidance files remain unchanged. No suspended implementation exists.
 
-## Next boundary
+## Checkpoint effects and next action
 
-Verify initialization publication and close/read back DOCS-001 issue 1, then publish the PROJECT proposal for approval. Reconcile later commits and preparation evidence before resuming. All product implementation, releases and platform verification remain pending.
+DOCS-001 through DOCS-007 publication and issue closure/readback are verified. Publish/read back this DOCS-008 completion commit and then close/read back issue 8. Issue 9 and preparation milestone 1 must remain open. Reconcile actual Git/provider state before replay; the snapshot cannot prove its own future publication/closure.
+
+After those effects settle, report the pre-QC boundary and wait. If package QC is selected, assess the whole document set under DOCS-009, repair/recheck scoped blockers, publish the passing report and final checkbox, close/read back issue 9, explicitly merge/verify/publish documentation into main and then close/read back milestone 1. Implementation requires an authorized range and eligible phase activation after the preparation integration gate. Do not infer that authority from ready task documents.
+
+## Execution and transfer limits
+
+Current execution host is Linux bash with Node 24 and Python 3.12. No application dependencies or browsers were provisioned in document preparation; native Windows and real sidebar execution are unverified. Planned pytest/browser/package checks are defined by SPEC/PLAN/TASKS. The repository includes pinned SDD Manager tooling; credentials are separate excluded inputs and must never enter tracked evidence.

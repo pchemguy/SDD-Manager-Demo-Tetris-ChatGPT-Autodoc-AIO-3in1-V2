@@ -8,7 +8,7 @@
 - Tracking: enabled for documentation and implementation by existing root AGENTS.md. Preparation milestone 1 and issues 1 through 9 were created and their exact content and associations read back before repository modification.
 - Publication: every owned commit is pushed and its exact remote ref read back.
 - Reporting: concise Standard; Minimal and Explicit are available on request.
-- Next boundary: complete ARCHITECTURE through TASKS under autodoc preapproval, stopping before whole-package QC.
+- Next boundary: autodoc document pass complete through TASKS; stop before DOCS-009 whole-package QC.
 
 ## Scope sequence
 
@@ -25,7 +25,7 @@ One preparation pass covers the entire user-supplied scope. Delivery must start 
 | DOCS-005 | SPEC.md SHA-256 49025968001cdca10fefcbdba49b598b2f2634f23d53dd178eaa82d283ec42e9; spec/gameplay.md SHA-256 004a82bc93c62699c2f23552f22e77d07b7211e7c667b7e1d0a88db446b74b5b; spec/configuration.md SHA-256 dccc58076aab2084dd9a8fae9b62477654ec25b710036420d05abf05b5ff17e9; spec/files.md SHA-256 0bd9c4836ddc0890dcdb0dc9a10d0daf2180f7f7725f2221384192cdc2d930d2; spec/platforms.md SHA-256 e55042b5590ed1bc78a33230352ba25d9b77f3b43276b04fdb706af7c2ccbd6e; SPEC-REVIEW-REPORT.md SHA-256 a9b21a55944146d47f54e86eaeec3a8c20c8776341b965b198c7f1c60e7f8543. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
 | DOCS-006 | PLAN.md SHA-256 aa74bb2ebd9ee212a66bfb8eb9b94f480930e149e0cad4ce0ca0e31298e13147; PLAN-REVIEW-REPORT.md SHA-256 64f2c45b33e0d69e53933b90375351d7e9eb5d2a3dd41a28c2d983ea271c0921. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
 | DOCS-007 | layout.md SHA-256 03c30e7192959b846738accddaeed1e2a694b44ac13a0f6e1f857fa1b01c22c9; PLAN-REVIEW-REPORT.md SHA-256 157d35363a5ad5953b3584966f7e5f96c716123a3f6b56bfad4c82c86a9ccf89. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
-| DOCS-008 | Not started; autodoc preapproved. |
+| DOCS-008 | TASKS.md SHA-256 a17b99507ca55cb948e62411ecbff6fd581070df020f359e1c61407ee5becd64; TASKS-REVIEW-REPORT.md SHA-256 8c94cb26590410c6e5657da609588649c2751563256fa579fae7c15fe8a91f31. Accepted under autodoc preapproval after user-approved PROJECT. Scoped conformance and document-boundary review passed; report references accompany SPEC, PLAN and TASKS. |
 | DOCS-009 | Not selected; remains pending at the autodoc stop. |
 
 ## Approved material decisions
@@ -43,4 +43,10 @@ Approved with the brief on 2026-10-31: hide a straddling ghost if any occupied g
 
 ## Pending transitions
 
-DOCS-001 through DOCS-006 publication and issue closure/readback are verified. This DOCS-007 completion commit requires publication and issue 7 closure/readback before dependent progression. Whole-package QC, preparation integration and implementation are not selected. Stop after DOCS-008.
+DOCS-001 through DOCS-007 publication and issue closure/readback are verified. This DOCS-008 completion commit requires publication and issue 8 closure/readback before dependent progression. Whole-package QC, preparation integration and implementation are not selected. Stop after DOCS-008.
+
+## Document pass result
+
+PROJECT was approved by the user reply k on 2026-10-31. ARCHITECTURE, DECOMPOSITION, SPEC, PLAN, layout and TASKS are accepted under the selected autodoc preapproval. Scoped reports retain exact identities, initial findings and correction/recheck evidence. SPEC geometry/API-floor findings and TASKS dependency-range finding were resolved within delegated detail; no approved material interaction was changed.
+
+Delivery is planned in ten bounded phases and 47 tasks (37 delivery plus 10 phase reviews). No product source, implementation task closure, phase activation, release or package build has occurred. DOCS-009 stays unchecked and issue 9 / milestone 1 stay open. This final DOCS-008 commit requires publication and issue 8 closure/readback, then the workflow pauses. Whole-package QC and default-branch preparation integration require the next selected stage.
