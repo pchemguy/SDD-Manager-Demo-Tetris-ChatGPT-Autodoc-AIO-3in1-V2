@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Tetris \u2014 Shared Session",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Keyboard Tetris in a sidebar. Local settings and browser-session play.",
   "permissions": [
     "storage"

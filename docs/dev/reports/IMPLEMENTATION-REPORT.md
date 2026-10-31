@@ -36,3 +36,5 @@ No unresolved implementation contract violation or task remains. Milestone/phase
 ## Hosted CI compatibility follow-up
 
 The final hosted-status inspection found that ubuntu-latest had migrated to Ubuntu 26.04. Pinned Playwright 1.55.0 rejects chromium-headless-shell on ubuntu26.04-x64 before application build/tests run (Actions run 41203302393, job 124543256966). The workflow now pins supported Ubuntu 24.04, preserving dependency versions. Local package/full-suite evidence remains valid. The already published v0.10.0 source tag is retained; a compatibility patch release follows a fresh hosted run and exact-source rebuild.
+
+The compatibility maintenance version is v0.10.1. Browser provisioning, production build and the full hosted regression step now pass on the pinned 24.04 runner at 5e8c561; final Firefox/package and exact release-source checks are awaited at this commit snapshot. No gameplay, settings or file-format contract changes.
