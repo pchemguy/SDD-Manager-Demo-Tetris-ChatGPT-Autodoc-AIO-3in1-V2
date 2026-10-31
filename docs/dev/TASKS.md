@@ -129,7 +129,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 5 - Persistent settings
 
-- [ ] Phase 5 - Persistent settings
+- [x] Phase 5 - Persistent settings
     - [x] Milestone 5.1 - Browser setting continuity
         - [x] T-020 - Implement independent URL cookie and default resolution
             Verified: RED: driver compilation rejected missing resolver. GREEN: build:test and 17 mixed-source/all-key precedence cases pass, including malformed percent encoding, repeated/empty/case-invalid values, ambiguous cookies, encoded keys/values, explicit URL defaults and omitted-cookie retention. Resolver returns only valid explicit writes and per-key diagnostics without host mutation.
@@ -147,8 +147,9 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Depends on: T-020, T-021. Contracts: A-5/P-5.
             Acceptance/evidence: Verify 0.5.0 extracted build restores settings across reload with every precedence branch and preserves all prior gameplay behaviors; scores/files remain out of scope.
             Milestone exit: depends on all other milestone tasks T-020 through T-021; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/5/5.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 5.2 - Phase review
-        - [ ] T-023 - Review test and report phase 5
+    - [x] Milestone 5.2 - Phase review
+        - [x] T-023 - Review test and report phase 5
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 108 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-022, completion/verified closure of milestone 5.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/5/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 
