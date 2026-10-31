@@ -157,7 +157,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 - [ ] Phase 6 - Session leaderboard
     - [ ] Milestone 6.1 - Ranked completed games
-        - [ ] T-024 - Implement immutable completed results and ranking
+        - [x] T-024 - Implement immutable completed results and ranking
+            Verified: RED: driver compile rejected missing result validator/controller history API. GREEN: 19 result cases pass, plus 22 lock/settings regressions; compiled driver passes. Covers strict UUID/score/UTC real-date validation, unique IDs/count bounds, immutable top-ten score/time/ASCII ranking, zero-score completion exactly once, unfinished restart and old completion before late restart. Browser UUID port also works without secure-context randomUUID.
             Scope: src/app leaderboard/controller and tests/unit.
             Depends on: T-023. Contracts: F-1.
             Acceptance/evidence: Generate immutable lowercase UUIDs and real UTC completion timestamps once; rank score/time/id and truncate live results to ten, including zero/tied scores.
