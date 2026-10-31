@@ -41,7 +41,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 2 - Modern rules
 
-- [ ] Phase 2 - Modern rules
+- [x] Phase 2 - Modern rules
     - [x] Milestone 2.1 - Modern browser game
         - [x] T-006 - Implement seven-bag source and hold lifecycle
             Verified: RED: six independent bag/hold lifecycle cases failed against stub/no-hold behavior. GREEN: typecheck/build:test and 23 unit cases pass, including four seeded 28-draw bag sequences, once-per-piece hold, queue-preserving swap and blocked held spawn. Phase 2 activation and verified v0.1.0 hosted-byte predecessor evidence retained in HANDOFF.
@@ -69,8 +69,9 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Depends on: T-006, T-007, T-008, T-009. Contracts: A-2/G-3/G-4/G-5/P-5.
             Acceptance/evidence: Integrate modern capabilities with fixed defaults and visible bindings; verify actual 0.2.0 browser package, timing interactions and classic regressions.
             Milestone exit: depends on all other milestone tasks T-006 through T-009; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/2/2.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 2.2 - Phase review
-        - [ ] T-011 - Review test and report phase 2
+    - [x] Milestone 2.2 - Phase review
+        - [x] T-011 - Review test and report phase 2
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 48 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-010, completion/verified closure of milestone 2.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/2/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 
