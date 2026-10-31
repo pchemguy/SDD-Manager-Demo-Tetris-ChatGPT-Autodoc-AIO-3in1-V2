@@ -110,7 +110,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/app settings validator/controller and src/core policy command boundary.
             Depends on: T-015. Contracts: C-1/G-5.
             Acceptance/evidence: Validate all six enum domains/defaults; lock-policy toggles retain grounding history, expired deadlines lock, and hold/drop toggles preserve piece eligibility.
-        - [ ] T-017 - Expose six settings in the shared panel
+        - [x] T-017 - Expose six settings in the shared panel
+            Verified: RED: both new browser settings cases failed against absent controls. GREEN: compiled harness/production builds and nine real Chromium browser/renderer checks pass. Six labeled native selects apply immediately; next hides without queue mutation; hold/drop gating works; hiding retains values and focus clears held repeat. Only two gameplay buttons remain.
             Scope: src/ui settings panel and app command integration.
             Depends on: T-016. Contracts: C-1/U-1.
             Acceptance/evidence: All labels/controls reflect and immediately apply settings; hiding/repainting does not reset values; forms retain native keyboard behavior.

@@ -18,6 +18,7 @@ export function bindInput(app:Controller):{repeat:(now:number)=>void;clear:()=>v
   if(['left','right','down'].includes(type)&&app.state.status==='running')held.set(key,{type,next:performance.now()+(type==='down'?50:150)});
   if(type==='pause'||type==='start')clear();
  });
+ document.addEventListener('focusin',e=>{if(e.target instanceof HTMLElement&&e.target.closest('input,select,textarea,button,[contenteditable="true"]'))clear();});
  window.addEventListener('keyup',e=>{repeat(performance.now());held.delete(e.key);});
  window.addEventListener('blur',()=>{clear();app.dispatch({type:'pause'});});
  document.addEventListener('visibilitychange',()=>{if(document.hidden){clear();app.dispatch({type:'pause'});}});
