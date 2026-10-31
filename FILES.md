@@ -15,3 +15,9 @@ SQLite is an ordinary standalone SQLite 3 database. PRAGMA user_version is 1 and
 A validated restore commits host persistence before application state. If host writes fail, previous cookie values and URL are restored and read back. If rollback cannot be confirmed, the app reports that fact and blocks further persistence until reload/reconciliation; it does not falsely report success. Browser JavaScript cannot make cookies/history crash-atomic or recover inaccessible cookie expiry metadata. This does not weaken invalid-file non-mutation. File operations and settings edits are serialized from byte reading through completion, and temporary download URLs are released.
 
 All SQLite JavaScript/Wasm and schema assets are bundled locally. No file is uploaded, watched, synchronized or restored automatically. No backend or separate runtime installation is required.
+
+## Sidebar adaptation
+
+The same JSON/SQLite formats, schema, stable IDs, scores, UTC timestamps and complete validation apply in both extensions. Restore replaces the browser-session leaderboard and all six extension-local settings; it does not write cookies or change the panel URL. A valid explicit panel query value seeds local settings, while omitted/invalid values retain saved valid values then defaults. A secondary panel must explicitly take control before changing settings or restoring.
+
+Save and Restore use the browser's download/file-picker UI and require no backend. Valid Restore pauses the current game. The coordinator serializes the settings/session transaction and checks write readbacks; failures roll back previous values. If rollback cannot be confirmed, further ownership is blocked until extension reload. Invalid files never write either store. Restored results remain transient and clear when the browser session ends. Messages appear beside the sidebar file controls.

@@ -35,3 +35,6 @@ def test_unconfirmed_restore_rollback_blocks_further_ownership():
 
 def test_controller_recovery_freezes_away_time_and_gates_nonowner_commands():
  q=run('recovery');assert q['recovered']['status']=='paused' and q['recovered']['time']==0;assert q['resumed']['time']==100 and q['blocked']==q['resumed']
+
+def test_saved_setting_values_fall_back_independently():
+ q=run('storedConfig');assert q['settings']['ghost']=='dynamic' and q['settings']['hold']=='on';assert q['notice']

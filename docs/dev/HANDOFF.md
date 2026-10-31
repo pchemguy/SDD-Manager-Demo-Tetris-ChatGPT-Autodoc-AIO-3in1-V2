@@ -1,17 +1,5 @@
 # Development handoff
 
-## Authority and current checkpoint
+The user authorizes QC and full implementation T-001 through T-047 with tracking, phase integration, packages and releases. Phase 10 delivery milestone is implemented and verified: T-042 RED missing session/coordinator; GREEN strict stores, independent fallback, sequences, acknowledged ownership and rollback/recovery cases. T-043 manifest/API-family/gesture and cumulative build checks pass. T-044 geometry covers all 48 required sidebar width/text-scale/visibility combinations; full top-ten max-score data, keyboard, resize and screenshot checks pass. T-045/T-046 built-panel scenarios cover both API adapters, actual local Wasm under production CSP, both file formats, invalid-file non-mutation, owner/reopen/browser-session clearing, storage failures and delayed claim initialization. RED regressions for property-order readback, rollback blocking, per-setting corruption fallback and a claim/query acknowledgment race are fixed. Typecheck, test and all production builds pass. Focused package/store gates: 56 passed. Final full pytest: 348 passed, 2 explicitly unavailable native-Chromium checks skipped; this run uses actual extracted browser/extension ZIPs and real compatible-host Electron against the extracted Windows app resources. Firefox browser/renderer: 38 passed; final extension panel group: 10 passed. Four actual archives, source inventories, pinned Wasm/schema, manifest/CSP/API floors, PNG dimensions, all 72 Windows runtime hashes/x64 PE headers and checksum inventory pass. An initial parallel Firefox cold-navigation timeout passed in isolation; the bounded navigation allowance was corrected and the entire 46-case baseline group passed, followed by all 10 final panel cases.
 
-The user request Do QC and full implement authorizes all T-001 through T-047, tracking, phase integration, packages and releases. Preparation is integrated and its milestone closed. Working branch phase/9-windows-desktop was created from main 3c36c3fef148ecd63b53b17b7b1f2ee95f92e57f and integrates into main. Phase 9 delivery milestone is closed/read back; its phase review passes 290 pytest cases, compiler/build-driver and archive checks with code review/audit evidence in [phase report](reports/phases/9/PHASE-REPORT.md).
-
-## Pending effects and next action
-
-Publish/read back T-041, close its issue and review milestone, then explicitly merge/verify/publish to main. Rebuild from the exact default-branch release commit, tag, publish and verify hosted bytes/latest before activating the next phase. Full remaining implementation authority continues; no extra approval is required. This checkpoint cannot prove its future effects. TASKS and reports own actual task/evidence state.
-
-## Environment limits
-
-Linux execution with Node 24, Python 3.12, pytest and dedicated Playwright Chromium headless/Firefox builds. Firefox content sandbox recovery is process-local for trusted local pages. Native Windows and actual-sidebar checks remain separately reported; no unavailable mode is claimed verified.
-
-## Integration checkpoint
-
-Phase 9 source fa3b7ba400cfe7cdb679a813a7ec51c094f8b7d5 is merged into its recorded parent main 3c36c3fef148ecd63b53b17b7b1f2ee95f92e57f; all phase issues/milestones are closed/read back. Merged checks and publication precede the release marker/tag. Full remaining scope remains authorized.
+Review and limits: reports/phases/10/10.1.md. Publish/close the milestone's final delivery task, close its milestone, perform the separate phase review, then explicitly integrate to main, rebuild exact-source packages and verify tagged hosted release bytes/latest before activating the next phase. Continue the full authorized scope without another approval. Native Windows/sidebar limits remain distinct from shared renderer and archive checks.

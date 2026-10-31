@@ -270,7 +270,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 ## Phase 10 - Browser sidebars
 
 - [ ] Phase 10 - Browser sidebars
-    - [ ] Milestone 10.1 - Chromium and Firefox sidebars
+    - [x] Milestone 10.1 - Chromium and Firefox sidebars
         - [x] T-042 - Implement extension stores and single-owner sessions
             Verified: RED: missing coordinator/session modules failed test compilation. GREEN: build:test and 24 storage/ownership/session cases pass. Separate local settings and transient game/results, strict recovery validation, sequence rejection, acknowledged transfer, paused disconnect/reopen, browser-restart clearing, query fallback, write-failure non-advancement and coordinated Restore are verified. Background performs no gameplay transitions.
             Scope: src/platform/extensions storage/messaging/coordinator and tests/platforms.
@@ -291,7 +291,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/platform/extensions, controller/session integration and host scenarios.
             Depends on: T-044. Contracts: P-1/C-3/F-2.
             Acceptance/evidence: Close/focus loss and ownership transfer pause; reopen confirmed session snapshot paused with explicit resume, browser restart clears results, local settings survive, valid query seeds and both file flows preserve validation semantics.
-        - [ ] T-046 - Package and verify both sidebar extensions
+        - [x] T-046 - Package and verify both sidebar extensions
+            Verified: Version 0.10.0 all four actual archives and stable checksums pass runtime/source/manifest/CSP/API-floor/icon/PE gates. RED invalid-package, per-setting corruption and delayed ownership-claim regressions are fixed. Final full run: 348 passed, 2 unavailable native-Chromium probes skipped, using extracted browser/extension artifacts and actual extracted Windows app resources in Linux Electron; Firefox browser 38 and final panel 10 pass. A parallel cold-navigation timeout was isolated and the bounded fixture allowance verified. Whole-milestone review, packaged 280px visual check, complete install/file/CI guidance and explicit native Windows/sidebar/root-test limits are recorded in 10.1/HANDOFF. No blocker remains.
             Scope: extension packaging/lint/CSP checks, actual-host attempts, cumulative browser/Windows rebuilds and install docs.
             Depends on: T-042, T-043, T-044, T-045. Contracts: A-10/P-5.
             Acceptance/evidence: Verify 0.10.0 all four archives and local assets; attempt real sidebar launch/closure in isolated Chromium/Firefox and distinguish unavailable native/sidebar checks from panel-page fallback; signing/store status is explicit.

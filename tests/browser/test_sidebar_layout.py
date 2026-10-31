@@ -1,14 +1,17 @@
 """Shared panel-page geometry only; native sidebar lifecycle is tested separately."""
-import itertools,os
+import itertools,os,json
 from pathlib import Path
 import pytest
 from test_layout import text_overflow
 from test_panels import select_panels
+from test_files import restore
+from test_file_validation import full_candidate
 from playwright.sync_api import expect
 @pytest.mark.parametrize('width',[280,360,480])
 def test_sidebar_all_panels_resize_and_keyboard(page,width):
  page.evaluate("document.body.classList.add('sidebar')")
  page.set_viewport_size(dict(width=width,height=1000))
+ restore(page,json.dumps(full_candidate()).encode());expect(page.locator('#notice')).to_contain_text('Restored')
  page.locator('#start').click();page.keyboard.press('p');expect(page.locator('#state')).to_have_text('Paused')
  before=page.locator('#board').get_attribute('aria-label')
  for scale in [14,28]:

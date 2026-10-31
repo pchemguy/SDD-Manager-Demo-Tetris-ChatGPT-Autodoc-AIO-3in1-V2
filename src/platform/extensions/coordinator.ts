@@ -18,8 +18,12 @@ export class Coordinator{
  onChange:(view:View)=>void=()=>{};
  constructor(private local:Store,private transient:Store){this.ready=this.load();void this.ready.catch(()=>{});}
  private async load(){const [config,state]=await Promise.all([this.local.get('settings'),this.transient.get('session')]);
-  if(config!==undefined){const c=config as {formatVersion:number;settings:unknown};try{if(c.formatVersion!==1)throw Error();this.config={...validateSettings(c.settings,true)} as Settings;}catch{this.notice='Invalid saved settings; defaults applied.';}}
-  if(state!==undefined){const s=state as {formatVersion:number;generation:number;session:unknown};try{if(s.formatVersion!==1||!Number.isSafeInteger(s.generation)||s.generation<0)throw Error();this.saved=paused(s.session);this.generation=s.generation;this.notice='Recovered last confirmed session, paused. Recent unconfirmed input may be lost.';}catch{this.notice='Invalid session data; start a new game.';}}
+  if(config!==undefined){const c=config as {formatVersion:number;settings:Record<string,unknown>};try{
+   if(c.formatVersion!==1||!c.settings||typeof c.settings!=='object'||Array.isArray(c.settings))throw Error();
+   const invalid:string[]=[];for(const key of keys){if(isValue(key,c.settings[key]))Object.assign(this.config,{[key]:c.settings[key]});else invalid.push(key);}
+   if(invalid.length)this.notice='Invalid saved settings: '+invalid.join(', ')+'. Defaults applied only to those values.';
+  }catch{this.notice='Invalid saved settings record; defaults applied.';}}
+  if(state!==undefined){const s=state as {formatVersion:number;generation:number;session:unknown};try{if(s.formatVersion!==1||!Number.isSafeInteger(s.generation)||s.generation<0)throw Error();this.saved=paused(s.session);this.generation=s.generation;this.notice=[this.notice,'Recovered last confirmed session, paused. Recent unconfirmed input may be lost.'].filter(Boolean).join(' ');}catch{this.notice='Invalid session data; start a new game.';}}
  }
  private serial<T>(fn:()=>Promise<T>):Promise<T>{const p=this.writes.then(async()=>{await this.ready;return fn();});this.writes=p.catch(()=>{});return p;}
  async view():Promise<View>{await this.ready;return structuredClone({owner:this.owner,generation:this.generation,session:this.saved,settings:this.config,notice:this.notice});}
