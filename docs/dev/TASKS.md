@@ -269,7 +269,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 10 - Browser sidebars
 
-- [ ] Phase 10 - Browser sidebars
+- [x] Phase 10 - Browser sidebars
     - [x] Milestone 10.1 - Chromium and Firefox sidebars
         - [x] T-042 - Implement extension stores and single-owner sessions
             Verified: RED: missing coordinator/session modules failed test compilation. GREEN: build:test and 24 storage/ownership/session cases pass. Separate local settings and transient game/results, strict recovery validation, sequence rejection, acknowledged transfer, paused disconnect/reopen, browser-restart clearing, query fallback, write-failure non-advancement and coordinated Restore are verified. Background performs no gameplay transitions.
@@ -297,8 +297,9 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Depends on: T-042, T-043, T-044, T-045. Contracts: A-10/P-5.
             Acceptance/evidence: Verify 0.10.0 all four archives and local assets; attempt real sidebar launch/closure in isolated Chromium/Firefox and distinguish unavailable native/sidebar checks from panel-page fallback; signing/store status is explicit.
             Milestone exit: depends on all other milestone tasks T-042 through T-045; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/10/10.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 10.2 - Phase review
-        - [ ] T-047 - Review test and report phase 10
+    - [x] Milestone 10.2 - Phase review
+        - [x] T-047 - Review test and report phase 10
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 348 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-046, completion/verified closure of milestone 10.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/10/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
             Final scope: also write docs/dev/reports/IMPLEMENTATION-REPORT.md aggregating full-task-list outcome, all unresolved/deferred milestone/phase TODOs, proposed solutions and native/sidebar verification limits.
