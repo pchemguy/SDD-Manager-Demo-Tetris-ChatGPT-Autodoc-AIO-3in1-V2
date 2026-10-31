@@ -48,7 +48,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/core source/reducer and tests/unit.
             Depends on: T-005. Contracts: G-3.
             Acceptance/evidence: Each bag is a seven-piece permutation with seeded fixtures; hold consumes/swaps with correct spawn, once-per-piece eligibility and blocked-spawn game-over.
-        - [ ] T-007 - Implement SRS rotation and kick candidates
+        - [x] T-007 - Implement SRS rotation and kick candidates
+            Verified: RED: four independent I/T wall/floor fixtures failed with in-place-only rotation; blocked rotation already passed. GREEN: typecheck/build:test and 28 unit cases pass. Verified ordered screen-coordinate SRS offsets, distinct I behavior and rejection when every candidate is occupied; geometry/reducer/hold regressions remain green.
             Scope: src/core geometry/rotation data and tests/unit.
             Depends on: T-006. Contracts: G-3.
             Acceptance/evidence: Fixed both-direction I/JLSTZ wall/floor/rejection fixtures establish pivots and ordered kicks; O remains stationary and all active bounds hold.

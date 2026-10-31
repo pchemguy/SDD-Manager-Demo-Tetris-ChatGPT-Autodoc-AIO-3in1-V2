@@ -1,5 +1,6 @@
 /** Pure classic game transitions; only explicit commands advance game time. */
 import {emptyBoard,cells,valid,type Board,type Piece,type Kind} from './geometry.js';
+import {rotate} from './rotation.js';
 import {next} from './source.js';
 export interface GameState{board:Board;piece:Piece|null;status:'idle'|'running'|'paused'|'game-over';score:number;lines:number;level:number;time:number;gravityAt:number;seed:number;queue:Kind[];holdKind:Kind|null;heldUsed:boolean}
 export type Command={type:string;ms?:number;seed?:number};
@@ -44,7 +45,7 @@ export function reduce(state:GameState,action:Command):{state:GameState;events:G
  else if(action.type==='left'||action.type==='right'){
   const next={...s.piece,x:s.piece.x+(action.type==='left'?-1:1)};if(valid(s.board,next))s.piece=next;
  }else if(action.type==='cw'||action.type==='ccw'){
-  const next={...s.piece,rotation:(s.piece.rotation+(action.type==='cw'?1:3))%4};if(valid(s.board,next))s.piece=next;
+  s.piece=rotate(s.board,s.piece,action.type==='cw'?1:-1);
  }
  return{state:s,events};
 }
