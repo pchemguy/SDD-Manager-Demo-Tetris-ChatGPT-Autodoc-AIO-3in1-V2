@@ -1,5 +1,6 @@
 /** Pure classic game transitions; only explicit commands advance game time. */
 import {emptyBoard,cells,valid,type Board,type Piece,type Kind} from './geometry.js';
+import {landing} from './landing.js';
 import {rotate} from './rotation.js';
 import {next} from './source.js';
 export interface GameState{board:Board;piece:Piece|null;status:'idle'|'running'|'paused'|'game-over';score:number;lines:number;level:number;time:number;gravityAt:number;seed:number;queue:Kind[];holdKind:Kind|null;heldUsed:boolean}
@@ -38,6 +39,8 @@ export function reduce(state:GameState,action:Command):{state:GameState;events:G
   const target=s.time+ms;
   while(s.status==='running'&&s.gravityAt<=target){s.time=s.gravityAt;down(s,events,false);if(s.gravityAt<=s.time)s.gravityAt=s.time+interval(s.level);}
   if(s.status==='running')s.time=target;
+ }else if(action.type==='hardDrop'){
+  const target=landing(s.board,s.piece);add(s,(target.y-s.piece.y)*2);s.piece=target;
  }else if(action.type==='hold'&&!s.heldUsed){
   const outgoing=s.piece.kind,stored=s.holdKind;s.holdKind=outgoing;s.heldUsed=true;
   if(stored){s.piece={kind:stored,rotation:0,x:3,y:-1};if(!valid(s.board,s.piece))complete(s,events);}else spawn(s,events);

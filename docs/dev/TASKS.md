@@ -53,7 +53,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/core geometry/rotation data and tests/unit.
             Depends on: T-006. Contracts: G-3.
             Acceptance/evidence: Fixed both-direction I/JLSTZ wall/floor/rejection fixtures establish pivots and ordered kicks; O remains stationary and all active bounds hold.
-        - [ ] T-008 - Implement shared landing ghost and hard drop
+        - [x] T-008 - Implement shared landing ghost and hard drop
+            Verified: RED: four landing/drop integration scenarios failed against unchanged landing/no-drop behavior. GREEN: typecheck/build:test and 32 unit cases pass. Verified first-blocker landing, ghost/drop destination agreement, exact distance points, zero repeat-drop points and separate counterclockwise I/T wall-kick-to-floor scenarios. General drop does not lock merely because landing search ends.
             Scope: src/core landing/drop reducer and focused controller tests.
             Depends on: T-007. Contracts: G-4.
             Acceptance/evidence: Ghost/drop share a collision-free landing; drop points use actual distance and repeat drop adds zero; hard drop using general policy does not lock merely because search ends.
