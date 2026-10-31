@@ -219,7 +219,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 - [ ] Phase 8 - Browser workspace
     - [ ] Milestone 8.1 - Centered five-panel workspace
-        - [ ] T-034 - Arrange the symmetric browser workspace
+        - [x] T-034 - Arrange the symmetric browser workspace
+            Verified: RED: all five viewport cases failed board centering. GREEN: compiler/test/production builds and five geometry scenarios pass at 640/960/1280/1600/1920, each with default and doubled text. Equal 468px side reservations center the fixed board; compact info remains beside it, optional panels stay ordered and reachable via workspace-only horizontal scrolling. Header/notices remain outside the scroller. Actual text-range checks find no panel overflow; focus/resize/toggles recenter without game reset.
             Scope: src/ui layout/styles and responsive geometry checks.
             Depends on: T-033. Contracts: U-1.
             Acceptance/evidence: Place leaderboard/info/board/settings/help in order, preserve fixed board center and reachable information at specified browser widths/text scale without overlap.
