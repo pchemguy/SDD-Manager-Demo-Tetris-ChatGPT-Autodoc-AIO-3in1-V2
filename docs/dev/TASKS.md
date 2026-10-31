@@ -224,7 +224,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/ui layout/styles and responsive geometry checks.
             Depends on: T-033. Contracts: U-1.
             Acceptance/evidence: Place leaderboard/info/board/settings/help in order, preserve fixed board center and reachable information at specified browser widths/text scale without overlap.
-        - [ ] T-035 - Integrate independent optional-panel toggles
+        - [x] T-035 - Integrate independent optional-panel toggles
+            Verified: RED: native panel test found only two visibility toggles. GREEN: builds and nine panel/settings/layout cases pass. Exactly three aria-linked target toggles precede Start/Restart and Pause/Start; all eight combinations keep board centered and preserve paused game, settings, results, cookies and URL. Hiding settings hides Save/Restore. Native select keys do not move/restart play. HUD/select/preview updates now avoid unchanged DOM assignments, preserving native focus and reducing repaint work.
             Scope: src/ui information panel/panel state and browser input tests.
             Depends on: T-034. Contracts: U-1.
             Acceptance/evidence: Exactly three visibility toggles sit above the two gameplay buttons; each changes only its target and hiding settings hides both file controls; settings/board state remain intact.
