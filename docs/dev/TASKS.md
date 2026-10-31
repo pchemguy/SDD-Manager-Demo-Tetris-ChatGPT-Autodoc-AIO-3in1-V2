@@ -181,31 +181,37 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 7 - Manual file exchange
 
-- [ ] Phase 7 - Manual file exchange
-    - [ ] Milestone 7.1 - Versioned JSON and SQLite
-        - [ ] T-028 - Define the shared snapshot validator and JSON Schema
+- [x] Phase 7 - Manual file exchange
+    - [x] Milestone 7.1 - Versioned JSON and SQLite
+        - [x] T-028 - Define the shared snapshot validator and JSON Schema
+            Verified: RED: compiled driver rejected missing snapshot API. GREEN: build:test and 60 shared-corpus cases pass against complete runtime validation and independent Draft 2020-12 schema validation with explicit real UTC format checks plus unique-ID semantics. Covers exact required fields, unknown data, all six setting domains, safe scores, UUIDs, dates, duplicate IDs/count limits, detached input and post-validation ranking. No host mutation or runtime eval compiler is introduced.
             Scope: src/app snapshot validator, schemas/tetris-save.schema.json and tests/codecs.
             Depends on: T-027. Contracts: F-1/F-3.
             Acceptance/evidence: Validate exact root/result/settings fields, enums, safe scores, UUIDs, real canonical UTC dates, duplicate IDs and ten-result limit; schema and semantic validator agree on a shared corpus.
-        - [ ] T-029 - Implement strict JSON interchange and restore staging
+        - [x] T-029 - Implement strict JSON interchange and restore staging
+            Verified: RED: driver compile rejected missing JSON/file transaction/rollback APIs. GREEN: compiler and 119 snapshot/JSON/settings/lock/result cases pass. Strict UTF-8/single BOM, duplicate decoded keys, syntax and 2 MiB validation precede effects. Invalid candidates write nothing; validated restore pauses and atomically replaces app settings/results after six-key host commit; partial write rollback, explicit blocked rollback failure, concurrent-operation/setting guards, finally cleanup and immutable async export capture pass.
             Scope: src/codecs JSON parser and src/app import/export transaction.
             Depends on: T-028. Contracts: F-2/F-3/F-5.
             Acceptance/evidence: Reject duplicate JSON member names before schema validation; export one immutable candidate; invalid decode/validation writes nothing and injected host failures keep original application state with explicit rollback reporting.
-        - [ ] T-030 - Implement the SQLite versioned codec
+        - [x] T-030 - Implement the SQLite versioned codec
+            Verified: RED: driver compilation rejected missing SQLite codec; review regression reproduced a grouping-based score-CHECK bypass, now fixed with a constrained expression parser. GREEN: 33 SQLite cases pass; prior combined codec suite passed 109 before two added schema cases. Actual SQLite bytes round-trip empty/full/max-score histories and are inspected by Python sqlite3. Exact metadata/columns/ordinary tables, semantic bounds, integrity/storage classes and rows are validated with fixed queries and finally-close. Pinned sql.js 1.14.2 local Wasm/schema asset bytes match production copies; builds and notices pass. UI binding follows T-031.
             Scope: src/codecs SQLite loader, local runtime bundling and tests/codecs.
             Depends on: T-029. Contracts: F-4.
             Acceptance/evidence: Export actual SQLite 3 bytes with exact tables, six unique settings, metadata and bound inserts; validate schema/storage classes/integrity and close isolated databases on errors; inspect exports independently with Python sqlite3.
-        - [ ] T-031 - Integrate manual Save Restore and format choice
+        - [x] T-031 - Integrate manual Save Restore and format choice
+            Verified: RED: both real-browser file tests failed against absent controls; delayed file-read regression also reproduced unlocked settings before decode. GREEN: type/test/production builds, 19 browser/renderer checks and 18 JSON/transaction regressions pass. One Save/Restore pair and format select sit at settings bottom; actual downloads/JSON-SQLite restore, content detection, all-six cookie/query writes, game-preserving pause, invalid/cancel/oversize non-mutation and hide behavior pass. Byte reading now starts inside the serialized operation gate; controls and settings lock through read/decode/commit, with finally cleanup and object-URL release.
             Scope: src/ui settings file controls, controller serialization and browser file port.
             Depends on: T-030. Contracts: F-2/F-5.
             Acceptance/evidence: One Save/Restore pair is at the bottom of settings; format choice/download/picker, cancellation, size/encoding detection, success pause and all-six persistence updates work without extra gameplay buttons.
-        - [ ] T-032 - Package and verify cross-format file exchange
+        - [x] T-032 - Package and verify cross-format file exchange
+            Verified: Version 0.7.0 full pytest 249 passed, Firefox 22 passed, extracted actual browser package 20 passed; type/build/archive/source checks pass. Complete malformed corpus compares application/results/settings/cookies/URL before/after rejection; full/empty JSON-SQLite equality and independent SQLite inspection preserve IDs/UTC/safe scores. Strict-CSP local-Wasm operation passes. RED missing/corrupt runtime/schema archives now fail pinned byte gates. Whole-milestone review, fixes, guide and explicit host/native limits recorded in 7.1 report/HANDOFF; no blockers.
             Scope: browser build/local codec/schema assets, tests/codecs/browser and file guide.
             Depends on: T-028, T-029, T-030, T-031. Contracts: A-7/F-6/P-5.
             Acceptance/evidence: Verify 0.7.0 package round trips empty/full files, semantic JSON/SQLite equality and malformed corpus; compare results/settings/cookies/URL unchanged on every rejection and verify successful Restore readback.
             Milestone exit: depends on all other milestone tasks T-028 through T-031; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/7/7.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 7.2 - Phase review
-        - [ ] T-033 - Review test and report phase 7
+    - [x] Milestone 7.2 - Phase review
+        - [x] T-033 - Review test and report phase 7
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 249 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-032, completion/verified closure of milestone 7.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/7/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 

@@ -1,17 +1,21 @@
 {
   "name": "tetris-cross-platform",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "type": "module",
   "license": "MIT",
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build:test": "tsc && vite build --config tests/support/vite.renderer.config.ts",
-    "build": "vite build --outDir dist/browser --base ./"
+    "build": "node scripts/prepare-assets.mjs && vite build --outDir dist/browser --base ./"
   },
   "devDependencies": {
     "@types/node": "24.0.0",
+    "@types/sql.js": "1.4.11",
     "typescript": "5.9.3",
     "vite": "7.1.12"
+  },
+  "dependencies": {
+    "sql.js": "1.14.2"
   }
 }

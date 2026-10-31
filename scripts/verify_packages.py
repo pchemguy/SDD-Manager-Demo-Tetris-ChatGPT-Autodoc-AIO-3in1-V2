@@ -38,6 +38,11 @@ def verify(directory):
             if name == 'tetris-browser.zip':
                 for required in ['index.html', 'INSTALL.md', 'THIRD-PARTY-NOTICES.md', 'LICENSE', 'build-info.json']:
                     if required not in members: raise ValueError('Missing '+required)
+                if int(version.split('.')[1])>=7:
+                    for resource in ['runtime/sql-wasm.wasm','schemas/tetris-save.schema.json']:
+                        if resource not in members:raise ValueError('Missing file runtime resource '+resource)
+                    if z.read('runtime/sql-wasm.wasm')!=(ROOT/'node_modules/sql.js/dist/sql-wasm.wasm').read_bytes():raise ValueError('Wrong SQLite Wasm runtime')
+                    if z.read('schemas/tetris-save.schema.json')!=(ROOT/'schemas/tetris-save.schema.json').read_bytes():raise ValueError('Wrong save schema resource')
                 data = json.loads(z.read('build-info.json'))
                 if data['version'] != version or not re.fullmatch('[a-f0-9]{40}', data['sourceCommit']): raise ValueError('Wrong build identity')
                 if any(b'renderFixture' in z.read(n) for n in members if n.endswith('.js')): raise ValueError('Development renderer harness in runtime code')

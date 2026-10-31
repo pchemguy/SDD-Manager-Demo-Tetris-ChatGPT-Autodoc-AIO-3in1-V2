@@ -11,7 +11,7 @@ def package_browser():
     source = ROOT/'dist/browser'
     if not (source/'index.html').is_file(): raise RuntimeError('Build the production browser bundle first')
     files = {p.relative_to(source).as_posix(): p.read_bytes() for p in source.rglob('*') if p.is_file()}
-    for name in ['INSTALL.md', 'THIRD-PARTY-NOTICES.md', 'LICENSE']: files[name] = (ROOT/name).read_bytes()
+    for name in ['INSTALL.md', 'THIRD-PARTY-NOTICES.md', 'LICENSE', 'FILES.md']: files[name] = (ROOT/name).read_bytes()
     metadata = {'version': json.loads((ROOT/'package.json').read_text())['version'], 'sourceCommit': subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip(), 'dirty': bool(subprocess.check_output(['git','status','--porcelain','--untracked-files=no'], cwd=ROOT))}
     files['build-info.json'] = (json.dumps(metadata, sort_keys=True)+'\n').encode()
     path = output/'tetris-browser.zip'
