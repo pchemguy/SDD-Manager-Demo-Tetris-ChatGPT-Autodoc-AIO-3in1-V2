@@ -218,7 +218,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 ## Phase 8 - Browser workspace
 
 - [ ] Phase 8 - Browser workspace
-    - [ ] Milestone 8.1 - Centered five-panel workspace
+    - [x] Milestone 8.1 - Centered five-panel workspace
         - [x] T-034 - Arrange the symmetric browser workspace
             Verified: RED: all five viewport cases failed board centering. GREEN: compiler/test/production builds and five geometry scenarios pass at 640/960/1280/1600/1920, each with default and doubled text. Equal 468px side reservations center the fixed board; compact info remains beside it, optional panels stay ordered and reachable via workspace-only horizontal scrolling. Header/notices remain outside the scroller. Actual text-range checks find no panel overflow; focus/resize/toggles recenter without game reset.
             Scope: src/ui layout/styles and responsive geometry checks.
@@ -229,7 +229,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/ui information panel/panel state and browser input tests.
             Depends on: T-034. Contracts: U-1.
             Acceptance/evidence: Exactly three visibility toggles sit above the two gameplay buttons; each changes only its target and hiding settings hides both file controls; settings/board state remain intact.
-        - [ ] T-036 - Package and verify all panel combinations
+        - [x] T-036 - Package and verify all panel combinations
+            Verified: Version 0.8.0 full pytest 261 passed, Firefox 34 passed, extracted browser package 32 passed; compiler/build/archive checks pass. All 80 width/text-scale/panel combinations preserve center/state with full max-score rows and no text overlap. Wide and enlarged-narrow screenshots were inspected; compact info and help wording repaired. Whole-milestone review, native limits and no blockers recorded in 8.1 report/HANDOFF.
             Scope: browser package, layout screenshots/geometry checks and controls guide.
             Depends on: T-034, T-035. Contracts: A-8/P-5.
             Acceptance/evidence: Verify 0.8.0 actual build at all five widths and eight optional-panel combinations, native focus behavior and complete gameplay/persistence/file regressions.

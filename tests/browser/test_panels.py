@@ -1,7 +1,6 @@
 """Three independent panel toggles precede exactly two native gameplay controls."""
 import itertools
 from playwright.sync_api import expect
-from test_layout import geometry,text_overflow
 from test_files import observable
 TARGETS=['leaderboard','settings','help']
 

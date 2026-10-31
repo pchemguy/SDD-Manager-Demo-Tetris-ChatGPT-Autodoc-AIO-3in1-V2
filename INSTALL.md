@@ -19,3 +19,7 @@ Clearing four rows awards one penetrator bonus, up to three. An activated piece 
 ## Settings continuity
 
 Use canonical query keys ghost, hardDrop, next, hardDropLock, lock and hold. For example, ?ghost=dynamic&lock=interval&hardDropLock=immediate selects a dynamic ghost and immediate hard-drop locking. Each valid explicit parameter overrides its saved tetris_ cookie, which overrides the default. Invalid/duplicate values fall back independently with a status message. Settings changes update that key's cookie and URL; omitted keys retain their cookies. Use the same origin/profile to reopen saved settings. Cookie restrictions may prevent continuity and produce a warning. The session leaderboard keeps only the ten best completed games and clears on page reload. Scores are not written to cookies or persistent storage. Manual JSON/SQLite Save and Restore are available at the bottom of Settings. See FILES.md in this package. Restored scores remain session-only; restoring settings updates cookies and URL values.
+
+## Panel layout
+
+Use the three information-panel toggles to show/hide leaderboard, settings and controls/help. The board and information panel remain available. At narrow window widths, scroll horizontally within the workspace to reach optional panels; the board recenters on resize, panel toggles and board focus. Settings and files retain their state when hidden.
