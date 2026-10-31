@@ -1,6 +1,6 @@
 # Tetris
 
-A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. All six settings support URL/cookie persistence. File persistence, Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
+A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. All six settings support URL/cookie persistence. Session-only top-ten completed-game history is implemented. File persistence, Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
 
 ## Play and controls
 
@@ -44,3 +44,7 @@ A four-line clear awards one penetrator activation, up to three. Press X to acti
 ## Gameplay settings
 
 The settings panel exposes ghost visibility (hide/dynamic/show), hard drop, next preview, hard-drop lock (general/immediate), general lock (failed attempt/full interval) and hold. Defaults show the ghost and preview, enable hold/drop and use full-interval locking. Changes apply immediately; switching lock policy retains grounding history. The intermediate v0.4.0 release kept settings only in page memory. The current release resolves each setting independently from a valid explicit URL parameter, then a saved cookie, then its default. Invalid inputs fall back with a diagnostic. Explicit URL values, including defaults, update their cookies; omitted parameters retain saved values. User changes update that setting in both cookies and the current URL, preserving unrelated parameters and fragments. Cookies last one year where permitted; blocked persistence is reported while the selected setting remains usable in the current page.
+
+## Session leaderboard
+
+Completed games enter the top ten ranked by score descending, UTC completion time ascending and stable lowercase UUID ascending. Each result is recorded once; restarting an unfinished game adds nothing. History stays in this page session, survives panel toggles and restarts, and clears on reload. Configuration cookies never contain scores.

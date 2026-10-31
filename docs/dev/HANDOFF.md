@@ -1,17 +1,5 @@
 # Development handoff
 
-## Authority and current checkpoint
+The user authorizes QC and full implementation T-001 through T-047 with tracking, phase integration, packages and releases. Phase 6 delivery milestone is implemented and verified: T-024 RED missing result APIs; GREEN 19 validation/ranking/controller/HTTP-compatible UUID cases and 22 lock/settings regressions. T-025 RED missing real-game completion row; GREEN keyboard completion, once-only insertion, hidden retention and reload distinction. Current full pytest 129 passed; Firefox browser/renderer 16 passed; extracted actual browser package 14 passed. Twelve real completed games retain exactly ten rows with unique IDs and descending scores, no Storage I/O, unchanged cookie/URL state and no external runtime requests. Compiler, production/test builds and archive checks pass.
 
-The user request Do QC and full implement authorizes all T-001 through T-047, tracking, phase integration, packages and releases. Preparation is integrated and its milestone closed. Working branch phase/5-persistent-settings was created from main 25a3a6c5bb9e55016fa885a00f1be176b9aee1f4 and integrates into main. Phase 5 delivery milestone is closed/read back; its phase review passes 108 pytest cases, compiler/build-driver and archive checks with code review/audit evidence in [phase report](reports/phases/5/PHASE-REPORT.md).
-
-## Pending effects and next action
-
-Publish/read back T-023, close its issue and review milestone, then explicitly merge/verify/publish to main. Rebuild from the exact default-branch release commit, tag, publish and verify hosted bytes/latest before activating the next phase. Full remaining implementation authority continues; no extra approval is required. This checkpoint cannot prove its future effects. TASKS and reports own actual task/evidence state.
-
-## Environment limits
-
-Linux execution with Node 24, Python 3.12, pytest and dedicated Playwright Chromium headless/Firefox builds. Firefox content sandbox recovery is process-local for trusted local pages. Native Windows and actual-sidebar checks remain separately reported; no unavailable mode is claimed verified.
-
-## Integration checkpoint
-
-Phase 5 source cc876dd77a611a80397011a3d2ff734b43d6aae4 is merged into its recorded parent main 25a3a6c5bb9e55016fa885a00f1be176b9aee1f4; all phase issues/milestones are closed/read back. Merged checks and publication precede the release marker/tag. Full remaining scope remains authorized.
+Review and limits: reports/phases/6/6.1.md. Publish/close the milestone's final delivery task, close its milestone, perform the separate phase review, then explicitly integrate to main, rebuild exact-source packages and verify tagged hosted release bytes/latest before activating the next phase. Continue the full authorized scope without another approval. Native Windows/sidebar limits remain distinct from shared renderer and archive checks.

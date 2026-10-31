@@ -156,7 +156,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 ## Phase 6 - Session leaderboard
 
 - [ ] Phase 6 - Session leaderboard
-    - [ ] Milestone 6.1 - Ranked completed games
+    - [x] Milestone 6.1 - Ranked completed games
         - [x] T-024 - Implement immutable completed results and ranking
             Verified: RED: driver compile rejected missing result validator/controller history API. GREEN: 19 result cases pass, plus 22 lock/settings regressions; compiled driver passes. Covers strict UUID/score/UTC real-date validation, unique IDs/count bounds, immutable top-ten score/time/ASCII ranking, zero-score completion exactly once, unfinished restart and old completion before late restart. Browser UUID port also works without secure-context randomUUID.
             Scope: src/app leaderboard/controller and tests/unit.
@@ -167,7 +167,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/ui leaderboard and controller completion events.
             Depends on: T-024. Contracts: F-1/U-1.
             Acceptance/evidence: Update displayed top ten on completed games only, reject duplicate completion insertion, preserve IDs and exclude unfinished restarts; reload clears browser session history.
-        - [ ] T-026 - Package and verify session score history
+        - [x] T-026 - Package and verify session score history
+            Verified: Version 0.6.0 compiler/build/archive checks pass; full pytest 129 passed, Firefox 16 passed, extracted browser package 14 passed. Twelve completed real keyboard games retain ten correctly ranked unique results with no persistent score storage, cookie/URL mutations or external runtime requests. Whole-milestone review and limits recorded in 6.1 report/HANDOFF; no blockers.
             Scope: browser package and completed-game integration fixtures/docs.
             Depends on: T-024, T-025. Contracts: A-6/P-5.
             Acceptance/evidence: Verify 0.6.0 ranking, timestamp display, stable identities and reload clearing without persistent score writes; configurations still restore independently.
