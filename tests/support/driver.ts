@@ -1,4 +1,5 @@
 /** Deterministic subprocess bridge; excluded from production bundles. */
+import {validateSnapshot} from '../../src/app/snapshot.js';
 import {newID} from '../../src/platform/browser/host.js';
 import {rank,validateResults} from '../../src/app/results.js';
 import {resolveSettings} from '../../src/app/resolve-settings.js';
@@ -11,7 +12,8 @@ import * as game from '../../src/core/game.js';
 import * as geometry from '../../src/core/geometry.js';
 function testResultHost(){let n=0;return{id:()=>`00000000-0000-4000-8000-${String(++n).padStart(12,'0')}`,timestamp:()=>"2026-01-01T00:00:00.000Z"};}
 const q=JSON.parse(readFileSync(0,'utf8'));
-if(q.op==='hostIDs'){Object.defineProperty(crypto,'randomUUID',{value:undefined});console.log(JSON.stringify(Array.from({length:100},()=>newID())));}
+if(q.op==='snapshot'){try{const before=JSON.stringify(q.document),snapshot=validateSnapshot(q.document);console.log(JSON.stringify({snapshot,immutable:before===JSON.stringify(q.document)}));}catch(e){console.log(JSON.stringify({error:String(e)}));}}
+else if(q.op==='hostIDs'){Object.defineProperty(crypto,'randomUUID',{value:undefined});console.log(JSON.stringify(Array.from({length:100},()=>newID())));}
 else if(q.op==='results'){try{const input=q.results,copy=JSON.stringify(input);const results=q.rank?rank(input):validateResults(input);console.log(JSON.stringify({results,immutable:copy===JSON.stringify(input)}));}catch(e){console.log(JSON.stringify({error:String(e)}));}}
 else if(q.op==='session'){let now=0,n=0;const app=new Controller(()=>1,()=>now,{id:()=>`00000000-0000-4000-8000-${String(++n).padStart(12,'0')}`,timestamp:()=>new Date(Date.UTC(2026,0,1)+now).toISOString()});for(const step of q.steps){now=step.at??now;if(step.settings)app.updateSettings(step.settings);else if(step.tick)app.tick();else app.dispatch(step.command);}const copy=app.results;if(copy[0])copy[0].score=123456;console.log(JSON.stringify({state:app.state,results:app.results,settings:app.settings}));}
 else if(q.op==='resolveSettings')console.log(JSON.stringify(resolveSettings(q.search??'',q.cookie??'')));

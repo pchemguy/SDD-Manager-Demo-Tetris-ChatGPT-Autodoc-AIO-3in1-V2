@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tetris:save:v1",
+  "title": "Tetris manual save version 1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formatVersion",
+    "results",
+    "settings"
+  ],
+  "properties": {
+    "formatVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "results": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "score",
+          "timestamp"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+          },
+          "score": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "timestamp": {
+            "type": "string",
+            "pattern": "^(?!0000)[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ghost",
+        "hardDrop",
+        "next",
+        "hardDropLock",
+        "lock",
+        "hold"
+      ],
+      "properties": {
+        "ghost": {
+          "type": "string",
+          "enum": [
+            "hide",
+            "dynamic",
+            "show"
+          ]
+        },
+        "hardDrop": {
+          "type": "string",
+          "enum": [
+            "on",
+            "off"
+          ]
+        },
+        "next": {
+          "type": "string",
+          "enum": [
+            "on",
+            "off"
+          ]
+        },
+        "hardDropLock": {
+          "type": "string",
+          "enum": [
+            "general",
+            "immediate"
+          ]
+        },
+        "lock": {
+          "type": "string",
+          "enum": [
+            "failed",
+            "interval"
+          ]
+        },
+        "hold": {
+          "type": "string",
+          "enum": [
+            "on",
+            "off"
+          ]
+        }
+      }
+    }
+  },
+  "$comment": "Also require real canonical UTC timestamp round trips, unique result IDs and duplicate-member lexical rejection. Runtime validators enforce the complete structure before commit; schema validation alone cannot detect duplicate names after parsing."
+}

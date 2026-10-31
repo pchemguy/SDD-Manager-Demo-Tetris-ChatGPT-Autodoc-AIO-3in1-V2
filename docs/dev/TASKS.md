@@ -183,7 +183,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 - [ ] Phase 7 - Manual file exchange
     - [ ] Milestone 7.1 - Versioned JSON and SQLite
-        - [ ] T-028 - Define the shared snapshot validator and JSON Schema
+        - [x] T-028 - Define the shared snapshot validator and JSON Schema
+            Verified: RED: compiled driver rejected missing snapshot API. GREEN: build:test and 60 shared-corpus cases pass against complete runtime validation and independent Draft 2020-12 schema validation with explicit real UTC format checks plus unique-ID semantics. Covers exact required fields, unknown data, all six setting domains, safe scores, UUIDs, dates, duplicate IDs/count limits, detached input and post-validation ranking. No host mutation or runtime eval compiler is introduced.
             Scope: src/app snapshot validator, schemas/tetris-save.schema.json and tests/codecs.
             Depends on: T-027. Contracts: F-1/F-3.
             Acceptance/evidence: Validate exact root/result/settings fields, enums, safe scores, UUIDs, real canonical UTC dates, duplicate IDs and ten-result limit; schema and semantic validator agree on a shared corpus.
