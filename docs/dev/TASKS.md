@@ -217,7 +217,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 8 - Browser workspace
 
-- [ ] Phase 8 - Browser workspace
+- [x] Phase 8 - Browser workspace
     - [x] Milestone 8.1 - Centered five-panel workspace
         - [x] T-034 - Arrange the symmetric browser workspace
             Verified: RED: all five viewport cases failed board centering. GREEN: compiler/test/production builds and five geometry scenarios pass at 640/960/1280/1600/1920, each with default and doubled text. Equal 468px side reservations center the fixed board; compact info remains beside it, optional panels stay ordered and reachable via workspace-only horizontal scrolling. Header/notices remain outside the scroller. Actual text-range checks find no panel overflow; focus/resize/toggles recenter without game reset.
@@ -235,8 +235,9 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Depends on: T-034, T-035. Contracts: A-8/P-5.
             Acceptance/evidence: Verify 0.8.0 actual build at all five widths and eight optional-panel combinations, native focus behavior and complete gameplay/persistence/file regressions.
             Milestone exit: depends on all other milestone tasks T-034 through T-035; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/8/8.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 8.2 - Phase review
-        - [ ] T-037 - Review test and report phase 8
+    - [x] Milestone 8.2 - Phase review
+        - [x] T-037 - Review test and report phase 8
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 261 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-036, completion/verified closure of milestone 8.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/8/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 

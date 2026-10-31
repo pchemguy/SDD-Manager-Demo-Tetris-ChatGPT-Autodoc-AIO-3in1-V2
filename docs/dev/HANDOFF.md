@@ -1,5 +1,13 @@
 # Development handoff
 
-The user authorizes QC and full implementation T-001 through T-047 with tracking, phase integration, packages and releases. Phase 8 delivery milestone is implemented and verified: T-034 RED five viewport centering failures; GREEN all five required widths with normal/doubled text. T-035 RED missing third toggle; GREEN all eight combinations, native select keys, target aria state, file hiding and immutable game/config/cookie/URL observations. T-036 verifies all eight combinations at all five widths and both text scales with ten maximum-size results: 80 combination/scale/width cases plus baseline geometry checks, real text-range overflow checks and representative screenshot inspection. Visual review led to compact narrow information styling and accurate configurable-lock help/restore wording. Current full pytest 261 passed, Firefox browser/renderer 34 passed, extracted actual browser package 32 passed. Typecheck/test/production builds and stable name/resource/runtime/checksum gates pass.
+## Authority and current checkpoint
 
-Review and limits: reports/phases/8/8.1.md. Publish/close the milestone's final delivery task, close its milestone, perform the separate phase review, then explicitly integrate to main, rebuild exact-source packages and verify tagged hosted release bytes/latest before activating the next phase. Continue the full authorized scope without another approval. Native Windows/sidebar limits remain distinct from shared renderer and archive checks.
+The user request Do QC and full implement authorizes all T-001 through T-047, tracking, phase integration, packages and releases. Preparation is integrated and its milestone closed. Working branch phase/8-browser-workspace was created from main 8c02c006fc058fa26ba48706c18d9694d8aad2c4 and integrates into main. Phase 8 delivery milestone is closed/read back; its phase review passes 261 pytest cases, compiler/build-driver and archive checks with code review/audit evidence in [phase report](reports/phases/8/PHASE-REPORT.md).
+
+## Pending effects and next action
+
+Publish/read back T-037, close its issue and review milestone, then explicitly merge/verify/publish to main. Rebuild from the exact default-branch release commit, tag, publish and verify hosted bytes/latest before activating the next phase. Full remaining implementation authority continues; no extra approval is required. This checkpoint cannot prove its future effects. TASKS and reports own actual task/evidence state.
+
+## Environment limits
+
+Linux execution with Node 24, Python 3.12, pytest and dedicated Playwright Chromium headless/Firefox builds. Firefox content sandbox recovery is process-local for trusted local pages. Native Windows and actual-sidebar checks remain separately reported; no unavailable mode is claimed verified.
