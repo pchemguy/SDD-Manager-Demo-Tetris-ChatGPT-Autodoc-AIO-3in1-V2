@@ -43,3 +43,19 @@ def test_cookie_write_rejection_reports_but_keeps_session_selection(page):
     expect(page.locator('#setting-ghost')).to_have_value('hide')
     expect(page.locator('#notice')).to_contain_text('could not be confirmed')
     page.locator('#start').click();expect(page.locator('#state')).to_have_text('Running')
+
+def test_all_six_settings_cookie_url_default_and_reload_branches(page,app_url):
+    defaults=dict(ghost='show',hardDrop='on',next='on',hardDropLock='general',lock='interval',hold='on')
+    alternate=dict(ghost='hide',hardDrop='off',next='off',hardDropLock='immediate',lock='failed',hold='off')
+    page.add_init_script("for(const k of ['getItem','setItem'])Storage.prototype[k]=function(){throw Error('No persistent score/storage channel is in scope')}")
+    page.context.add_cookies([{'name':'tetris_'+k,'value':v,'url':app_url} for k,v in alternate.items()])
+    page.goto(app_url+'/')
+    for key,value in alternate.items():expect(page.locator('#setting-'+key)).to_have_value(value)
+    page.goto(app_url+'/?'+'&'.join(k+'='+v for k,v in defaults.items()))
+    for key,value in defaults.items():expect(page.locator('#setting-'+key)).to_have_value(value)
+    assert cookies(page)=={'tetris_'+k:v for k,v in defaults.items()}
+    for key,value in alternate.items():page.locator('#setting-'+key).select_option(value)
+    page.reload()
+    for key,value in alternate.items():expect(page.locator('#setting-'+key)).to_have_value(value)
+    page.goto(app_url+'/')
+    for key,value in alternate.items():expect(page.locator('#setting-'+key)).to_have_value(value)

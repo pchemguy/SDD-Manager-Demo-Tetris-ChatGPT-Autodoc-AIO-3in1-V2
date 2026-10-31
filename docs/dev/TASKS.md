@@ -130,7 +130,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 ## Phase 5 - Persistent settings
 
 - [ ] Phase 5 - Persistent settings
-    - [ ] Milestone 5.1 - Browser setting continuity
+    - [x] Milestone 5.1 - Browser setting continuity
         - [x] T-020 - Implement independent URL cookie and default resolution
             Verified: RED: driver compilation rejected missing resolver. GREEN: build:test and 17 mixed-source/all-key precedence cases pass, including malformed percent encoding, repeated/empty/case-invalid values, ambiguous cookies, encoded keys/values, explicit URL defaults and omitted-cookie retention. Resolver returns only valid explicit writes and per-key diagnostics without host mutation.
             Scope: src/platform/browser query/cookie ports and src/app resolution logic.
@@ -141,7 +141,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/app setting transaction and browser history/cookie readback.
             Depends on: T-020. Contracts: C-2/C-4.
             Acceptance/evidence: User changes update only the selected cookie/query key, preserve unrelated query/fragment data and show blocked-cookie diagnostics; invalid values never overwrite valid saved settings.
-        - [ ] T-022 - Package and verify setting continuity
+        - [x] T-022 - Package and verify setting continuity
+            Verified: Version 0.5.0 typecheck/build/archive gates pass; full pytest 108 passed, Firefox browser/renderer 14 passed, extracted browser package 12 passed. Every setting covers default/cookie/explicit-default URL, changes and reload retention without persistent score storage. Whole-milestone review and native limits recorded in 5.1 report/HANDOFF; no blockers.
             Scope: browser package, reload integration scenarios and persistence guide.
             Depends on: T-020, T-021. Contracts: A-5/P-5.
             Acceptance/evidence: Verify 0.5.0 extracted build restores settings across reload with every precedence branch and preserves all prior gameplay behaviors; scores/files remain out of scope.
