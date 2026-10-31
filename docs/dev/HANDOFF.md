@@ -1,5 +1,13 @@
 # Development handoff
 
-The user authorizes QC and full implementation T-001 through T-047 with tracking, phase integration, packages and releases. Phase 7 delivery milestone is implemented and verified: T-028 RED missing validator; GREEN 60 schema/runtime corpus cases. T-029 RED missing JSON/transaction APIs; GREEN strict UTF-8/duplicate keys/size, rollback and serialization. T-030 RED missing SQLite and reproduced grouping-based CHECK bypass; GREEN constrained semantic parser, 33 SQLite cases and independent Python sqlite3 metadata/row inspection. T-031 RED missing controls and delayed-read gate; GREEN actual downloads, content detection, invalid/cancel/size non-mutation and whole-read locking. T-032 RED three missing/corrupt runtime/schema archives were wrongly accepted; GREEN exact pinned asset byte checks. Full pytest 249 passed, Firefox browser/renderer 22 passed, extracted actual browser package 20 passed; compiler/builds/archive safety/name/checksum gates pass. Full/empty cross-format equality, complete malformed corpus application/results/settings/cookie/URL non-mutation and strict script CSP with local Wasm are covered.
+## Authority and current checkpoint
 
-Review and limits: reports/phases/7/7.1.md. Publish/close the milestone's final delivery task, close its milestone, perform the separate phase review, then explicitly integrate to main, rebuild exact-source packages and verify tagged hosted release bytes/latest before activating the next phase. Continue the full authorized scope without another approval. Native Windows/sidebar limits remain distinct from shared renderer and archive checks.
+The user request Do QC and full implement authorizes all T-001 through T-047, tracking, phase integration, packages and releases. Preparation is integrated and its milestone closed. Working branch phase/7-manual-file-exchange was created from main b7a7331b52bf7f8c4a198abb37042f083ce08e4e and integrates into main. Phase 7 delivery milestone is closed/read back; its phase review passes 249 pytest cases, compiler/build-driver and archive checks with code review/audit evidence in [phase report](reports/phases/7/PHASE-REPORT.md).
+
+## Pending effects and next action
+
+Publish/read back T-033, close its issue and review milestone, then explicitly merge/verify/publish to main. Rebuild from the exact default-branch release commit, tag, publish and verify hosted bytes/latest before activating the next phase. Full remaining implementation authority continues; no extra approval is required. This checkpoint cannot prove its future effects. TASKS and reports own actual task/evidence state.
+
+## Environment limits
+
+Linux execution with Node 24, Python 3.12, pytest and dedicated Playwright Chromium headless/Firefox builds. Firefox content sandbox recovery is process-local for trusted local pages. Native Windows and actual-sidebar checks remain separately reported; no unavailable mode is claimed verified.

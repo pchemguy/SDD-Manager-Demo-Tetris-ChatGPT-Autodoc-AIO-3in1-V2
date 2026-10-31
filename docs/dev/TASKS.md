@@ -181,7 +181,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 7 - Manual file exchange
 
-- [ ] Phase 7 - Manual file exchange
+- [x] Phase 7 - Manual file exchange
     - [x] Milestone 7.1 - Versioned JSON and SQLite
         - [x] T-028 - Define the shared snapshot validator and JSON Schema
             Verified: RED: compiled driver rejected missing snapshot API. GREEN: build:test and 60 shared-corpus cases pass against complete runtime validation and independent Draft 2020-12 schema validation with explicit real UTC format checks plus unique-ID semantics. Covers exact required fields, unknown data, all six setting domains, safe scores, UUIDs, dates, duplicate IDs/count limits, detached input and post-validation ranking. No host mutation or runtime eval compiler is introduced.
@@ -209,8 +209,9 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Depends on: T-028, T-029, T-030, T-031. Contracts: A-7/F-6/P-5.
             Acceptance/evidence: Verify 0.7.0 package round trips empty/full files, semantic JSON/SQLite equality and malformed corpus; compare results/settings/cookies/URL unchanged on every rejection and verify successful Restore readback.
             Milestone exit: depends on all other milestone tasks T-028 through T-031; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/7/7.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 7.2 - Phase review
-        - [ ] T-033 - Review test and report phase 7
+    - [x] Milestone 7.2 - Phase review
+        - [x] T-033 - Review test and report phase 7
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 249 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-032, completion/verified closure of milestone 7.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/7/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 
