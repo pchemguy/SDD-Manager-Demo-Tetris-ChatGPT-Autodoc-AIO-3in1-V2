@@ -155,7 +155,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 6 - Session leaderboard
 
-- [ ] Phase 6 - Session leaderboard
+- [x] Phase 6 - Session leaderboard
     - [x] Milestone 6.1 - Ranked completed games
         - [x] T-024 - Implement immutable completed results and ranking
             Verified: RED: driver compile rejected missing result validator/controller history API. GREEN: 19 result cases pass, plus 22 lock/settings regressions; compiled driver passes. Covers strict UUID/score/UTC real-date validation, unique IDs/count bounds, immutable top-ten score/time/ASCII ranking, zero-score completion exactly once, unfinished restart and old completion before late restart. Browser UUID port also works without secure-context randomUUID.
@@ -173,8 +173,9 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Depends on: T-024, T-025. Contracts: A-6/P-5.
             Acceptance/evidence: Verify 0.6.0 ranking, timestamp display, stable identities and reload clearing without persistent score writes; configurations still restore independently.
             Milestone exit: depends on all other milestone tasks T-024 through T-025; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/6/6.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 6.2 - Phase review
-        - [ ] T-027 - Review test and report phase 6
+    - [x] Milestone 6.2 - Phase review
+        - [x] T-027 - Review test and report phase 6
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 129 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-026, completion/verified closure of milestone 6.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/6/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 
