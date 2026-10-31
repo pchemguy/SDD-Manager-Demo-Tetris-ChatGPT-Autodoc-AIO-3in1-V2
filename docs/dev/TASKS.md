@@ -105,7 +105,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 - [ ] Phase 4 - Session settings
     - [ ] Milestone 4.1 - Six session settings
-        - [ ] T-016 - Define canonical settings and active-game transitions
+        - [x] T-016 - Define canonical settings and active-game transitions
+            Verified: RED: compiled driver rejected missing settings API. GREEN: build:test and 14 canonical-domain/atomic-rejection/controller-transition pytest cases pass. Policies preserve original grounding history; disabled hold/drop do not consume eligibility; restart retains settings. No host persistence is present.
             Scope: src/app settings validator/controller and src/core policy command boundary.
             Depends on: T-015. Contracts: C-1/G-5.
             Acceptance/evidence: Validate all six enum domains/defaults; lock-policy toggles retain grounding history, expired deadlines lock, and hold/drop toggles preserve piece eligibility.
