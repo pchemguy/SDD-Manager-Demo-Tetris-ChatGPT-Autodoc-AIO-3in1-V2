@@ -19,7 +19,7 @@ Preparation tasks and completion checkboxes only. Control, decisions and evidenc
     - Depends on DOCS-003.
     - Define component responsibilities, collaboration, ownership and design-level interface boundaries consistently with ARCHITECTURE.
     - Check consistency, obtain approval or apply scoped preapproval, and commit the accepted state, DOCS_PREPARATION evidence and this checked task together; publish/read back before issue closure or dependent work.
-- [ ] DOCS-005 — Prepare and accept SPEC.
+- [x] DOCS-005 — Prepare and accept SPEC.
     - Depends on DOCS-004.
     - Specify observable behavior, interfaces, data/error contracts, required qualities and acceptance conditions from the accepted design, including necessary children.
     - Pass required SPEC QC and approval/preapproval. Commit the accepted state, QC report, DOCS_PREPARATION evidence and this checked task together; publish/read back before issue closure or dependent work.
