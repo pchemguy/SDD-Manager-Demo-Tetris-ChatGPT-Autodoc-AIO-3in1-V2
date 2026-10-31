@@ -25,3 +25,7 @@ Verified phase/1-classic-browser ba78dede0aac343f906f7419ac7aa53d68a8a7dc is mer
 ## Phase 2 entry
 
 Phase 1 release v0.1.0 is published at default release commit 477a99760832c8f84f509a8a3906492bf40fd60a; both hosted browser ZIP and checksum bytes were downloaded and matched local SHA-256, with latest pointer verified. Working branch phase/2-modern-rules starts from that main checkpoint and targets main. Phase 2 label, milestones and all T-006 through T-011 issues/associations were verified before edits. Full implementation authority continues.
+
+## Modern milestone checkpoint
+
+T-006 through T-010 implement and verify modern gameplay. [Milestone 2.1](reports/phases/2/2.1.md) records RED/GREEN, full 48 tests, 4 Firefox cases, 4 extracted-package cases and code review. Publish T-010, close its issue and milestone 2.1, then run T-011 phase review. Phase 2 integration/release 0.2.0 remains pending. Full implementation continues through T-047 after verified phase releases.

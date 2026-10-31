@@ -42,7 +42,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 ## Phase 2 - Modern rules
 
 - [ ] Phase 2 - Modern rules
-    - [ ] Milestone 2.1 - Modern browser game
+    - [x] Milestone 2.1 - Modern browser game
         - [x] T-006 - Implement seven-bag source and hold lifecycle
             Verified: RED: six independent bag/hold lifecycle cases failed against stub/no-hold behavior. GREEN: typecheck/build:test and 23 unit cases pass, including four seeded 28-draw bag sequences, once-per-piece hold, queue-preserving swap and blocked held spawn. Phase 2 activation and verified v0.1.0 hosted-byte predecessor evidence retained in HANDOFF.
             Scope: src/core source/reducer and tests/unit.
@@ -63,7 +63,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/core time/reducer and deterministic boundary tests.
             Depends on: T-008. Contracts: G-5.
             Acceptance/evidence: Test exact deadline, already-grounded drop, failed soft drop, lateral/rotation non-reset, lift-off/reset, pause freezing and delayed-frame scheduling without wall-clock sleeps.
-        - [ ] T-010 - Expose and package modern gameplay
+        - [x] T-010 - Expose and package modern gameplay
+            Verified: RED: two modern browser scenarios failed on absent preview/keyboard controls. GREEN: typecheck/build:test/build, full 48 tests, 4 Firefox browser cases, 4 extracted-package Chromium cases and actual archive name/resource/checksum checks pass. Hold/next/ghost/hard-drop UI and timed keyboard repeat are integrated at 0.2.0; screenshot and full milestone source review inspected. Milestone report/HANDOFF retain pending phase review and hosted release effects.
             Scope: src/ui previews/hold/ghost, app composition, package outputs and user docs.
             Depends on: T-006, T-007, T-008, T-009. Contracts: A-2/G-3/G-4/G-5/P-5.
             Acceptance/evidence: Integrate modern capabilities with fixed defaults and visible bindings; verify actual 0.2.0 browser package, timing interactions and classic regressions.

@@ -2,7 +2,7 @@
 import type {Controller} from '../app/controller.js';
 export function bindInput(app:Controller):{repeat:(now:number)=>void;clear:()=>void}{
  const held=new Map<string,{type:string;next:number}>();
- const map:Record<string,string>={ArrowLeft:'left',ArrowRight:'right',ArrowDown:'down',ArrowUp:'cw',' ':'cw',z:'ccw',r:'start'};
+ const map:Record<string,string>={ArrowLeft:'left',ArrowRight:'right',ArrowDown:'down',ArrowUp:'cw',' ':'cw',z:'ccw',r:'start',Enter:'hardDrop',c:'hold'};
  const clear=()=>held.clear();
  app.subscribe(s=>{if(s.status!=='running')clear();});
  const repeat=(now:number)=>{
