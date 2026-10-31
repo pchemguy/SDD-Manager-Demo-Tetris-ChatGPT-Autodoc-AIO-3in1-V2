@@ -44,3 +44,14 @@ def test_reject_incomplete_or_wrong_file_runtime(tmp_path,fault,monkeypatch):
         for name,data in files.items():z.writestr(name,data)
     (tmp_path/'SHA256SUMS.txt').write_text(hashlib.sha256(path.read_bytes()).hexdigest()+'  tetris-browser.zip\n')
     with pytest.raises(ValueError,match='runtime|Wasm|schema'):module.verify(tmp_path)
+
+def pe_header(machine=0x8664,magic=0x20b):
+    import struct
+    data=bytearray(512);data[:2]=b'MZ';struct.pack_into('<I',data,0x3c,0x80);data[0x80:0x84]=b'PE\0\0';struct.pack_into('<HH',data,0x84,machine,1);struct.pack_into('<H',data,0x94,240);struct.pack_into('<H',data,0x96,2);struct.pack_into('<H',data,0x98,magic);return bytes(data)
+
+def test_accepts_windows_x64_pe_header():
+    module.verify_pe(pe_header())
+
+@pytest.mark.parametrize('data',[b'',b'not exe',pe_header(0x14c),pe_header(magic=0x10b),b'MZ'+b'\0'*60],ids=['empty','not-pe','x86','pe32','truncated'])
+def test_rejects_invalid_or_wrong_architecture_pe(data):
+    with pytest.raises(ValueError):module.verify_pe(data)

@@ -250,7 +250,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: platforms/electron, src/platform/desktop and desktop entry.
             Depends on: T-037. Contracts: P-3/C-3.
             Acceptance/evidence: Load shared bundled UI under stable secure app origin with persistent settings cookies; reject traversal/remote navigation, preserve query history and enforce sandbox/context isolation/no renderer Node.
-        - [ ] T-039 - Assemble the Windows portable runtime package
+        - [x] T-039 - Assemble the Windows portable runtime package
+            Verified: RED: six PE checks failed against missing architecture verifier. GREEN: all 33 platform policy/package cases pass; production browser/desktop builds pass. Actual 158490301-byte Windows portable ZIP verifies 72 upstream runtime file hashes, all executable/DLL x64 PE32+ headers, exact owned app/resource inventory and local SQLite/schema bytes, versions, safe paths and cumulative browser/Windows names/checksums. Electron 45.2.1 archive matches both upstream SHASUMS256 and pinned digest; locked per-file inventory excludes the default demo app. No end-user Node/server is required. Unsigned development installation guide is included; native execution follows separate T-040 checks.
             Scope: build/package scripts and locked Electron distribution assets.
             Depends on: T-038. Contracts: P-3/P-5.
             Acceptance/evidence: Produce unsigned Windows x64 ZIP with executable/runtime/resources, local SQLite/schema/UI and notices; verify PE architecture, archive root and every required resource without a Node/server end-user dependency.
