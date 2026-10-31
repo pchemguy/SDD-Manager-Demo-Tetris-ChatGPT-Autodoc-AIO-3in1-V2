@@ -2,7 +2,7 @@
 
 ## Current gate
 
-State: Ready for layout authoring. Strategy conforms to SPEC; TASKS generation remains blocked pending combined PLAN/layout review. No confirmed strategy finding remains open. This is per-document QC, not DOCS-009 whole-package QC.
+State: Ready for TASKS generation after combined PLAN/layout review. Strategy and physical ownership conform to SPEC and accepted design. No confirmed strategy or layout finding remains open. This is per-document QC, not DOCS-009 whole-package QC.
 
 Reviewed PLAN.md SHA-256: aa74bb2ebd9ee212a66bfb8eb9b94f480930e149e0cad4ce0ca0e31298e13147.
 
@@ -48,4 +48,12 @@ Each one-milestone phase triggers the 1-2 group assessment. Retained narrow cohe
 
 Checked release operations are post-task and post-integration, avoiding a task that requires its own future merge/release to close. Checked no future-phase behavior is used as an earlier phase's exit. Candidate limits distinguish unavailable native execution, actual sidebar checks and ordinary panel fallback. No implementation work or hosted phase activation was performed.
 
-Findings: none confirmed in strategy review. Remaining gate: layout physical ownership and combined recheck before TASKS. Count rationale is an assessment, not a claimed defect.
+Findings: none confirmed in strategy review. Initial remaining gate: layout physical ownership and combined recheck before TASKS; satisfied in Revision 1. Count rationale is an assessment, not a claimed defect.
+
+## Revision 1
+
+Combined PLAN/layout recheck, 2026-10-31. PLAN is unchanged at SHA-256 aa74bb2ebd9ee212a66bfb8eb9b94f480930e149e0cad4ce0ca0e31298e13147; layout.md SHA-256 03c30e7192959b846738accddaeed1e2a694b44ac13a0f6e1f857fa1b01c22c9. Governing architecture, decomposition and SPEC identities remain those in Current gate and the SPEC report.
+
+Mapped every component to one physical owner, all ten phase outcomes to build/test/package homes, and reports to their owning milestone/phase paths. Reviewed core/application/UI dependency direction, host composition, schema/codec sharing, separate persistent/transient stores, production exclusion of test drivers and bundled plugin, generated output handling, source version ownership and stable actual archive names. The layout supports the reviewed delivery order without introducing gameplay or phase scope. No new confirmed finding.
+
+The phase count assessments and scoped acceptance mapping remain valid. Actual directories/commands are plans, not observed implementation. TASKS can derive bounded paths and checks; whole-package QC and product implementation remain unperformed.
