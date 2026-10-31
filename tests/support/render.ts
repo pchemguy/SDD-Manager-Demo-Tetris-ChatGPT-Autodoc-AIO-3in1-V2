@@ -6,6 +6,6 @@ import type {Controller} from '../../src/app/controller.js';
 import '../../src/ui/styles.css';
 (window as unknown as {renderFixture:(input:Partial<GameState>)=>void}).renderFixture=(input)=>{
  const state={...create(1),...input};
- const controller={get settings(){return {...defaults,ghost:'dynamic'};},updateSettings(){},get state(){return structuredClone(state);},subscribe(fn:(s:GameState)=>void){fn(structuredClone(state));return()=>{};},dispatch(){}} as unknown as Controller;
+ const controller={get results(){return [];},get settings(){return {...defaults,ghost:'dynamic'};},updateSettings(){},get state(){return structuredClone(state);},subscribe(fn:(s:GameState)=>void){fn(structuredClone(state));return()=>{};},dispatch(){}} as unknown as Controller;
  mount(document.querySelector<HTMLElement>('#app')!,controller);
 };
