@@ -129,23 +129,27 @@ Before a phase starts, its predecessor review/milestones, published integration 
 
 ## Phase 5 - Persistent settings
 
-- [ ] Phase 5 - Persistent settings
-    - [ ] Milestone 5.1 - Browser setting continuity
-        - [ ] T-020 - Implement independent URL cookie and default resolution
+- [x] Phase 5 - Persistent settings
+    - [x] Milestone 5.1 - Browser setting continuity
+        - [x] T-020 - Implement independent URL cookie and default resolution
+            Verified: RED: driver compilation rejected missing resolver. GREEN: build:test and 17 mixed-source/all-key precedence cases pass, including malformed percent encoding, repeated/empty/case-invalid values, ambiguous cookies, encoded keys/values, explicit URL defaults and omitted-cookie retention. Resolver returns only valid explicit writes and per-key diagnostics without host mutation.
             Scope: src/platform/browser query/cookie ports and src/app resolution logic.
             Depends on: T-019. Contracts: C-2.
             Acceptance/evidence: Exercise mixed-source settings, invalid/duplicate/encoded values, explicit default-valued URL cookies and omitted parameters retaining valid cookie values.
-        - [ ] T-021 - Synchronize setting changes with browser persistence
+        - [x] T-021 - Synchronize setting changes with browser persistence
+            Verified: RED: four production-browser persistence cases failed against the session-only build. GREEN: build:test/build and 13 browser/renderer checks pass for real cookie/URL precedence, explicit-default writes, omitted-cookie retention, duplicate replacement, unrelated queries/fragments, invalid fallback and blocked-cookie diagnostics while selection remains playable. Phase-4 no-I/O expectation is superseded by the persistence contract and retained in its release tag/report.
             Scope: src/app setting transaction and browser history/cookie readback.
             Depends on: T-020. Contracts: C-2/C-4.
             Acceptance/evidence: User changes update only the selected cookie/query key, preserve unrelated query/fragment data and show blocked-cookie diagnostics; invalid values never overwrite valid saved settings.
-        - [ ] T-022 - Package and verify setting continuity
+        - [x] T-022 - Package and verify setting continuity
+            Verified: Version 0.5.0 typecheck/build/archive gates pass; full pytest 108 passed, Firefox browser/renderer 14 passed, extracted browser package 12 passed. Every setting covers default/cookie/explicit-default URL, changes and reload retention without persistent score storage. Whole-milestone review and native limits recorded in 5.1 report/HANDOFF; no blockers.
             Scope: browser package, reload integration scenarios and persistence guide.
             Depends on: T-020, T-021. Contracts: A-5/P-5.
             Acceptance/evidence: Verify 0.5.0 extracted build restores settings across reload with every precedence branch and preserves all prior gameplay behaviors; scores/files remain out of scope.
             Milestone exit: depends on all other milestone tasks T-020 through T-021; review the entire capability code and applicable tests separately, repair blockers and include docs/dev/reports/phases/5/5.1.md plus refreshed HANDOFF with this task's result/initial completion. Include Findings/Blockers and TODO (None if empty), actual check limits and package/version evidence.
-    - [ ] Milestone 5.2 - Phase review
-        - [ ] T-023 - Review test and report phase 5
+    - [x] Milestone 5.2 - Phase review
+        - [x] T-023 - Review test and report phase 5
+            Verified: Whole-phase code review and closing-commit audit passed; typecheck/build:test, full 108 pytest cases and actual archive checks pass. Phase report/HANDOFF record scoped coverage and native limits, with main integration/release readback still pending.
             Depends on: T-022, completion/verified closure of milestone 5.1 and all its issues; the review milestone itself remains open until this task closes.
             Scope/evidence: independent whole-phase code review, applicable focused/regression checks and package readiness; repair contract blockers, retain docs/dev/reports/phases/5/PHASE-REPORT.md and refresh HANDOFF in this task's closing commit. Carry unresolved eligible TODOs with stable evidence/options and identify pending integration/release operations without claiming success.
 

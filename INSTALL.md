@@ -15,3 +15,7 @@ The browser bundle is a static deployment artifact. Windows and sidebar packages
 ## Special landing rules
 
 Clearing four rows awards one penetrator bonus, up to three. An activated piece passes through occupied cells without destroying them; its ghost and hard drop choose the lowest entirely valid landing. Hold is disabled while active. White marks penetrator cells, including settled cells. Dynamic ghost visibility hides the projection if any occupied cell is above the board midline, including a piece that straddles it.
+
+## Settings continuity
+
+Use canonical query keys ghost, hardDrop, next, hardDropLock, lock and hold. For example, ?ghost=dynamic&lock=interval&hardDropLock=immediate selects a dynamic ghost and immediate hard-drop locking. Each valid explicit parameter overrides its saved tetris_ cookie, which overrides the default. Invalid/duplicate values fall back independently with a status message. Settings changes update that key's cookie and URL; omitted keys retain their cookies. Use the same origin/profile to reopen saved settings. Cookie restrictions may prevent continuity and produce a warning. Scores and files are not delivered by this version.

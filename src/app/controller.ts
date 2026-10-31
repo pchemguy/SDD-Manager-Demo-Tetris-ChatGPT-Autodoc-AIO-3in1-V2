@@ -2,12 +2,13 @@
 import {create,reduce,type Command,type GameState,type GameEvent} from '../core/game.js';
 import {defaults,validateSettings,type Settings} from './settings.js';
 export class Controller{
+ onSettingsChange:(patch:Partial<Settings>)=>void=()=>{};
  private config:Settings={...defaults};
  get settings():Settings{return {...this.config};}
  private get rules(){return{lock:this.config.lock,hardDropLock:this.config.hardDropLock,hardDrop:this.config.hardDrop==='on',hold:this.config.hold==='on'};}
  updateSettings(patch:unknown):void{
   const parsed=validateSettings(patch),now=this.clock();this.beforeCommand(now);const events=this.advance(now);
-  this.config={...this.config,...parsed};const result=reduce(this.current,{type:'configure'},this.rules);this.current=result.state;this.notify([...events,...result.events]);
+  this.config={...this.config,...parsed};const result=reduce(this.current,{type:'configure'},this.rules);this.current=result.state;this.notify([...events,...result.events]);this.onSettingsChange(parsed);
  }
  private current:GameState;
  private lastClock:number;

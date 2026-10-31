@@ -1,4 +1,5 @@
 /** Deterministic subprocess bridge; excluded from production bundles. */
+import {resolveSettings} from '../../src/app/resolve-settings.js';
 import {Controller} from '../../src/app/controller.js';
 import {readFileSync} from 'node:fs';
 import {ghostVisible} from '../../src/core/ghost.js';
@@ -7,7 +8,8 @@ import * as source from '../../src/core/source.js';
 import * as game from '../../src/core/game.js';
 import * as geometry from '../../src/core/geometry.js';
 const q=JSON.parse(readFileSync(0,'utf8'));
-if(q.op==='settings'){let now=0;const app=new Controller(()=>1,()=>now);const errors=[];for(const step of q.steps??[]){now=step.at??now;try{if(step.settings)app.updateSettings(step.settings);else app.dispatch(step.command);}catch(e){errors.push(String(e));}}console.log(JSON.stringify({state:app.state,settings:app.settings,errors}));}
+if(q.op==='resolveSettings')console.log(JSON.stringify(resolveSettings(q.search??'',q.cookie??'')));
+else if(q.op==='settings'){let now=0;const app=new Controller(()=>1,()=>now);const errors=[];for(const step of q.steps??[]){now=step.at??now;try{if(step.settings)app.updateSettings(step.settings);else app.dispatch(step.command);}catch(e){errors.push(String(e));}}console.log(JSON.stringify({state:app.state,settings:app.settings,errors}));}
 else if(q.op==='geometry')console.log(JSON.stringify({cells:geometry.cells(q.piece),valid:geometry.valid(q.board??geometry.emptyBoard(),q.piece)}));
 else if(q.op==='game'){let state=Object.assign(game.create(q.seed??1),q.fixture??{});const events:game.GameEvent[]=[];let immutable=true;let rules=q.rules;for(const a of q.actions??[]){const before=JSON.stringify(state);if(a.rules)rules=a.rules;const r=game.reduce(state,a,rules);immutable=immutable&&before===JSON.stringify(state);state=r.state;events.push(...r.events);}console.log(JSON.stringify({state,events,immutable}));}
 else if(q.op==='source'){let seed=q.seed??1,queue:geometry.Kind[]=[];const draws=[];for(let i=0;i<q.count;i++){const r=source.next(seed,queue);seed=r.seed;queue=r.queue;draws.push(r.kind);}console.log(JSON.stringify(draws));}
