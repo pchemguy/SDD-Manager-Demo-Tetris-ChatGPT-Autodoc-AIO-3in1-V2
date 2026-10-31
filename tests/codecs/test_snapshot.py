@@ -34,6 +34,8 @@ def test_schema_and_runtime_complete_validation_agree(driver,value,valid):
     r=driver('snapshot',document=value)
     assert ('error' not in r)==valid
     if valid:assert r['immutable']
+    else:
+        tx=driver('fileTransaction',text=json.dumps(value));assert tx['error'] and tx['before']==tx['after'] and tx['writes']==0
 
 def test_canonicalizes_only_a_fully_valid_candidate(driver):
     value={**doc(),'results':[row(1,2),row(2,8)]}

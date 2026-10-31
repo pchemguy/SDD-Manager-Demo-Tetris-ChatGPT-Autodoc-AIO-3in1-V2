@@ -6,6 +6,7 @@ from test_snapshot import doc,row
 @pytest.mark.parametrize('text',['{}','null','[]','{"formatVersion":1,"formatVersion":1}','{"settings":{"hold":"on","hold":"off"}}','{"settings":{"hold":"on","\\u0068old":"off"}}','{"results":[{"id":"a","id":"b"}]}','{"x":NaN}','{"x":1,}','/*comment*/{}','\ufeff\ufeff{}'])
 def test_invalid_or_duplicate_content_rejected(driver,text):
     assert 'error' in driver('json',text=text)
+    tx=driver('fileTransaction',text=text);assert tx['error'] and tx['before']==tx['after'] and tx['writes']==0
 
 def test_duplicate_key_error_is_lexical_not_salvaged(driver):
     text=json.dumps(doc()).replace('"hold": "on"','"hold": "on", "hold": "off"')

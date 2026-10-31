@@ -1,6 +1,6 @@
 # Tetris
 
-A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. All six settings support URL/cookie persistence. Session-only top-ten completed-game history is implemented. File persistence, Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
+A keyboard-controlled Tetris browser game with 7-bag pieces, SRS wall kicks, hold/next preview, ghost, hard drop and gravity-interval lock delay. Classic movement, scoring, levels, restart and pause remain available. Penetrator bonuses and dynamic ghost visibility are also implemented. All six settings support URL/cookie persistence. Session-only top-ten completed-game history is implemented. Manual JSON/SQLite file exchange is implemented. Windows and sidebars are planned in subsequent phases; see [PLAN](docs/dev/PLAN.md).
 
 ## Play and controls
 
@@ -48,3 +48,7 @@ The settings panel exposes ghost visibility (hide/dynamic/show), hard drop, next
 ## Session leaderboard
 
 Completed games enter the top ten ranked by score descending, UTC completion time ascending and stable lowercase UUID ascending. Each result is recorded once; restarting an unfinished game adds nothing. History stays in this page session, survives panel toggles and restarts, and clears on reload. Configuration cookies never contain scores.
+
+## Manual files
+
+Choose JSON or SQLite at the bottom of Settings, then Save or Restore one file. Complete validation precedes changes; successful restore replaces all results/settings and pauses play while retaining the active game. See the [file guide](FILES.md) and [JSON Schema](schemas/tetris-save.schema.json). All codec assets are bundled locally.

@@ -182,7 +182,7 @@ Before a phase starts, its predecessor review/milestones, published integration 
 ## Phase 7 - Manual file exchange
 
 - [ ] Phase 7 - Manual file exchange
-    - [ ] Milestone 7.1 - Versioned JSON and SQLite
+    - [x] Milestone 7.1 - Versioned JSON and SQLite
         - [x] T-028 - Define the shared snapshot validator and JSON Schema
             Verified: RED: compiled driver rejected missing snapshot API. GREEN: build:test and 60 shared-corpus cases pass against complete runtime validation and independent Draft 2020-12 schema validation with explicit real UTC format checks plus unique-ID semantics. Covers exact required fields, unknown data, all six setting domains, safe scores, UUIDs, dates, duplicate IDs/count limits, detached input and post-validation ranking. No host mutation or runtime eval compiler is introduced.
             Scope: src/app snapshot validator, schemas/tetris-save.schema.json and tests/codecs.
@@ -203,7 +203,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/ui settings file controls, controller serialization and browser file port.
             Depends on: T-030. Contracts: F-2/F-5.
             Acceptance/evidence: One Save/Restore pair is at the bottom of settings; format choice/download/picker, cancellation, size/encoding detection, success pause and all-six persistence updates work without extra gameplay buttons.
-        - [ ] T-032 - Package and verify cross-format file exchange
+        - [x] T-032 - Package and verify cross-format file exchange
+            Verified: Version 0.7.0 full pytest 249 passed, Firefox 22 passed, extracted actual browser package 20 passed; type/build/archive/source checks pass. Complete malformed corpus compares application/results/settings/cookies/URL before/after rejection; full/empty JSON-SQLite equality and independent SQLite inspection preserve IDs/UTC/safe scores. Strict-CSP local-Wasm operation passes. RED missing/corrupt runtime/schema archives now fail pinned byte gates. Whole-milestone review, fixes, guide and explicit host/native limits recorded in 7.1 report/HANDOFF; no blockers.
             Scope: browser build/local codec/schema assets, tests/codecs/browser and file guide.
             Depends on: T-028, T-029, T-030, T-031. Contracts: A-7/F-6/P-5.
             Acceptance/evidence: Verify 0.7.0 package round trips empty/full files, semantic JSON/SQLite equality and malformed corpus; compare results/settings/cookies/URL unchanged on every rejection and verify successful Restore readback.

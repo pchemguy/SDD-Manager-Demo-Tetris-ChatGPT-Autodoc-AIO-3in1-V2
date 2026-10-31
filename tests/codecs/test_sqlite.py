@@ -34,7 +34,8 @@ def test_roundtrip_and_external_reader(driver,results):
     "PRAGMA ignore_check_constraints=ON; UPDATE high_scores SET score='not-a-number'",
 ])
 def test_metadata_objects_rows_and_storage_classes_rejected(driver,mutation):
-    r=driver('sqlite',base64=database(mutation))
+    encoded=database(mutation);r=driver('sqlite',base64=encoded)
+    tx=driver('fileTransaction',base64=encoded);assert tx['error'] and tx['before']==tx['after'] and tx['writes']==0
     assert r.get('error') and r['closed']==1
 @pytest.mark.parametrize('schema',[
     SQL.replace('CHECK(score >= 0 AND score <= 9007199254740991)',''),
@@ -49,7 +50,8 @@ def test_metadata_objects_rows_and_storage_classes_rejected(driver,mutation):
     SQL.replace('CHECK(score >= 0 AND score <= 9007199254740991)',"DEFAULT 'CHECK(score >= 0 AND score <= 9007199254740991)'"),
 ])
 def test_malformed_schema_and_fake_check_literals_rejected(driver,schema):
-    r=driver('sqlite',base64=database(schema=schema));assert r.get('error') and r['closed']==1
+    encoded=database(schema=schema);r=driver('sqlite',base64=encoded);assert r.get('error') and r['closed']==1
+    tx=driver('fileTransaction',base64=encoded);assert tx['error'] and tx['before']==tx['after'] and tx['writes']==0
 
 def test_harmless_sql_quoting_whitespace_and_indexes_accepted(driver):
     schema=SQL.replace('score >= 0 AND score <= 9007199254740991','(("score" >= 0) AND ([score] <= 9007199254740991))').replace('high_scores','"high_scores"')

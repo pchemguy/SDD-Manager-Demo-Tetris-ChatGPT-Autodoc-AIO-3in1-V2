@@ -15,7 +15,8 @@ def test_reject_names(names):
 def test_accept_stable_names():
     module.verify_names(['tetris-browser.zip', 'SHA256SUMS.txt'], ['tetris-browser.zip', 'SHA256SUMS.txt'])
 
-def test_rejects_accidentally_bundled_view_harness(tmp_path):
+def test_rejects_accidentally_bundled_view_harness(tmp_path,monkeypatch):
+    monkeypatch.setattr(module,'expected_names',lambda:['tetris-browser.zip','SHA256SUMS.txt'])
     import json
     import hashlib
     import zipfile
@@ -27,3 +28,19 @@ def test_rejects_accidentally_bundled_view_harness(tmp_path):
     (tmp_path/'SHA256SUMS.txt').write_text(hashlib.sha256(path.read_bytes()).hexdigest()+'  tetris-browser.zip\n')
     with pytest.raises(ValueError,match='Development'):
         module.verify(tmp_path)
+
+@pytest.mark.parametrize('fault',['missing-wasm','bad-wasm','bad-schema'])
+def test_reject_incomplete_or_wrong_file_runtime(tmp_path,fault,monkeypatch):
+    monkeypatch.setattr(module,'expected_names',lambda:['tetris-browser.zip','SHA256SUMS.txt'])
+    import json,hashlib,zipfile
+    files={p.relative_to(module.ROOT/'dist/browser').as_posix():p.read_bytes() for p in (module.ROOT/'dist/browser').rglob('*') if p.is_file()}
+    for name in ['INSTALL.md','THIRD-PARTY-NOTICES.md','LICENSE']:files[name]=(module.ROOT/name).read_bytes()
+    files['build-info.json']=json.dumps(dict(version=json.loads((module.ROOT/'package.json').read_text())['version'],sourceCommit='0'*40,dirty=False)).encode()
+    if fault=='missing-wasm':files.pop('runtime/sql-wasm.wasm')
+    if fault=='bad-wasm':files['runtime/sql-wasm.wasm']=b'corrupt'
+    if fault=='bad-schema':files['schemas/tetris-save.schema.json']=b'{}'
+    path=tmp_path/'tetris-browser.zip'
+    with zipfile.ZipFile(path,'w') as z:
+        for name,data in files.items():z.writestr(name,data)
+    (tmp_path/'SHA256SUMS.txt').write_text(hashlib.sha256(path.read_bytes()).hexdigest()+'  tetris-browser.zip\n')
+    with pytest.raises(ValueError,match='runtime|Wasm|schema'):module.verify(tmp_path)

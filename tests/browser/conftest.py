@@ -40,3 +40,14 @@ def render_url():
     thread = threading.Thread(target=server.serve_forever, daemon=True);thread.start()
     yield f'http://127.0.0.1:{server.server_port}/tests/support/render.html'
     server.shutdown();server.server_close();thread.join(timeout=5)
+
+@pytest.fixture(scope='session')
+def csp_url():
+    class CSPHandler(QuietHandler):
+        def end_headers(self):
+            self.send_header('Content-Security-Policy',"default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'")
+            super().end_headers()
+    handler=functools.partial(CSPHandler,directory=os.environ.get('TETRIS_WEB_ROOT',str(ROOT/'dist/browser')))
+    server=ThreadingHTTPServer(('127.0.0.1',0),handler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+    yield f'http://127.0.0.1:{server.server_port}'
+    server.shutdown();server.server_close();thread.join(timeout=5)
