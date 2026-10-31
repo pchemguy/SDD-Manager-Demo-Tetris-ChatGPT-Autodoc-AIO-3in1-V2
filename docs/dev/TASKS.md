@@ -193,7 +193,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/codecs JSON parser and src/app import/export transaction.
             Depends on: T-028. Contracts: F-2/F-3/F-5.
             Acceptance/evidence: Reject duplicate JSON member names before schema validation; export one immutable candidate; invalid decode/validation writes nothing and injected host failures keep original application state with explicit rollback reporting.
-        - [ ] T-030 - Implement the SQLite versioned codec
+        - [x] T-030 - Implement the SQLite versioned codec
+            Verified: RED: driver compilation rejected missing SQLite codec; review regression reproduced a grouping-based score-CHECK bypass, now fixed with a constrained expression parser. GREEN: 33 SQLite cases pass; prior combined codec suite passed 109 before two added schema cases. Actual SQLite bytes round-trip empty/full/max-score histories and are inspected by Python sqlite3. Exact metadata/columns/ordinary tables, semantic bounds, integrity/storage classes and rows are validated with fixed queries and finally-close. Pinned sql.js 1.14.2 local Wasm/schema asset bytes match production copies; builds and notices pass. UI binding follows T-031.
             Scope: src/codecs SQLite loader, local runtime bundling and tests/codecs.
             Depends on: T-029. Contracts: F-4.
             Acceptance/evidence: Export actual SQLite 3 bytes with exact tables, six unique settings, metadata and bound inserts; validate schema/storage classes/integrity and close isolated databases on errors; inspect exports independently with Python sqlite3.

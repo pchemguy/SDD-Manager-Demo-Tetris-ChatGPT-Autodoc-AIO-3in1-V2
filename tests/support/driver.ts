@@ -1,4 +1,7 @@
 /** Deterministic subprocess bridge; excluded from production bundles. */
+import initSqlJs from 'sql.js';
+import {resolve} from 'node:path';
+import {encodeSQLite,decodeSQLite} from '../../src/codecs/sqlite.js';
 import {encodeJSON,decodeJSON} from '../../src/codecs/json.js';
 import {FileExchange} from '../../src/app/files.js';
 import {BrowserSettings,type SettingsHost} from '../../src/platform/browser/settings.js';
@@ -15,7 +18,8 @@ import * as game from '../../src/core/game.js';
 import * as geometry from '../../src/core/geometry.js';
 function testResultHost(){let n=0;return{id:()=>`00000000-0000-4000-8000-${String(++n).padStart(12,'0')}`,timestamp:()=>"2026-01-01T00:00:00.000Z"};}
 const q=JSON.parse(readFileSync(0,'utf8'));
-if(q.op==='json'){try{if(q.encode){const bytes=encodeJSON(q.document);console.log(JSON.stringify({text:new TextDecoder().decode(bytes),snapshot:decodeJSON(bytes)}));}else console.log(JSON.stringify({snapshot:decodeJSON(q.bytes?new Uint8Array(q.bytes):new TextEncoder().encode(q.text))}));}catch(e){console.log(JSON.stringify({error:String(e)}));}}
+if(q.op==='sqlite'){let closed=0;const SQL=await initSqlJs({locateFile:file=>resolve('node_modules/sql.js/dist',file)}),engine={Database:class extends SQL.Database{close(){closed++;super.close();}}};try{if(q.encode){const bytes=encodeSQLite(q.document,engine);console.log(JSON.stringify({base64:Buffer.from(bytes).toString('base64'),snapshot:decodeSQLite(bytes,engine),closed}));}else console.log(JSON.stringify({snapshot:decodeSQLite(new Uint8Array(Buffer.from(q.base64,'base64')),engine),closed}));}catch(e){console.log(JSON.stringify({error:String(e),closed}));}}
+else if(q.op==='json'){try{if(q.encode){const bytes=encodeJSON(q.document);console.log(JSON.stringify({text:new TextDecoder().decode(bytes),snapshot:decodeJSON(bytes)}));}else console.log(JSON.stringify({snapshot:decodeJSON(q.bytes?new Uint8Array(q.bytes):new TextEncoder().encode(q.text))}));}catch(e){console.log(JSON.stringify({error:String(e)}));}}
 else if(q.op==='fileTransaction'){
  let now=0,writes=0,href='https://game.invalid/play?keep=abc#stay';const cookie=new Map<string,string>([['tetris_ghost','dynamic'],['unrelated','yes']]);
  const host:SettingsHost={get href(){return href;},get cookie(){return [...cookie].map(([k,v])=>k+'='+v).join('; ');},secure:true,setCookie(value){writes++;if(q.failAt&&(writes===q.failAt||q.failAlways&&writes>=q.failAt))throw Error('Injected host write failure');const [pair]=value.split(';'),at=pair.indexOf('='),k=pair.slice(0,at),v=pair.slice(at+1);if(value.includes('Max-Age=0'))cookie.delete(k);else cookie.set(k,v);},replaceURL(value){href=value;}};

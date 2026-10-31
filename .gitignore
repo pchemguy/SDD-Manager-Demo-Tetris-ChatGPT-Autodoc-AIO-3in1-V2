@@ -13,3 +13,6 @@ test-results/
 .browser-binaries/
 .release-highlights.md
 RELEASE-NOTES.md
+
+/public/runtime/
+/public/schemas/
