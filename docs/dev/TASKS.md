@@ -136,7 +136,8 @@ Before a phase starts, its predecessor review/milestones, published integration 
             Scope: src/platform/browser query/cookie ports and src/app resolution logic.
             Depends on: T-019. Contracts: C-2.
             Acceptance/evidence: Exercise mixed-source settings, invalid/duplicate/encoded values, explicit default-valued URL cookies and omitted parameters retaining valid cookie values.
-        - [ ] T-021 - Synchronize setting changes with browser persistence
+        - [x] T-021 - Synchronize setting changes with browser persistence
+            Verified: RED: four production-browser persistence cases failed against the session-only build. GREEN: build:test/build and 13 browser/renderer checks pass for real cookie/URL precedence, explicit-default writes, omitted-cookie retention, duplicate replacement, unrelated queries/fragments, invalid fallback and blocked-cookie diagnostics while selection remains playable. Phase-4 no-I/O expectation is superseded by the persistence contract and retained in its release tag/report.
             Scope: src/app setting transaction and browser history/cookie readback.
             Depends on: T-020. Contracts: C-2/C-4.
             Acceptance/evidence: User changes update only the selected cookie/query key, preserve unrelated query/fragment data and show blocked-cookie diagnostics; invalid values never overwrite valid saved settings.
